@@ -1,7 +1,7 @@
 {
 "version": 3,
 "mappings": "AAAA,oEAAqE;EACjE,gCAAgC",
-"sources": ["../sass/App.scss"],
+"sources": ["../sass/Task.scss"],
 "names": [],
-"file": "App.css"
+"file": "Task.css"
 }

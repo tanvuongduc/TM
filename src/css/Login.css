@@ -6,74 +6,59 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: auto;
-  }
-  .login-container {
-    height: 60%;
-    padding: 0;
-    padding: 0 10%;
-  }
-  .login-container-row {
-    height: 100%;
-    padding-top: 60px;
-  }
-  .login-container-row .col-left p {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    color: white;
-    font-weight: lighter;
-    font-size: 3.5rem;
-  }
-  .login-container-row .divide {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: auto;
-  }
-  .login-container-row .divide-bar {
-    height: 100%;
-    width: 1px;
-    padding: 0;
-    margin-left: 3px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2);
-  }
-  .login-container-row .col-right {
-    padding-top: 45px;
-    padding-right: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-  }
-  .login-container-row .col-right .form {
-    max-width: 350px;
-    height: 325px;
-  }
-  .login-container-row .col-right .form-group {
-    height: 20%;
-  }
-  .login-container-row .col-right .form-group .username, .login-container-row .col-right .form-group .password {
-    margin-bottom: 5px;
-  }
-  .login-container-row .col-right .form-group .error {
-    color: #990000;
-  }
-  .login-container-row .col-right .form-bottom-area {
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .login-container-row .col-right .form-bottom-area .loginBtn {
-    background-color: #2b47be;
-    width: 100%;
-    border-color: none;
-    margin-bottom: 10px;
-  }
-  .login-container-row .col-right .form-bottom-area .error {
-    color: #990000;
-  }
-}
+    align-items: auto; }
+    .login-container {
+      height: 60%;
+      padding: 0;
+      padding: 0 10%; }
+      .login-container-row {
+        height: 100%;
+        padding-top: 60px; }
+        .login-container-row .col-left p {
+          font-family: "Arial Narrow", Arial, sans-serif;
+          color: white;
+          font-weight: lighter;
+          font-size: 3.5rem; }
+        .login-container-row .divide {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: auto; }
+          .login-container-row .divide-bar {
+            height: 100%;
+            width: 1px;
+            padding: 0;
+            margin-left: 3px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2); }
+        .login-container-row .col-right {
+          padding-top: 45px;
+          padding-right: 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-end; }
+          .login-container-row .col-right .form {
+            max-width: 350px;
+            height: 325px; }
+            .login-container-row .col-right .form-group {
+              height: 20%; }
+              .login-container-row .col-right .form-group .username, .login-container-row .col-right .form-group .password {
+                margin-bottom: 5px; }
+              .login-container-row .col-right .form-group .error {
+                color: #990000; }
+            .login-container-row .col-right .form-bottom-area {
+              height: 60%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center; }
+              .login-container-row .col-right .form-bottom-area .loginBtn {
+                background-color: #2b47be;
+                width: 100%;
+                border-color: none;
+                margin-bottom: 10px; }
+              .login-container-row .col-right .form-bottom-area .error {
+                color: #990000; } }
 
 /*# sourceMappingURL=Login.css.map */

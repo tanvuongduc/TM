@@ -30,25 +30,26 @@ class Login extends Component {
                 const response = await login(username, password);
                 const { token } = response;
                 if (token === '') {
-                    console.log(response);
                     this.setState({
                         login: {
                             ...this.state.login,
                             error: response.error
                         }
                     });
-                    console.log(this.state);
                 }
                 else {
-                    console.log(response);
                     this.setState({
                         login: {
                             ...this.state.login,
                             status: true
                         }
                     });
-                    this.props.history.push('/Signup');
-                    console.log(this.state);
+                    this.props.history.push({
+                        pathname: '/Task',
+                        state: {
+                            username: username
+                        }
+                    });
                 }
                     
             } catch (err) {
