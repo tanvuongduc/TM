@@ -1,0 +1,41 @@
+[{
+  "_id": "ea2p5f",
+  "username": "admin02",
+  "password": "aA@12345",
+  "phonenumber": "0948226666",
+  "birthday": "1991-10-19",
+  "email": "admin02@gmail.com",
+  "gender": "Female"
+},{
+  "_id": "6veqod",
+  "username": "admin01",
+  "password": "aA@12345",
+  "phonenumber": "0948228889",
+  "birthday": "1991-10-16",
+  "email": "admin01@gmail.com",
+  "gender": "Male"
+},{
+  "_id": "6htn25",
+  "username": "admin03",
+  "password": "aA@12345",
+  "phonenumber": "094667666",
+  "birthday": "1889-1-20",
+  "email": "admin03@gmail.com",
+  "gender": "Male"
+},{
+  "_id": "oul3di",
+  "username": "admin04",
+  "password": "aA@12345",
+  "phonenumber": "094667555",
+  "birthday": "1889-11-21",
+  "email": "admin04@gmail.com",
+  "gender": "Male"
+},{
+  "_id": "sjyo03",
+  "username": "admin05",
+  "password": "aA@12345",
+  "phonenumber": "094667444",
+  "birthday": "1991-11-20",
+  "email": "admin05@gmail.com",
+  "gender": "Female"
+}]
