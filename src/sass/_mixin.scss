@@ -1,0 +1,29 @@
+@mixin applydisplayFlex ($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin applyPadding ($screen) {
+    @if $screen == "desktop" {
+        padding: 0 10%;
+    }
+    @if $screen == "mobile" {
+        padding: 0;
+    }
+}
+
+@mixin applyTitleStyle ($page) {
+    @if $page == "login" {
+        font-family: "Arial Narrow", Arial, sans-serif;
+        color: white;
+        font-weight: lighter;
+        font-size: 3.5rem;
+        
+    }
+}
+
+@mixin applyFormGroupBootstrap () {
+
+}
