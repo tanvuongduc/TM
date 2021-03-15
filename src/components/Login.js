@@ -3,9 +3,64 @@ import '../css/Login.css';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { Formik, FastField, Form } from 'formik';
 import { validation } from '../validation'; 
+import { login } from '../taskAPI';
+import { withRouter } from 'react-router';
+import { PropTypes } from 'prop-types';
 
 class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            login: {
+                status: false,
+                error: ''
+            }
+        };
+        this.handleLogin = this.handleLogin.bind(this);
+    }
+    static propTypes = {
+        match: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired,
+        location: PropTypes.object.isRequired
+    }
+
+    handleLogin(username, password) {
+        const asyncFunc = async () => {
+            try {
+                const response = await login(username, password);
+                const { token } = response;
+                if (token === '') {
+                    console.log(response);
+                    this.setState({
+                        login: {
+                            ...this.state.login,
+                            error: response.error
+                        }
+                    });
+                    console.log(this.state);
+                }
+                else {
+                    console.log(response);
+                    this.setState({
+                        login: {
+                            ...this.state.login,
+                            status: true
+                        }
+                    });
+                    this.props.history.push('/Signup');
+                    console.log(this.state);
+                }
+                    
+            } catch (err) {
+                console.log(err);
+            }
+            
+        }
+        asyncFunc();
+    }
+
     render() {
+        const {error} = this.state.login; 
         return (
             <div className="login" style = {{backgroundImage: "url(/img/background.png)"}}>
                 <Container fluid className="login-container">
@@ -27,31 +82,28 @@ class Login extends Component {
                                     password: ''
                                 }}
                                 validationSchema = {validation}
-                                render = {
-                                    props => (
-                                        <Form className="col-xl-8 form">
-                                            <div className="form-group">
-                                                <FastField name="username" className="form-control username"
-                                                placeholder="Username" />
-                                                <p className="error">{props.errors.username}</p>
-                                            </div>
-                                            <div className="form-group">
-                                                <FastField name="password" className="form-control password"
-                                                placeholder="Password" />
-                                                <p className="error">{props.errors.password}</p>
-                                            </div>
-                                            <div className="form-bottom-area">
-                                                <Button type="submit" color="primary" className="loginBtn">LOGIN</Button>
-                                            </div>
-                                            
-                                            
-                                        </Form>
-                                        
-                                    )
-                                }
+                                onSubmit = {values => this.handleLogin(values.username, values.password)}
                             > 
+                            { formikprops => (
+                                <Form className="col-xl-8 form">
+                                    <div className="form-group">
+                                        <FastField name="username" className="form-control username"
+                                            placeholder="Username" />
+                                        <p className="error">{formikprops.errors.username}</p>
+                                    </div>
+                                    <div className="form-group">
+                                        <FastField name="password" className="form-control password"
+                                            placeholder="Password" />
+                                        <p className="error">{formikprops.errors.password}</p>
+                                    </div>
+                                    <div className="form-bottom-area">
+                                        <Button type="submit" color="primary" className="loginBtn">LOGIN</Button>
+                                        <p className="error">{error}</p>
+                                    </div>
+                                </Form>)
                             }
                             </Formik>
+                            
                         </Col>
                     </Row>
                 </Container>
@@ -60,4 +112,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

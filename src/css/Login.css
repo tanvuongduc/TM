@@ -69,6 +69,10 @@
     background-color: #2b47be;
     width: 100%;
     border-color: none;
+    margin-bottom: 10px;
+  }
+  .login-container-row .col-right .form-bottom-area .error {
+    color: #990000;
   }
 }
 
