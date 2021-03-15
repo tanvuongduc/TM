@@ -23,3 +23,24 @@
         }
     }
 }
+
+.taskHeader {
+    background-color: rgb(101, 167, 220);
+    height: 50px;
+    color: white;
+    box-shadow: 0 5px 5px grey;
+
+    @include applydisplayFlex(row, space-between, center);
+
+    &-title {
+        font-size: 24px;
+        padding-left: 2vw;
+        font-weight: 100;
+    }
+
+    .welcomeUser {
+        padding-right: 2vw;
+        font-weight: normal;
+        cursor: pointer;
+    }
+}

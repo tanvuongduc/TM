@@ -1,7 +1,1 @@
-{
-"version": 3,
-"mappings": "AAAA,oEAAqE;EACjE,gCAAgC",
-"sources": ["../sass/Task.scss"],
-"names": [],
-"file": "Task.css"
-}
+{"version":3,"sourceRoot":"","sources":["../sass/Task.scss"],"names":[],"mappings":"AAAA;AACI","file":"Task.css"}
