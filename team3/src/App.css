@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.login{
+  padding: 15% 0;
+  height: 100%;
+}
+.login__left{
+  border-right: 2px solid white;
+}
+.login__left__tile{
+  color: white;
+  height: 250px;
+  font-size: 86px;
+}
+.login__right button{
+  width: 100%;
+  background-color: #2B47BE;
+}
