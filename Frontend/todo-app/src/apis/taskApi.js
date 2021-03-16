@@ -1,20 +1,37 @@
 import axios from 'axios';
 
-const getDroneAvailable = async (params) => {
+const getAllTask = async (params) => {
   const result = await axios({
     method: 'GET',
-    url: `http://skyrone.cf:6789/droneState/getAllDroneAvailable`,
+    url: `http://localhost:3000/api/todos`,
     params,
   });
   return result;
 };
-const getAllPath = async (params) => {
+const editTask = async ({id, ...rest}) => {
   const result = await axios({
-    method: 'GET',
-    url: `http://skyrone.cf:6789/flightPath/getAllPath`,
-    params,
+    method: 'POST',
+    url: `http://localhost:3000/api/todos/${id}`,
+    data: {...rest},
   });
   return result;
 };
 
-export default { getDroneAvailable, getAllPath };
+const addTask = async (data) => {
+  const result = await axios({
+    method: 'POST',
+    url: `http://localhost:3000/api/todos`,
+    data,
+  });
+  return result;
+};
+const delTask = async ({taskId}) => {
+  const result = await axios({
+    method: 'DELETE',
+    url: `http://localhost:3000/api/todos/${taskId}`,
+    param: {taskId}
+  });
+  return result;
+};
+
+export default { getAllTask, editTask, addTask, delTask };

@@ -15,6 +15,7 @@ function App() {
           <Route exact path="/task-manager">
             <TaskManagerPage />
           </Route>
+          
         </Switch>
       </BrowserRouter>
     </div>

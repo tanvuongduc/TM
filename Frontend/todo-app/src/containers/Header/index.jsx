@@ -17,7 +17,7 @@ const Header = (props) => {
   
     return (
       <div className="mb-3">
-        <Navbar dark expand="md" style={{ backgroundColor: "#64a7dc", paddingLeft: 50, paddingRight: 50 }}>
+        <Navbar dark expand="md" style={{ backgroundColor: "#64a7dc", paddingLeft: 50, paddingRight: 50, boxShadow: " 0px 5px 10px #8a8a8a" }}>
           <NavbarBrand href="/"><h2>Task Manager</h2></NavbarBrand>
           <div className="ml-auto">
             <NavbarToggler onClick={toggle} />
