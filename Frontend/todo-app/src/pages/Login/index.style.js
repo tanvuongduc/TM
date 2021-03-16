@@ -1,3 +1,6 @@
+import styled from "styled-components";
+
+const StyleList = styled.div`
 *{
 	box-sizing: border-box;
 }
@@ -81,3 +84,7 @@
     color: black;
     opacity: 1;
 }
+`;
+export default StyleList;
+
+

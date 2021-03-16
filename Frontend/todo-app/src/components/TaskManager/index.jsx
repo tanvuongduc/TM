@@ -75,22 +75,7 @@ const TaskManager = (props) => {
                                 {index}. {task.text}
                             </div>
                         ))}
-                        {/* <div
-                            className="d-flex align-items-center px-3 list-item"
-                            style={{ backgroundColor: '#fff', cursor: 'pointer' }}
-                            onClick={() => {setSelectedTaskId(0); setTaskInput("Eat")}}
-                        >
-                            1. Eat
-                        </div>
-                        <div className="d-flex align-items-center px-3 list-item" style={{ backgroundColor: '#c7d8e6' }}>
-                            2. Sleep
-                        </div>
-                        <div className="d-flex align-items-center px-3 list-item" style={{ backgroundColor: '#ececec' }}>
-                            3. Code
-                        </div>
-                        <div className="d-flex align-items-center px-3 list-item" style={{ backgroundColor: '#fff' }}>
-                            4. Repeat
-                        </div> */}
+            
                     </Col>
                     <Col xs={4} style={{ textAlign: "end", height: 500 }}>
                         <Form>
