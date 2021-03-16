@@ -8,10 +8,10 @@ const getAllTask = async (params) => {
   });
   return result;
 };
-const editTask = async ({id, ...rest}) => {
+const editTask = async ({_id, ...rest}) => {
   const result = await axios({
     method: 'POST',
-    url: `http://localhost:3000/api/todos/${id}`,
+    url: `http://localhost:3000/api/todo/${_id}`,
     data: {...rest},
   });
   return result;

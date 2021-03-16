@@ -33,7 +33,7 @@ const TaskManager = (props) => {
 
         //xóa task theo id và cập nhật state
         let newTasks = [...tasks]
-        let delItemIndex = newTasks.findIndex((el) => el.id == taskId)
+        let delItemIndex = newTasks.findIndex((el) => el._id == taskId)
         newTasks.splice(delItemIndex, 1)
         setTasks(newTasks)
         setSelectedTaskId(null)
@@ -45,7 +45,7 @@ const TaskManager = (props) => {
 
         //cập nhật state
         let newTasks = [...tasks]
-        let editItemIndex = newTasks.findIndex((el) => el.id == param.id)
+        let editItemIndex = newTasks.findIndex((el) => el._id == param._id)
         newTasks[editItemIndex].text = param.text
         setTasks(newTasks)
     }
@@ -70,7 +70,7 @@ const TaskManager = (props) => {
                             <div
                                 className="d-flex align-items-center px-3 list-item"
                                 style={{ backgroundColor: taskColors[index % 3], cursor: 'pointer' }}
-                                onClick={() => { setSelectedTaskId(task.id); setTaskInput(task.text); }}
+                                onClick={() => { setSelectedTaskId(task._id); setTaskInput(task.text); }}
                             >
                                 {index}. {task.text}
                             </div>
@@ -97,7 +97,7 @@ const TaskManager = (props) => {
                             <div style={{ marginTop: 300 }}>
                                 <Button className="btn-action btn-action-danger" onClick={() => delTaskById(selectedTaskId)}>Remove</Button>
                                 <Button className="btn-action" onClick={() => { setSelectedTaskId(null) }}>Cancel</Button>
-                                <Button className="btn-action" onClick={() => { editTask({ id: selectedTaskId, text: taskInput }) }}>Save</Button>
+                                <Button className="btn-action" onClick={() => { editTask({ _id: selectedTaskId, text: taskInput }) }}>Save</Button>
                             </div>
                         }
                         {!selectedTaskId &&

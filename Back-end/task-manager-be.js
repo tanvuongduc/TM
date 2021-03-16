@@ -1,5 +1,6 @@
 const express = require('express');
 const mongodb = require('mongodb');
+const cors = require('cors');
 
 async function main() {
     const url = 'mongodb://127.0.0.1:27017';
@@ -14,6 +15,7 @@ async function main() {
 
     const app = express();
     app.use(express.json());
+    app.use(cors());
 
     // const task_list =  client.db('task_list')
     // const todos_list = task_list.collection('todos_list');
