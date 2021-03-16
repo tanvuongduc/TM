@@ -1,0 +1,41 @@
+.main{
+    width: 1031px;
+    height: 697px;
+    margin: auto;
+    background-image: url('./background.jfif');
+}
+.left{
+    width: 515px;
+    height: 348px;
+    float: left;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-top:200px;
+
+}
+.right{
+    width: 515px;
+    height: 348px;
+    float: left;
+    padding-top: 200px;
+    text-align: center;
+}
+.input{
+    width: 200px;
+    height: 30px;
+}  
+#btn1{
+    width: 200px;
+    height: 35px;
+    color: white;
+    background-color: blue;
+
+}
+.rotate{
+   display:  block;
+   float: left;
+    width: 20%;
+    background-color: antiquewhite;
+    transform: rotate(90deg);
+}
