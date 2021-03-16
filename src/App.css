@@ -1,0 +1,232 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+.login-container {
+  width: 1030px;
+  max-width: 100%;
+  height: 700px;
+  margin: 0px auto;
+  background:url(./images/background.png) left top no-repeat;
+  display: flex;
+}
+
+
+/*=============LOGIN content left============= */
+  .login-container .aside-left{
+    width: 50%;
+  }
+  .login-container .aside-left .header{
+    width: 250px;
+    margin: 240px auto auto 105px;
+  }
+
+  .login-container .aside-left .header h3{
+    font-size: 60px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+
+  }
+
+  /*============= content right============= */
+
+  .login-container .aside-right{
+    width: 50%;
+    /* background-color: antiquewhite; */
+  }
+
+  .login-container .aside-right #login-form{
+    width: 265px;
+    max-width: 100%;
+    margin: 240px auto auto 140px;
+    
+  }
+
+  .login-container .aside-right #login-form .input-wrapper input{
+    font: bold 18px 'Roboto', sans-serif;
+    width: 229px;
+    height: 35px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 30px;
+    padding:0px 18px;
+    color: black;
+    
+  }
+
+  .login-container .aside-right #login-form .form-action .btn{
+    font: 900 18px 'Roboto', sans-serif;
+    margin-top: 30px;
+    width: 227px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2b47be;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all 250ms ease-in;
+  }
+
+  .login-container .aside-right #login-form .form-action .btn:hover{
+    background-color: rgb(36, 36, 232);
+  }
+
+  .login-container .aside-right #login-form .form-action span{
+    display: block;
+    margin-top: 20px;
+    transition: all 250ms ease-in;
+  }
+
+  .login-container .aside-right #login-form .form-action span:hover{
+    text-decoration: underline;
+  }
+
+  /* =================TASK MANAGER=================== */
+
+.task-todolist{
+    width: 1030px;
+    height: 700px;
+    margin: 0px auto;
+    background-color: rgb(253, 253, 253);
+}
+
+.task-todolist .heading{
+    position: relative;
+    height: 60px;
+    max-height: 60px;
+    background-color: #64a7dc;  
+    color: #fff; 
+}
+
+.task-todolist .heading > p{
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    font-size: 24px;
+}
+.task-todolist .heading .user{
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+}
+.task-todolist .heading .user .logout{
+    display: none;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #c0c0c0;
+    padding: 10px;
+    margin-top: 5px;
+    transition: all 250ms ease-in;
+    text-decoration: underline;
+}
+
+.task-todolist .heading .user:hover .logout, .task-todolist .heading .user:focus .logout{
+    display: block;
+}
+
+
+/* ----content---- */
+.task-todolist .my-tasks{
+    margin: 20px 35px;
+}
+
+.task-todolist .my-tasks p.test{
+    color: #64a7dc;
+    padding: 5px 0px;
+    font-size: 24px;
+    
+}
+
+.task-todolist .my-tasks .content-l-r{
+    display: flex;
+    height: 550px;
+   
+}
+.task-todolist .my-tasks .content-left{
+    flex: 60%;
+    /* background-color: blueviolet; */
+    border-right: 1px solid #c0c0c0;
+    padding: 30px 30px 0px 0px;
+}
+.task-todolist .my-tasks .content-left .task{
+    padding: 4px;
+    border-radius: 3px;
+    transition: all 250ms ease-in;
+}
+.task-todolist .my-tasks .content-left .tasks li{
+    list-style-position: inside;
+    list-style-type: decimal;
+    
+}
+.task-todolist .my-tasks .content-left .task:focus{
+    background-color: #c7d8e6;
+}
+
+.task-todolist .my-tasks .content-left .task:hover{
+    background-color: #ececec;
+}
+
+
+
+
+.task-todolist .my-tasks .content-right{
+    flex: 40%;
+}
+.task-todolist .my-tasks .content-right .add-tasks{
+    margin: 30px;
+}
+.task-todolist .my-tasks .content-right .add-tasks label{
+    padding-right: 20px;
+}
+.task-todolist .my-tasks .content-right .add-tasks input{
+    padding: 5px;
+    width: 240px;
+    border-radius: 3px;
+    border: 1px solid #c7d8e6;
+    outline: none;
+}
+.task-todolist .my-tasks .content-right .add-tasks input::placeholder{
+    color: #000;
+    opacity: 0.4;
+}
+
+.task-todolist .my-tasks .content-right .edit-delete-add{
+    display: flex;
+    margin: 150px 30px auto 30px;
+    width: 307px;
+    justify-content: space-between;
+}
+
+.task-todolist .my-tasks .content-right .edit-delete-add input{
+    padding: 5px 10px;
+    background-color: #64a7dc;
+    transition: all 300ms ease-in;
+    outline: none;
+    cursor: pointer;
+}
+
+.task-todolist .my-tasks .content-right .edit-delete-add input:hover{
+    background-color: red;
+}
