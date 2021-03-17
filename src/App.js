@@ -13,9 +13,8 @@ class App extends Component {
               <Route exact path="/">
                   <Redirect to="/login" />
               </Route>
-                
                 <Route path='/login' component={ Login } />
-                <Route path='/todo' component={ Todolist } />
+                <Route path='/todolist' component={ Todolist } />
           </Switch>
       </Router>
     );

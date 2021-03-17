@@ -5,7 +5,8 @@ const PORT = 4000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./DB.js');
-const todoListRoutes = require('./routers/todoList.route');
+const userRouter = require('./routes/user.route');
+const todolistRouter = require('./routes/todolist.route');
 
 
 mongoose.Promise = global.Promise;
@@ -23,7 +24,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/todolist', todoListRoutes);
+app.use('/user', userRouter);
+app.use('/todolist', todolistRouter);
 
 
 

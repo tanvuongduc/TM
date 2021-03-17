@@ -8,7 +8,8 @@ export default class Login extends Component {
     super(props);
     
     this.state = {
-      id: '323423',
+      id: '',
+      username:'',
       usernameInput: '',
       passwordInput: ''
     }
@@ -34,18 +35,17 @@ export default class Login extends Component {
     let usernameInput =  this.state.usernameInput;
     let  passwordInput = this.state.passwordInput;
     
-    axios.get('http://localhost:4001/todolist')
+    axios.get('http://localhost:4000/user')
         .then(res => {
           for(let data of res.data){
-            console.log(res)
             const username = data.username;
             const password = data.password;
             
 
             if (username === usernameInput && password === passwordInput) {
-              this.props.history.push('/todo');
-              //this.state.id = data._id;
-              // return (<Todolist  id = {data._id}/>)           
+              this.state.id = data._id; 
+              this.state.username = data.username; 
+              this.props.history.push('/todolist?id='+this.state.id+'&username='+this.state.username);      
             }
           }
         })
