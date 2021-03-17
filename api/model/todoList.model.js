@@ -2,15 +2,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define collection and schema for Business
-let User = new Schema({
+let Todolist = new Schema({
+  id:{
+    type: Number
+  },
   username: {
     type: String
   },
   password: {
     type: String
   },
+  taskList:{
+    type: Array
+  },
 },{
-    collection: 'user'
+    collection: 'todolist'
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Todolist', Todolist);

@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const PORT = 4001;
+const PORT = 4000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./DB.js');
-const userRoute = require('./routers/user.route');
-const todoRoute = require('./routers/todo.route');
+const todoListRoutes = require('./routers/todoList.route');
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, 
@@ -23,8 +23,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/user', userRoute);
-app.use('/todo', todoRoute);
+app.use('/todolist', todoListRoutes);
+
 
 
 app.listen(PORT, function(){
