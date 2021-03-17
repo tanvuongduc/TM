@@ -1,0 +1,63 @@
+[{
+  "_id": "7l2i8f",
+  "username": "user01",
+  "password": "aA@12345",
+  "task": [
+    {
+      "name": "Go to bed",
+      "status": "pending",
+      "priority": "medium",
+      "createdDate": "2021/3/16"
+    },
+    {
+      "name": "Coding",
+      "status": "progress",
+      "priority": "high",
+      "createdDate": "2021/3/15"
+    },
+    {
+      "name": "Have a meeting",
+      "status": "done",
+      "priority": "low",
+      "createdDate": "2021/3/14"
+    },
+    {
+      "name": "Reading Book",
+      "status": "progress",
+      "priority": "medium",
+      "createdDate": "2021/3/14"
+    }
+  ]
+},{
+  "_id": "oh86kd",
+  "username": "user02",
+  "password": "aA@12345",
+  "task": [
+    {
+      "name": "Running around the park",
+      "status": "pening",
+      "priority": "low",
+      "createdDate": "2021/3/16"
+    }
+  ]
+},{
+  "_id": "fccbdl",
+  "username": "user03",
+  "password": "aA@12345",
+  "task": []
+},{
+  "_id": "846j6v",
+  "username": "user04",
+  "password": "aA@12345",
+  "task": []
+},{
+  "_id": "jubhqf",
+  "username": "user05",
+  "password": "aA@12345",
+  "task": []
+},{
+  "_id": "occ6w9",
+  "username": "user06",
+  "password": "aA@12345",
+  "task": []
+}]

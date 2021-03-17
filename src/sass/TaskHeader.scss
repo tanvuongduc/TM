@@ -1,10 +1,9 @@
 @import "./mixin";
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    /* Retina-specific stuff here */
     .taskHeader {
         background-color: rgb(101, 167, 220);
-        height: 50px;
+        height: 5vh;
         color: white;
         box-shadow: 0 5px 5px grey;
 
@@ -22,13 +21,15 @@
             cursor: pointer;
         }
     }
+        
 }
 
 .taskHeader {
     background-color: rgb(101, 167, 220);
-    height: 50px;
+    height: 5vh;
     color: white;
     box-shadow: 0 5px 5px grey;
+    position: relative;
 
     @include applydisplayFlex(row, space-between, center);
 
@@ -43,4 +44,5 @@
         font-weight: normal;
         cursor: pointer;
     }
+    
 }

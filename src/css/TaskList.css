@@ -1,0 +1,29 @@
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .taskList {
+    height: 100%;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    overflow: scroll;
+    padding-left: 0; }
+
+  .sub_container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; } }
+.taskList {
+  height: 100%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  overflow: scroll;
+  padding-left: 0; }
+
+.sub_container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+/*# sourceMappingURL=TaskList.css.map */

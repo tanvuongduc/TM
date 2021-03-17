@@ -1,0 +1,87 @@
+@import "./mixin";
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .taskProcess {
+        @include applyStyleTableContent;
+
+        .editArea {
+            @include applydisplayFlex(row, space-between, center);
+
+            height: 7%;
+
+            .editLabel {
+                font-size: 1.2rem;
+                margin: 0;
+            }
+
+            .editTask {
+                width: 70%;
+            }
+        }
+
+        .actionArea {
+            @include applydisplayFlex(row, space-between, center);
+
+            height: 8%;
+            margin-top: 75%;
+
+            .removeBtn {
+                background-color: #ff7575;
+
+                @include applyStyleButtonTask;
+            }
+
+            .faded {
+                background-color: transparent;
+            }
+
+            .cancelBtn, .saveBtn {
+                background-color: #64a7dc;
+
+                @include applyStyleButtonTask;
+            }
+        }
+    }
+}
+
+.taskProcess {
+    @include applyStyleTableContent;
+
+    .editArea {
+        @include applydisplayFlex(row, space-between, center);
+
+        height: 7%;
+
+        .editLabel {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .editTask {
+            width: 70%;
+        }
+    }
+
+    .actionArea {
+        @include applydisplayFlex(row, space-between, center);
+
+        height: 8%;
+        margin-top: 75%;
+
+        .removeBtn {
+            background-color: #ff7575;
+
+            @include applyStyleButtonTask;
+        }
+
+        .faded {
+            background-color: transparent;
+        }
+
+        .cancelBtn, .saveBtn {
+            background-color: #64a7dc;
+
+            @include applyStyleButtonTask;
+        }
+    }
+}

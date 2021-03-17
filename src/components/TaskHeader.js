@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
+import React, { useState }from 'react';
 import '../css/TaskHeader.css';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Logout from './Logout';
 
-class TaskHeader extends Component {
-    
-    render() {
-        const {username} = this.props.state;
-        return (
-            <div className="taskHeader">
-                <div className="taskHeader-title">
-                    Task Manager
+const TaskHeader = ({ username, token }) => {
+    const [dropDownLogOut, setDropDownLogOut] = useState(false);
+    const changeStateLogoutDropDown = () => setDropDownLogOut(!dropDownLogOut);
+    return (
+        <div className="taskHeader">
+            <div className="taskHeader-title">
+                Task Manager
                 </div>
-                <div className="welcomeUser">
-                    <span>
-                        {`Hi, ${username}`}
-                    </span>
-                    <ExpandMoreIcon />
-                    
-                </div>
+            <div className="welcomeUser">
+                <span>
+                    {`Hi, ${username}`}
+                </span>
+                <ArrowDropDownIcon onClick={changeStateLogoutDropDown}/>
             </div>
-        );
-    }
-}
+            <Logout display={dropDownLogOut} token={token}/>
+            
+        </div>
+    );
+};
 
 export default TaskHeader;
+

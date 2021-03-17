@@ -1,0 +1,76 @@
+@import "./mixin";
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Retina-specific stuff here */
+    .taskBody {
+        height: 95vh;
+        padding: 20px 2vw;
+        font-size: 1.5rem;
+        font-weight: 250;
+
+        &-title {
+            color: #64a7dc;
+            height: 6%;
+            margin: 0;
+
+            @include applydisplayFlex(row, flex-start, center);
+        }
+
+        &-table {
+            height: 94%;
+
+            @include applydisplayFlex(row, space-between, center);
+
+            flex-wrap: wrap;
+
+            .split {
+                @include applydisplayFlex(row, center, center);
+
+                height: 100%;
+
+                &-bar {
+                    @include applySplitBar;
+
+                    background-color: #c0c0c0;
+                    box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2);
+                }
+            }
+        }
+    }
+}
+
+.taskBody {
+    height: 95vh;
+    padding: 20px 2vw;
+    font-size: 1.5rem;
+    font-weight: 250;
+
+    &-title {
+        color: #64a7dc;
+        height: 6%;
+        margin: 0;
+
+        @include applydisplayFlex(row, flex-start, center);
+    }
+
+    &-table {
+        height: 94%;
+
+        @include applydisplayFlex(row, space-between, center);
+
+        flex-wrap: wrap;
+
+        .split {
+            @include applydisplayFlex(row, center, center);
+
+            height: 100%;
+
+            &-bar {
+                @include applySplitBar;
+
+                background-color: #c0c0c0;
+                box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2);
+            }
+        }
+    }
+}

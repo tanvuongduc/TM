@@ -1,45 +1,38 @@
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* Retina-specific stuff here */
   .taskHeader {
     background-color: #65a7dc;
-    height: 50px;
+    height: 5vh;
     color: white;
     box-shadow: 0 5px 5px grey;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-  }
-  .taskHeader-title {
-    font-size: 24px;
-    padding-left: 2vw;
-    font-weight: 100;
-  }
-  .taskHeader .welcomeUser {
-    padding-right: 2vw;
-    font-weight: normal;
-    cursor: pointer;
-  }
-}
+    align-items: center; }
+    .taskHeader-title {
+      font-size: 24px;
+      padding-left: 2vw;
+      font-weight: 100; }
+    .taskHeader .welcomeUser {
+      padding-right: 2vw;
+      font-weight: normal;
+      cursor: pointer; } }
 .taskHeader {
   background-color: #65a7dc;
-  height: 50px;
+  height: 5vh;
   color: white;
   box-shadow: 0 5px 5px grey;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-}
-.taskHeader-title {
-  font-size: 24px;
-  padding-left: 2vw;
-  font-weight: 100;
-}
-.taskHeader .welcomeUser {
-  padding-right: 2vw;
-  font-weight: normal;
-  cursor: pointer;
-}
+  align-items: center; }
+  .taskHeader-title {
+    font-size: 24px;
+    padding-left: 2vw;
+    font-weight: 100; }
+  .taskHeader .welcomeUser {
+    padding-right: 2vw;
+    font-weight: normal;
+    cursor: pointer; }
 
 /*# sourceMappingURL=TaskHeader.css.map */

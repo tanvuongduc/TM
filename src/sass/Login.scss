@@ -21,14 +21,9 @@
                 .divide {
                     @include applydisplayFlex(row, flex-end, auto);
                     &-bar {
-                        
-                        height: 100%;
-                        width: 1px;
-                        padding: 0;
-                        margin-left: 3px;
+                       @include applySplitBar();
                         background-color: rgba(255,255,255, 0.8);
                         box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2);
-                        
                     }
                 }
                 .col-right {

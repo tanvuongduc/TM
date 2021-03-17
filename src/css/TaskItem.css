@@ -1,0 +1,89 @@
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .taskItem {
+    height: 8%;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; }
+    .taskItem span {
+      padding-right: 10px;
+      font-size: 1.2rem; }
+
+  .onClickTask {
+    height: 8%;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background-color: #c7d8e6;
+    padding-left: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; }
+    .onClickTask span {
+      padding-right: 10px;
+      font-size: 1.2rem; }
+
+  .onHoverTask {
+    height: 8%;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background-color: #ececec;
+    padding-left: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; }
+    .onHoverTask span {
+      padding-right: 10px;
+      font-size: 1.2rem; } }
+.taskItem {
+  height: 8%;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; }
+  .taskItem span {
+    padding-right: 10px;
+    font-size: 1.2rem; }
+
+.onClickTask {
+  height: 8%;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  background-color: #c7d8e6;
+  padding-left: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; }
+  .onClickTask span {
+    padding-right: 10px;
+    font-size: 1.2rem; }
+
+.onHoverTask {
+  height: 8%;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  background-color: #ececec;
+  padding-left: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; }
+  .onHoverTask span {
+    padding-right: 10px;
+    font-size: 1.2rem; }
+
+/*# sourceMappingURL=TaskItem.css.map */

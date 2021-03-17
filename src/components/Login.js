@@ -1,91 +1,64 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../css/Login.css';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { Formik, FastField, Form } from 'formik';
 import { validation } from '../validation'; 
 import { login } from '../taskAPI';
-import { withRouter } from 'react-router';
-import { PropTypes } from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            login: {
-                status: false,
-                error: ''
-            }
-        };
-        this.handleLogin = this.handleLogin.bind(this);
-    }
-    static propTypes = {
-        match: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired
-    }
 
-    handleLogin(username, password) {
-        const asyncFunc = async () => {
+const Login = () => {
+    const [invalidMessage, setInvalidMessage] = useState('');
+    const history = useHistory();
+
+    const handleLogin = (username, password) => {
+        const getReponseLoginFromSever = async () => {
             try {
                 const response = await login(username, password);
                 const { token } = response;
-                if (token === '') {
-                    this.setState({
-                        login: {
-                            ...this.state.login,
-                            error: response.error
-                        }
-                    });
-                }
+                if (token === '') setInvalidMessage(response.error);
                 else {
-                    this.setState({
-                        login: {
-                            ...this.state.login,
-                            status: true
-                        }
-                    });
-                    this.props.history.push({
-                        pathname: '/Task',
-                        state: {
-                            username: username
+                    setInvalidMessage('');
+                    history.push({
+                        pathname: `Task/${username}`,
+                        userInfo: {
+                            username: username,
+                            userID: response.userID,
+                            token: response.token
                         }
                     });
                 }
-                    
             } catch (err) {
-                console.log(err);
+                throw(err);
             }
-            
         }
-        asyncFunc();
+        getReponseLoginFromSever();
     }
 
-    render() {
-        const {error} = this.state.login; 
-        return (
-            <div className="login" style = {{backgroundImage: "url(/img/background.png)"}}>
-                <Container fluid className="login-container">
-                    <Row className="login-container-row">
-                        <Col xl={5} lg={5} md={5} className="col-left">
-                            <p>Task <br/>
+    return (
+        <div className="login" style={{ backgroundImage: "url(/img/background.png)" }}>
+            <Container fluid className="login-container">
+                <Row className="login-container-row">
+                    <Col xl={5} lg={5} md={5} className="col-left">
+                        <p>Task <br />
                             Manager
                             </p>
-                        </Col>
-                        <Col xl={1} lg={1} md={1} className="divide">
-                            <div className="divide-bar">
-                            
-                            </div>
-                        </Col>
-                        <Col xl={6} lg={6} md={6} className="col-right">
-                            <Formik
-                                initialValues = {{
-                                    username: '',
-                                    password: ''
-                                }}
-                                validationSchema = {validation}
-                                onSubmit = {values => this.handleLogin(values.username, values.password)}
-                            > 
-                            { formikprops => (
+                    </Col>
+                    <Col xl={1} lg={1} md={1} className="divide">
+                        <div className="divide-bar">
+
+                        </div>
+                    </Col>
+                    <Col xl={6} lg={6} md={6} className="col-right">
+                        <Formik
+                            initialValues={{
+                                username: '',
+                                password: ''
+                            }}
+                            validationSchema={validation}
+                            onSubmit={values => handleLogin(values.username, values.password)}
+                        >
+                            {formikprops => (
                                 <Form className="col-xl-8 form">
                                     <div className="form-group">
                                         <FastField name="username" className="form-control username"
@@ -99,18 +72,18 @@ class Login extends Component {
                                     </div>
                                     <div className="form-bottom-area">
                                         <Button type="submit" color="primary" className="loginBtn">LOGIN</Button>
-                                        <p className="error">{error}</p>
+                                        <p className="error">{invalidMessage}</p>
                                     </div>
                                 </Form>)
                             }
-                            </Formik>
-                            
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-        );
-    }
-}
+                        </Formik>
 
-export default withRouter(Login);
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
+};
+
+export default Login;
+

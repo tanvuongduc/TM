@@ -1,0 +1,77 @@
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .taskProcess {
+    height: 100%;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    overflow: scroll; }
+    .taskProcess .editArea {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 7%; }
+      .taskProcess .editArea .editLabel {
+        font-size: 1.2rem;
+        margin: 0; }
+      .taskProcess .editArea .editTask {
+        width: 70%; }
+    .taskProcess .actionArea {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 8%;
+      margin-top: 75%; }
+      .taskProcess .actionArea .removeBtn {
+        background-color: #ff7575;
+        color: white;
+        border: none;
+        width: 90px;
+        padding: 10px; }
+      .taskProcess .actionArea .faded {
+        background-color: transparent; }
+      .taskProcess .actionArea .cancelBtn, .taskProcess .actionArea .saveBtn {
+        background-color: #64a7dc;
+        color: white;
+        border: none;
+        width: 90px;
+        padding: 10px; } }
+.taskProcess {
+  height: 100%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  overflow: scroll; }
+  .taskProcess .editArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 7%; }
+    .taskProcess .editArea .editLabel {
+      font-size: 1.2rem;
+      margin: 0; }
+    .taskProcess .editArea .editTask {
+      width: 70%; }
+  .taskProcess .actionArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 8%;
+    margin-top: 75%; }
+    .taskProcess .actionArea .removeBtn {
+      background-color: #ff7575;
+      color: white;
+      border: none;
+      width: 90px;
+      padding: 10px; }
+    .taskProcess .actionArea .faded {
+      background-color: transparent; }
+    .taskProcess .actionArea .cancelBtn, .taskProcess .actionArea .saveBtn {
+      background-color: #64a7dc;
+      color: white;
+      border: none;
+      width: 90px;
+      padding: 10px; }
+
+/*# sourceMappingURL=TaskProcess.css.map */

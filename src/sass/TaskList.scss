@@ -1,0 +1,27 @@
+@import "./mixin";
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .taskList {
+        @include applyStyleTableContent;
+
+        padding-left: 0;
+    }
+
+    .sub_container {
+        height: 100%;
+
+        @include applydisplayFlex(column, center, center);
+    }
+}
+
+.taskList {
+    @include applyStyleTableContent;
+
+    padding-left: 0;
+}
+
+.sub_container {
+    height: 100%;
+
+    @include applydisplayFlex(column, center, center);
+}

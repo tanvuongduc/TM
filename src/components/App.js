@@ -3,13 +3,13 @@ import Login from './Login';
 import Task from './Task';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route path="/Task" component={Task} />
+          <Route path="/Task/:username" component={Task} />
         </Switch>
       </Router>
     </div>

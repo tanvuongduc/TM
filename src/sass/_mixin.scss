@@ -1,29 +1,46 @@
-@mixin applydisplayFlex ($direction, $justify, $align) {
+@mixin applydisplayFlex($direction, $justify, $align) {
     display: flex;
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
 }
 
-@mixin applyPadding ($screen) {
+@mixin applyPadding($screen) {
     @if $screen == "desktop" {
         padding: 0 10%;
     }
+
     @if $screen == "mobile" {
         padding: 0;
     }
 }
 
-@mixin applyTitleStyle ($page) {
+@mixin applyTitleStyle($page) {
     @if $page == "login" {
         font-family: "Arial Narrow", Arial, sans-serif;
         color: white;
         font-weight: lighter;
         font-size: 3.5rem;
-        
     }
 }
 
-@mixin applyFormGroupBootstrap () {
+@mixin applySplitBar {
+    height: 100%;
+    width: 1px;
+    padding: 0;
+    margin-left: 3px;
+}
 
+@mixin applyStyleTableContent {
+    height: 100%;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    overflow: scroll;
+}
+
+@mixin applyStyleButtonTask {
+    color: white;
+    border: none;
+    width: 90px;
+    padding: 10px;
 }

@@ -1,24 +1,48 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/Task.css';
 import TaskHeader from './TaskHeader';
+import TaskBody from './TaskBody';
+import { useLocation } from 'react-router-dom';
+import { updateTaskList } from '../taskAPI';
 
-import { withRouter } from 'react-router';
-import { PropTypes } from 'prop-types';
+const Task = () => {
 
-class Task extends Component {
-    
-    static propTypes = {
-        match: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired
-    }
-    render() {
-        return (
-            <div className="task">
-                <TaskHeader state={this.props.location.state}/>
-            </div>
-        );
-    }
-}
+    const [isLoading, setisLoading] = useState(true);
+    const [isError, setisError] = useState(false);
+    const [reloadTime, setReloadPage] = useState(0);
+    const [taskList, setTaskList] = useState([]);
 
-export default withRouter(Task);
+    const location = useLocation();
+
+    const { userID, username, token } = location.userInfo;
+
+    useEffect(() => {
+        const getListfromServer = async () => {
+            try {
+                const newList = await updateTaskList(userID);
+                console.log(newList);
+                setTaskList(newList);
+                setisLoading(false);
+            } catch(err) {
+                setisLoading(false);
+                setisError(true);
+                throw(err);
+            }
+        }
+        getListfromServer();
+    }, [reloadTime, userID]);
+
+    const reloadPage = () => setReloadPage(reloadTime + 1);
+
+    return (
+        <div className="task">
+            <TaskHeader username={username} token={token}/>
+            <TaskBody taskList={taskList} 
+            isLoading={isLoading} isError={isError} 
+            onReloadpage = {reloadPage}
+            />
+        </div>
+    );
+};
+
+export default Task;
