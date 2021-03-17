@@ -24,11 +24,13 @@ async function main() {
     app.post('/api/todos', async (req, res) => {
         let i =ID();
         let text = req.body.text;
+        let priority = req.body.priority;
         let text_check = await client.db('task_list').collection('todos_list').findOne({ text: text });
         if (text_check == null) {
             let item = {
                 _id: i,
-                text: text
+                text: text,
+                priority
             }
             await client.db('task_list').collection('todos_list').insertOne(item)
             return res.json(item)
