@@ -4,40 +4,8 @@
     height: 95vh;
     padding: 20px 2vw;
     font-size: 1.5rem;
-    font-weight: 250; }
-    .taskBody-title {
-      color: #64a7dc;
-      height: 6%;
-      margin: 0;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center; }
-    .taskBody-table {
-      height: 94%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; }
-      .taskBody-table .split {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        height: 100%; }
-        .taskBody-table .split-bar {
-          height: 100%;
-          width: 1px;
-          padding: 0;
-          margin-left: 3px;
-          background-color: #c0c0c0;
-          box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2); } }
-.taskBody {
-  height: 95vh;
-  padding: 20px 2vw;
-  font-size: 1.5rem;
-  font-weight: 250; }
+    font-weight: 250;
+  }
   .taskBody-title {
     color: #64a7dc;
     height: 6%;
@@ -45,26 +13,69 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center; }
+    align-items: center;
+  }
   .taskBody-table {
     height: 94%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; }
-    .taskBody-table .split {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      height: 100%; }
-      .taskBody-table .split-bar {
-        height: 100%;
-        width: 1px;
-        padding: 0;
-        margin-left: 3px;
-        background-color: #c0c0c0;
-        box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2); }
+    flex-wrap: wrap;
+  }
+  .taskBody-table .split {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .taskBody-table .split-bar {
+    height: 100%;
+    width: 1px;
+    padding: 0;
+    margin-left: 3px;
+    background-color: #c0c0c0;
+    box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2);
+  }
+}
+.taskBody {
+  height: 95vh;
+  padding: 20px 2vw;
+  font-size: 1.5rem;
+  font-weight: 250;
+}
+.taskBody-title {
+  color: #64a7dc;
+  height: 6%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.taskBody-table {
+  height: 94%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.taskBody-table .split {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.taskBody-table .split-bar {
+  height: 100%;
+  width: 1px;
+  padding: 0;
+  margin-left: 3px;
+  background-color: #c0c0c0;
+  box-shadow: 1px 1px 1px 0.5px rgba(223, 223, 231, 0.2);
+}
 
 /*# sourceMappingURL=TaskBody.css.map */

@@ -32,14 +32,17 @@ const Task = () => {
         getListfromServer();
     }, [reloadTime, userID]);
 
-    const reloadPage = () => setReloadPage(reloadTime + 1);
+    const reloadPage = () => {
+        setReloadPage(reloadTime + 1);
+        console.log(reloadTime);
+    }
 
     return (
         <div className="task">
             <TaskHeader username={username} token={token}/>
             <TaskBody taskList={taskList} 
             isLoading={isLoading} isError={isError} 
-            onReloadpage = {reloadPage}
+            onReloadpage = {reloadPage} userID = {userID}
             />
         </div>
     );

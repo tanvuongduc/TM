@@ -7,24 +7,43 @@ import { Col } from 'reactstrap';
 
 const TaskBody = ({
     taskList, isLoading,
-    isError, onReloadpage
+    isError, onReloadpage, userID
 }) => {
-    const [taskEdit, setTaskEdit] = useState('');
-    const handleEditTask = value => {
-        setTaskEdit(value);
+
+    const [taskPackage, setTaskPackage] = useState({
+        userID: userID,
+        taskname: '',
+        priority: '',
+        status: '',
+        createdDate: '',
+        _id: ''
+    });
+
+    const handleGetTask = task => {
+        setTaskPackage(task);
+        console.log(task);
+    }
+
+    const handleEditTask = taskname => {
+        setTaskPackage(state => ({
+            ...state,
+            taskname
+        }));
     }
 
     return (
         <div className="taskBody">
             <p className="taskBody-title">My Tasks</p>
             <div className="taskBody-table">
-                <TaskList taskList = {taskList} onEditTask={handleEditTask}
+                <TaskList taskList = {taskList} onGetTask={handleGetTask}
                 isLoading={isLoading} isError={isError}
-                onReloadpage = {onReloadpage} />
+                 />
                 <Col xl="1" lg="1" md="1" className="split">
                     <div className="split-bar"></div>
                 </Col>
-                <TaskProcess taskEdit={taskEdit} onEditTask={handleEditTask}/>
+                <TaskProcess onEditTask={handleEditTask} 
+                   onReloadpage={onReloadpage} taskPackage = {taskPackage}
+                />
             </div>
         </div>
     );

@@ -2,7 +2,10 @@ const url = 'http://localhost:3001';
 const apiURL = {
     login: `${url}/login`,
     getTaskList: `${url}/getTaskList`,
-    logout: `${url}/logout`
+    logout: `${url}/logout`,
+    deleteTask: `${url}/deleteTask`,
+    modifyTask: `${url}/modifyTask`,
+    addTask: `${url}/addTask`
 };
 
 export const login = async (username, password) => 
@@ -17,7 +20,7 @@ export const login = async (username, password) =>
     
 export const updateTaskList = async userID => {
     const getTaskListURL = `${apiURL.getTaskList}/${userID}`;
-    return await fetch(getTaskListURL).then(response => response.json())
+    return await fetch(getTaskListURL).then(response => response.json());
 }
 
 export const logout = async token => {
@@ -29,7 +32,38 @@ export const logout = async token => {
         body: JSON.stringify({token})
     })
 }
-    
+
+export const deleteTask = async taskID => {
+    await fetch(apiURL.deleteTask, {
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({taskID})
+    })
+}
+
+export const modifyTask = async (taskID, taskname, priority, status) => {
+    const modifyTaskURL = `${apiURL.modifyTask}/${taskID}`;
+    await fetch(modifyTaskURL, {
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ taskname, priority, status })
+    })
+}
+
+export const addTask = async (userID, taskname, priority) => {
+    const addTaskURl = `${apiURL.addTask}/${userID}`;
+    await fetch(addTaskURl, {
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( {taskname, priority} )
+    });
+}
 
     
         

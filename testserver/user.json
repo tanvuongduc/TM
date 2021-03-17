@@ -1,63 +1,33 @@
 [{
-  "_id": "7l2i8f",
-  "username": "user01",
+  "_id": "ea2p5f",
+  "username": "admin02",
   "password": "aA@12345",
-  "task": [
-    {
-      "name": "Go to bed",
-      "status": "pending",
-      "priority": "medium",
-      "createdDate": "2021/3/16"
-    },
-    {
-      "name": "Coding",
-      "status": "progress",
-      "priority": "high",
-      "createdDate": "2021/3/15"
-    },
-    {
-      "name": "Have a meeting",
-      "status": "done",
-      "priority": "low",
-      "createdDate": "2021/3/14"
-    },
-    {
-      "name": "Reading Book",
-      "status": "progress",
-      "priority": "medium",
-      "createdDate": "2021/3/14"
-    }
-  ]
+  "phonenumber": "0948226666",
+  "birthday": "1991-10-19",
+  "email": "admin02@gmail.com",
+  "gender": "Female"
 },{
-  "_id": "oh86kd",
-  "username": "user02",
+  "_id": "6veqod",
+  "username": "admin01",
   "password": "aA@12345",
-  "task": [
-    {
-      "name": "Running around the park",
-      "status": "pening",
-      "priority": "low",
-      "createdDate": "2021/3/16"
-    }
-  ]
+  "phonenumber": "0948228889",
+  "birthday": "1991-10-16",
+  "email": "admin01@gmail.com",
+  "gender": "Male"
 },{
-  "_id": "fccbdl",
-  "username": "user03",
+  "_id": "oul3di",
+  "username": "admin04",
   "password": "aA@12345",
-  "task": []
+  "phonenumber": "094667555",
+  "birthday": "1889-11-21",
+  "email": "admin04@gmail.com",
+  "gender": "Male"
 },{
-  "_id": "846j6v",
-  "username": "user04",
+  "_id": "sjyo03",
+  "username": "admin05",
   "password": "aA@12345",
-  "task": []
-},{
-  "_id": "jubhqf",
-  "username": "user05",
-  "password": "aA@12345",
-  "task": []
-},{
-  "_id": "occ6w9",
-  "username": "user06",
-  "password": "aA@12345",
-  "task": []
+  "phonenumber": "094667444",
+  "birthday": "1991-11-20",
+  "email": "admin05@gmail.com",
+  "gender": "Female"
 }]

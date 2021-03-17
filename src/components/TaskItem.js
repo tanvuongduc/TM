@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import '../css/TaskItem.css';
 
 
-const TaskItem = ({task, orderNumber, onEditTask}) => {
+const TaskItem = ({task, orderNumber, onGetTask}) => {
     const [mouseEvent, setStatus] = useState({ clicked: false, hover: false });
 
     const handleOnFocus = () => {
         setStatus({ clicked: true, hover: false });
-        onEditTask(task.name);
+        onGetTask(task);
     }
 
     const handleOnMouseOver = () => {
@@ -26,7 +26,7 @@ const TaskItem = ({task, orderNumber, onEditTask}) => {
             <div className="onClickTask" onClick={handleOnFocus} 
             onMouseOver={handleOnMouseOver} onMouseOut = {handleOnMouseOut}>
                 <span>{`${orderNumber}.`}</span>
-                <span>{task.name}</span>
+                <span>{task.taskname}</span>
             </div>
         );
     }
@@ -36,7 +36,7 @@ const TaskItem = ({task, orderNumber, onEditTask}) => {
             <div className="onHoverTask" onClick={handleOnFocus} 
                 onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
                 <span>{`${orderNumber}.`}</span>
-                <span>{task.name}</span>
+                <span>{task.taskname}</span>
             </div>
         );
     }
@@ -46,7 +46,7 @@ const TaskItem = ({task, orderNumber, onEditTask}) => {
             <div className="taskItem" onClick={handleOnFocus} 
                 onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
                 <span>{`${orderNumber}.`}</span>
-                <span>{task.name}</span>
+                <span>{task.taskname}</span>
             </div>
         );
     }

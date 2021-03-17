@@ -7,15 +7,19 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; }
-    .taskHeader-title {
-      font-size: 24px;
-      padding-left: 2vw;
-      font-weight: 100; }
-    .taskHeader .welcomeUser {
-      padding-right: 2vw;
-      font-weight: normal;
-      cursor: pointer; } }
+    align-items: center;
+  }
+  .taskHeader-title {
+    font-size: 24px;
+    padding-left: 2vw;
+    font-weight: 100;
+  }
+  .taskHeader .welcomeUser {
+    padding-right: 2vw;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
 .taskHeader {
   background-color: #65a7dc;
   height: 5vh;
@@ -25,14 +29,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center; }
-  .taskHeader-title {
-    font-size: 24px;
-    padding-left: 2vw;
-    font-weight: 100; }
-  .taskHeader .welcomeUser {
-    padding-right: 2vw;
-    font-weight: normal;
-    cursor: pointer; }
+  align-items: center;
+}
+.taskHeader-title {
+  font-size: 24px;
+  padding-left: 2vw;
+  font-weight: 100;
+}
+.taskHeader .welcomeUser {
+  padding-right: 2vw;
+  font-weight: normal;
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=TaskHeader.css.map */

@@ -12,13 +12,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; }
-    .dropDown span {
-      text-decoration: underline;
-      color: black; }
+    align-items: center;
+  }
+  .dropDown span {
+    text-decoration: underline;
+    color: black;
+  }
 
   .hidden {
-    display: none; } }
+    display: none;
+  }
+}
 .dropDown {
   position: absolute;
   top: 85%;
@@ -32,12 +36,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
-  .dropDown span {
-    text-decoration: underline;
-    color: black; }
+  align-items: center;
+}
+.dropDown span {
+  text-decoration: underline;
+  color: black;
+}
 
 .hidden {
-  display: none; }
+  display: none;
+}
 
 /*# sourceMappingURL=DropDown.css.map */

@@ -6,7 +6,7 @@ import TaskItem from './TaskItem';
 
 const TaskList = ({
     taskList, isLoading,
-    isError, onReloadpage, onEditTask
+    isError, onReloadpage, onGetTask
     }) => {
     
     const renderLoadingContent = () => (
@@ -33,8 +33,8 @@ const TaskList = ({
                 taskList.map((task, index) => <TaskItem
                     task={task}
                     orderNumber={index + 1}
-                    key={task.name}
-                    onEditTask={onEditTask}
+                    key={task._id}
+                    onGetTask={onGetTask}
                 />)
             }
             </Col>
