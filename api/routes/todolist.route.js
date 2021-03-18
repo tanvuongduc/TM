@@ -40,14 +40,35 @@ todoRoutes.route('/:id').get(function (req, res) {
           else res.json('Successfully removed');
       });
     });
+  
 
-
-
+//edit
 todoRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
   Todo.findById(id, function (err, todo){
       res.json(todo);
   });
+});
+
+//update
+
+todoRoutes.route('/update/:id').post(function (req, res) {
+  Todo.findById(req.params.id, function(err, todos) {
+  if (!todos)
+    res.status(404).send("data is not found");
+  else {
+      todos.task = req.body.task;
+      todos.status = req.body.status;
+      todos.priority = req.body.priority;
+
+      todos.save().then(todos => {
+        res.json('Update complete');
+      })
+      .catch(err => {
+        res.status(400).send("unable to update the database");
+      });
+  }
+});
 });
 
 
