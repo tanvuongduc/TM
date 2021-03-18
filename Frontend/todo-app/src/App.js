@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/task-manager">
+          <Route exact path={["/task-manager","/"]}>
             <TaskManagerPage />
           </Route>
           <Route exact path="/login">

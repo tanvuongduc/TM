@@ -10,13 +10,22 @@ import {
 } from 'reactstrap';
 import StyleTaskManager from './index.style'
 import taskApi from "../../apis/taskApi"
+import moment from "moment"
 
-const taskColors = ['#fff', '#c7d8e6', '#ececec']
+const taskBackground = {
+    low: { code: '#cce8ff', className: 'list-item-low' },
+    medium: { code: '#fff', className: 'list-item-medium' },
+    high: { code: '#ffc6c6', className: 'list-item-high' },
+    focus: { code: '#c7d8e6', className: 'list-item-focus' },
+    hover: { code: '#ececec', className: 'list-item-hover' },
+}
 
 const TaskManager = (props) => {
     const [tasks, setTasks] = useState([])
     const [taskInput, setTaskInput] = useState("")
     const [selectedTaskId, setSelectedTaskId] = useState(null)
+    const [status, setStatus] = useState("pending")
+    const [priority, setPriority] = useState("low")
 
     useEffect(() => {
         fetchTasksData()
@@ -52,13 +61,20 @@ const TaskManager = (props) => {
 
     const addTask = async (param) => {
         let addedTask = await taskApi.addTask(param)
+        console.log(addedTask)
+        console.log(typeof addedTask.data)
 
-        //cập nhật state
-        let newTasks = [...tasks, addedTask.data]
-        setTasks(newTasks)
-        setTaskInput("")
+        if ((typeof addedTask.data) === "object") {
+            //cập nhật state
+            let newTasks = [...tasks, addedTask.data]
+            console.log(newTasks)
+            setTasks(newTasks)
+            setTaskInput("")
+        } else {
+            alert("Nhiệm vụ đã tồn tại")
+        }
+
     }
-
 
     return (
         <StyleTaskManager>
@@ -66,18 +82,25 @@ const TaskManager = (props) => {
                 <h3 style={{ color: "#64a7dc" }} className="mt-4 mb-2">My Tasks</h3>
                 <Row >
                     <Col xs={8} style={{ borderRight: "1px solid #c0c0c0" }} className="pr-5">
-                        {tasks && tasks.map((task, index) => (
-                            <div
-                                className="d-flex align-items-center px-3 list-item"
-                                style={{ backgroundColor: taskColors[index % 3], cursor: 'pointer' }}
-                                onClick={() => { setSelectedTaskId(task._id); setTaskInput(task.text); }}
-                            >
-                                {index}. {task.text}
-                            </div>
-                        ))}
-            
+                        {tasks && tasks.map((task, index) => {
+                            let taskProps = {}
+                            if (selectedTaskId === task._id) {
+                                taskProps.style = { backgroundColor: taskBackground.focus.code }
+                            }
+                            return (
+                                <div
+                                    className={`d-flex align-items-center px-3 list-item ${taskBackground[task.priority].className}`}
+                                    {...taskProps}
+                                    onClick={() => { setSelectedTaskId(task._id); setTaskInput(task.text); }}
+                                >
+                                    <span className="mr-3">{index + 1}.</span>
+                                    {task.text}
+                                </div>
+                            )
+                        })}
+
                     </Col>
-                    <Col xs={4} style={{ textAlign: "end", height: 500 }}>
+                    <Col xs={4} style={{ height: 500 }}>
                         <Form>
                             <FormGroup row>
                                 <Label for="exampleEmail" sm={2}>Task:</Label>
@@ -92,18 +115,61 @@ const TaskManager = (props) => {
                                     />
                                 </Col>
                             </FormGroup>
+                            <Row>
+                                <Col sm={6}>
+                                    <FormGroup row>
+                                        <Label for="exampleSelect" sm={4}>Status:</Label>
+                                        <Col sm={8}>
+                                            <Input type="select" name="status" onChange={(e) => { setStatus(e.target.value) }}>
+                                                <option>pending</option>
+                                                <option>progress</option>
+                                                <option>done</option>
+                                            </Input>
+                                        </Col>
+
+                                    </FormGroup>
+                                </Col>
+                                <Col sm={6}>
+                                    <FormGroup row>
+                                        <Label for="exampleSelect" sm={4}>Priority:</Label>
+                                        <Col sm={8}>
+                                            <Input type="select" name="priority" onChange={(e) => { setPriority(e.target.value) }}>
+                                                <option>low</option>
+                                                <option>medium</option>
+                                                <option>high</option>
+
+                                            </Input>
+                                        </Col>
+
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={6}>
+                                    <Row>
+                                        <Col sm={4}>Created:</Col>
+                                        <Col sm={8}>{moment().format('ddd, YYYY-MM-DD')}</Col>
+                                    </Row>
+                                </Col>
+                                <Col xs={6}>
+                                    <Row>
+                                        <Col sm={4}>By:</Col>
+                                        <Col sm={8}>you</Col>
+                                    </Row>
+                                </Col>
+                            </Row>
                         </Form>
-                        {selectedTaskId &&
-                            <div style={{ marginTop: 300 }}>
+                        {(selectedTaskId || selectedTaskId == 0) &&
+                            <div style={{ marginTop: 300 }} className="d-flex justify-content-end">
                                 <Button className="btn-action btn-action-danger" onClick={() => delTaskById(selectedTaskId)}>Remove</Button>
-                                <Button className="btn-action" onClick={() => { setSelectedTaskId(null) }}>Cancel</Button>
+                                <Button className="btn-action" onClick={() => { setSelectedTaskId(null); setTaskInput("") }}>Cancel</Button>
                                 <Button className="btn-action" onClick={() => { editTask({ _id: selectedTaskId, text: taskInput }) }}>Save</Button>
                             </div>
                         }
                         {!selectedTaskId &&
-                            <div style={{ marginTop: 300 }}>
+                            <div style={{ marginTop: 300 }} className="d-flex justify-content-end">
                                 <Button className="btn-action" onClick={() => { setTaskInput("") }}>Clear</Button>
-                                <Button className="btn-action" onClick={() => { addTask({ text: taskInput }) }}>Add new</Button>
+                                <Button className="btn-action" onClick={() => { addTask({ text: taskInput, status, priority }) }}>Add new</Button>
                             </div>
                         }
 

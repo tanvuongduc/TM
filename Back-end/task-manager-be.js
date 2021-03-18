@@ -25,12 +25,14 @@ async function main() {
         let i =ID();
         let text = req.body.text;
         let priority = req.body.priority;
+        let status = req.body.status;
         let text_check = await client.db('task_list').collection('todos_list').findOne({ text: text });
         if (text_check == null) {
             let item = {
                 _id: i,
                 text: text,
-                priority
+                priority,
+                status
             }
             await client.db('task_list').collection('todos_list').insertOne(item)
             return res.json(item)
