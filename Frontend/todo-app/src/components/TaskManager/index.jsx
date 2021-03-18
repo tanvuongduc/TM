@@ -27,6 +27,13 @@ const TaskManager = (props) => {
     const [status, setStatus] = useState("pending")
     const [priority, setPriority] = useState("low")
 
+    const onSelectTask = (task) => {
+        setSelectedTaskId(task._id);
+        setTaskInput(task.text);
+        setStatus(task.status);
+        setPriority(task.priority)
+    }
+
     useEffect(() => {
         fetchTasksData()
     }, [])
@@ -56,7 +63,10 @@ const TaskManager = (props) => {
         let newTasks = [...tasks]
         let editItemIndex = newTasks.findIndex((el) => el._id == param._id)
         newTasks[editItemIndex].text = param.text
+        newTasks[editItemIndex].priority = param.priority
+        newTasks[editItemIndex].status = param.status
         setTasks(newTasks)
+        alert("saved!")
     }
 
     const addTask = async (param) => {
@@ -91,7 +101,7 @@ const TaskManager = (props) => {
                                 <div
                                     className={`d-flex align-items-center px-3 list-item ${taskBackground[task.priority].className}`}
                                     {...taskProps}
-                                    onClick={() => { setSelectedTaskId(task._id); setTaskInput(task.text); }}
+                                    onClick={() => { onSelectTask(task) }}
                                 >
                                     <span className="mr-3">{index + 1}.</span>
                                     {task.text}
@@ -120,7 +130,7 @@ const TaskManager = (props) => {
                                     <FormGroup row>
                                         <Label for="exampleSelect" sm={4}>Status:</Label>
                                         <Col sm={8}>
-                                            <Input type="select" name="status" onChange={(e) => { setStatus(e.target.value) }}>
+                                            <Input type="select" name="status" value={status} onChange={(e) => { setStatus(e.target.value) }}>
                                                 <option>pending</option>
                                                 <option>progress</option>
                                                 <option>done</option>
@@ -133,7 +143,7 @@ const TaskManager = (props) => {
                                     <FormGroup row>
                                         <Label for="exampleSelect" sm={4}>Priority:</Label>
                                         <Col sm={8}>
-                                            <Input type="select" name="priority" onChange={(e) => { setPriority(e.target.value) }}>
+                                            <Input type="select" name="priority" value={priority} onChange={(e) => { setPriority(e.target.value) }}>
                                                 <option>low</option>
                                                 <option>medium</option>
                                                 <option>high</option>
@@ -163,7 +173,7 @@ const TaskManager = (props) => {
                             <div style={{ marginTop: 300 }} className="d-flex justify-content-end">
                                 <Button className="btn-action btn-action-danger" onClick={() => delTaskById(selectedTaskId)}>Remove</Button>
                                 <Button className="btn-action" onClick={() => { setSelectedTaskId(null); setTaskInput("") }}>Cancel</Button>
-                                <Button className="btn-action" onClick={() => { editTask({ _id: selectedTaskId, text: taskInput }) }}>Save</Button>
+                                <Button className="btn-action" onClick={() => { editTask({ _id: selectedTaskId, text: taskInput, status, priority }) }}>Save</Button>
                             </div>
                         }
                         {!selectedTaskId &&

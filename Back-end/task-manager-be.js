@@ -62,11 +62,13 @@ async function main() {
     // UPDATE todo
     app.post('/api/todo/:id', async (req, res) => {
         const id = req.params.id
-        let text = req.body.text;
+        let {text, priority, status} = req.body;
         let todo_check = await client.db('task_list').collection('todos_list').findOneAndUpdate({_id:id},
             {
                 $set:{
-                    text:text
+                    text:text,
+                    priority: priority,
+                    status: status
                 }
             })
             res.json(todo_check)
