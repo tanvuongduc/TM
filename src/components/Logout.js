@@ -8,6 +8,7 @@ const Logout = ({ display, token }) => {
     const handleLogOut = async () => {
         try {
             await logout(token);
+            localStorage.removeItem("tokenPackage");
             history.push('/');
         } catch (err) {
             throw (err);

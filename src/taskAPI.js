@@ -26,7 +26,7 @@ export const updateTaskList = async userID => {
 export const logout = async token => {
     await fetch(apiURL.logout, {
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({token})
@@ -36,7 +36,7 @@ export const logout = async token => {
 export const deleteTask = async taskID => {
     await fetch(apiURL.deleteTask, {
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({taskID})
@@ -47,7 +47,7 @@ export const modifyTask = async (taskID, taskname, priority, status) => {
     const modifyTaskURL = `${apiURL.modifyTask}/${taskID}`;
     await fetch(modifyTaskURL, {
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ taskname, priority, status })
@@ -58,7 +58,7 @@ export const addTask = async (userID, taskname, priority) => {
     const addTaskURl = `${apiURL.addTask}/${userID}`;
     await fetch(addTaskURl, {
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify( {taskname, priority} )

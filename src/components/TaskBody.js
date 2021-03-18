@@ -21,7 +21,6 @@ const TaskBody = ({
 
     const handleGetTask = task => {
         setTaskPackage(task);
-        console.log(task);
     }
 
     const handleEditTask = taskname => {
@@ -29,6 +28,17 @@ const TaskBody = ({
             ...state,
             taskname
         }));
+    }
+
+    const handleResetPackage = () => {
+        setTaskPackage({
+            userID: userID,
+            taskname: '',
+            priority: '',
+            status: '',
+            createdDate: '',
+            _id: ''
+        });
     }
 
     return (
@@ -41,7 +51,7 @@ const TaskBody = ({
                 <Col xl="1" lg="1" md="1" className="split">
                     <div className="split-bar"></div>
                 </Col>
-                <TaskProcess onEditTask={handleEditTask} 
+                <TaskProcess onEditTask={handleEditTask} onResetPackage = {handleResetPackage}
                    onReloadpage={onReloadpage} taskPackage = {taskPackage}
                 />
             </div>

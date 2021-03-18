@@ -20,10 +20,11 @@
         }
 
         .actionArea {
-            @include applydisplayFlex(row, space-between, center);
+            @include applydisplayFlex(row, flex-end, center);
 
             height: 8%;
             margin-top: 75%;
+            
 
             .removeBtn {
                 background-color: #ff7575;
@@ -63,7 +64,7 @@
     }
 
     .actionArea {
-        @include applydisplayFlex(row, space-between, center);
+        @include applydisplayFlex(row, flex-end, center);
 
         height: 8%;
         margin-top: 75%;

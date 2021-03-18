@@ -22,7 +22,7 @@
   .taskProcess .actionArea {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     height: 8%;
     margin-top: 75%;
@@ -33,6 +33,7 @@
     border: none;
     width: 90px;
     padding: 10px;
+    margin-left: 20px;
   }
   .taskProcess .actionArea .faded {
     background-color: transparent;
@@ -43,6 +44,7 @@
     border: none;
     width: 90px;
     padding: 10px;
+    margin-left: 20px;
   }
 }
 .taskProcess {
@@ -68,7 +70,7 @@
 .taskProcess .actionArea {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   height: 8%;
   margin-top: 75%;
@@ -79,6 +81,7 @@
   border: none;
   width: 90px;
   padding: 10px;
+  margin-left: 20px;
 }
 .taskProcess .actionArea .faded {
   background-color: transparent;
@@ -89,6 +92,7 @@
   border: none;
   width: 90px;
   padding: 10px;
+  margin-left: 20px;
 }
 
 /*# sourceMappingURL=TaskProcess.css.map */

@@ -4,18 +4,21 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import { Formik, FastField, Form } from 'formik';
 import { validation } from '../validation'; 
 import { login } from '../taskAPI';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 
 const Login = () => {
     const [invalidMessage, setInvalidMessage] = useState('');
     const history = useHistory();
+    const tokenPackage = localStorage.getItem("tokenPackage");
 
     const handleLogin = (username, password) => {
         const getReponseLoginFromSever = async () => {
             try {
                 const response = await login(username, password);
+                response.username = username;
                 const { token } = response;
+                localStorage.setItem("tokenPackage", JSON.stringify(response));
                 if (token === '') setInvalidMessage(response.error);
                 else {
                     setInvalidMessage('');
@@ -35,7 +38,7 @@ const Login = () => {
         getReponseLoginFromSever();
     }
 
-    return (
+    return (!tokenPackage) ? (
         <div className="login" style={{ backgroundImage: "url(/img/background.png)" }}>
             <Container fluid className="login-container">
                 <Row className="login-container-row">
@@ -66,7 +69,7 @@ const Login = () => {
                                         <p className="error">{formikprops.errors.username}</p>
                                     </div>
                                     <div className="form-group">
-                                        <FastField name="password" className="form-control password"
+                                        <FastField type="password" name="password" className="form-control password"
                                             placeholder="Password" />
                                         <p className="error">{formikprops.errors.password}</p>
                                     </div>
@@ -82,7 +85,7 @@ const Login = () => {
                 </Row>
             </Container>
         </div>
-    );
+    ) : <Redirect to="/Task/:username" />
 };
 
 export default Login;

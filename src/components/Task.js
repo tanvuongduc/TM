@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/Task.css';
 import TaskHeader from './TaskHeader';
 import TaskBody from './TaskBody';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { updateTaskList } from '../taskAPI';
 
 const Task = () => {
@@ -12,14 +12,14 @@ const Task = () => {
     const [reloadTime, setReloadPage] = useState(0);
     const [taskList, setTaskList] = useState([]);
 
+    const history = useHistory();
     const location = useLocation();
-
-    const { userID, username, token } = location.userInfo;
+    const tokenPackage = JSON.parse(localStorage.getItem("tokenPackage"));
 
     useEffect(() => {
         const getListfromServer = async () => {
             try {
-                const newList = await updateTaskList(userID);
+                const newList = await updateTaskList(tokenPackage.userID);
                 console.log(newList);
                 setTaskList(newList);
                 setisLoading(false);
@@ -30,22 +30,25 @@ const Task = () => {
             }
         }
         getListfromServer();
-    }, [reloadTime, userID]);
+    }, [reloadTime, tokenPackage.userID]);
 
     const reloadPage = () => {
         setReloadPage(reloadTime + 1);
-        console.log(reloadTime);
     }
 
-    return (
+    return tokenPackage ? (
         <div className="task">
-            <TaskHeader username={username} token={token}/>
+            <TaskHeader username={tokenPackage.username} token={tokenPackage.token}/>
             <TaskBody taskList={taskList} 
             isLoading={isLoading} isError={isError} 
-            onReloadpage = {reloadPage} userID = {userID}
+            onReloadpage = {reloadPage} userID = {tokenPackage.userID}
             />
         </div>
-    );
+    ) : (<div>
+            <p>You need to login before, click button to turn back Login</p>
+            <button onClick = {() => history.push("/")}>Back to Login</button>
+        </div>)
+    
 };
 
 export default Task;
