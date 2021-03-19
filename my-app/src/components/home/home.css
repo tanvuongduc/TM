@@ -1,0 +1,155 @@
+body{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0;
+}
+.home{
+    margin: 0;
+    width: 100%;
+    height: auto;
+    background: red;
+}
+.header{
+    height: 50px;
+    width: 100%;
+    background: rgb(100, 167, 200);
+    
+}
+.header_left{
+    float: left;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    margin-left: 40px;
+    font-size: 30px;
+    color: aliceblue;
+}
+.header_right{
+    margin-left:1000px;
+    line-height: 50px;
+    color: aliceblue;
+    font-size: 30px;
+}
+#out{
+    color: black;
+    float: right;
+    margin-right: 40px;
+    font-size: 15px;
+    width: 120px;
+    border: none;
+    background: rgb(100, 167, 200) ;
+    color: #fff;
+
+}
+#out:focus{
+  outline: none;
+}
+.btn_logout{
+    width: 50px;
+    height: 30px;
+}
+
+
+/* #op{
+    text-shadow: none;
+} */
+.HR_li{
+    float: left;
+}
+#btn{
+    width: 750px; text-align: left; height: 30px;border: none; background: #fff;   
+    margin-top: 5px;
+    padding-left: 20px;
+}
+#btn:hover{
+    background: rgb(236, 236, 236);
+    border-radius: 5px;
+}
+.myTask{
+    background:#fff;
+    height: 50px;
+    line-height: 50px;
+    padding-top: 30px;
+    padding-left: 40px;
+    font-size: 30px;
+    color: rgb(56, 179, 236);
+}
+.footTer{
+    height: auto;
+    background: #fff;
+}
+.myTask_left{
+    float: left;
+    /* background: #333; */
+    width: 55%;
+    height: 15px;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.myTask_right{
+    margin-left: 70%;
+    background: #fff;
+    height: 500px;
+    border-left: 2px solid rgb(226, 226, 226);
+}
+.label{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.myTask_right #inPutTask{
+    height: 25px;
+    width: 230px;
+    border-radius: 3px;
+    text-indent: 10px;
+    border: 2px solid rgb(103, 166, 218);
+}
+.myTask_right #inPutTask:focus{
+    outline-color:rgb(103, 166, 218);
+}
+#btn_remove{
+    margin: 200px 30px 0 50px;
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    /* font-size: 14px; */
+    background:  rgb(230, 64, 64);
+    color: #fff;
+    border: none;
+}
+#btn_update{
+    width: 70px;
+    height: 30px;
+    margin-left: 12.5px;
+    margin-right: 42.5px;
+    border-radius: 5px;
+    border: none;
+    background: rgb(100, 167, 200);
+    color: #fff;
+}
+#btn_add{
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background: rgb(100, 167, 200);
+    color: #fff;
+}
+
+#btn_remove:focus{
+    outline-color: #fff;
+}
+#btn_update:focus{
+    outline-color: #fff;
+}
+#btn_add:focus{
+    outline-color: #fff;
+}
+h5{
+    background: #fff;
+    text-align: left;
+    margin-left: 40%;
+    opacity: 0.5;
+}
