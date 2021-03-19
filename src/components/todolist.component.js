@@ -1,194 +1,239 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import Task from './todo/task';
+import Signed from './todo/signed';
+import {Parent} from './parent.component'
+import NewTask from './todo/newTask'
 
 
+
+
+export const STATUS = {
+    PENDING: 0,
+    DONE: 1,
+    PROCESS: 2
+}
+
+export const PRIORITY = {
+    HIGH: 0,
+    LOW: 1,
+    MEDIUM: 2
+}
+
+export const CONDITION_SORT = {
+    PRIORITY: 1,
+    STATUS: 2
+}
 
 export default class Todolist extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            id: '',
             username: '',
-
-            taskInput: '',
-            status: '2',
-            priority: '3',
-
-            todolist: [],
-
-            time: '',
-
-            direction: 'insc'
+            password: '',
+            taskList: [
+                {
+                    id: 1,
+                    status: 1,
+                    priority: 1,
+                    createdAt: new Date(),
+                    userCreated: 'you',
+                    name: 'tập thể dục',
+                    description: 'chạy'
+                },
+                {
+                    id: 2,
+                    status: 0,
+                    priority: 0,
+                    createdAt: new Date(),
+                    userCreated: 'you',
+                    name: 'ăn sáng',
+                    description: 'bánh mì , mì tôm'
+                },
+                {
+                    id: 3,
+                    status: 1,
+                    priority: 1,
+                    createdAt: new Date(),
+                    userCreated: 'you',
+                    name: 'đi làm',
+                    description: 'hmm'
+                }, {
+                    id: 4,
+                    status: 0,
+                    priority: 1,
+                    createdAt: new Date(),
+                    userCreated: 'you',
+                    name: 'ăn tối',
+                    description: 'random'
+                },
+                {
+                    id: 5,
+                    status: 1,
+                    priority: 1,
+                    createdAt: new Date(),
+                    userCreated: 'you',
+                    name: 'đi ngủ',
+                    description: '7h'
+                }
+            ],
+            filter: {
+                status: undefined,
+                from: undefined,
+                to: undefined,
+                priority: undefined,
+                s: ''
+            },
+            showListTask: undefined,
+            conditionSort: undefined,
+            order: 'INSC',
+            newTask: [
+                {
+                    id: undefined,
+                    status: 1,
+                    priority: 1,
+                    name: '',
+                    description: ''
+                }
+            ]
         }
-
+    }
+    addNewClick = () => {
+        const taskList = [...this.state.taskList, { id: this.state.taskList.length, title: 'New task' }]
+        this.setState({
+            taskList
+        })
+    }
+    handleAddNew() {
+        console.log(this.state.newTask)
+        this.state.newTask.push(
+            {
+                id: undefined,
+                status: 1,
+                priority: 1,
+                name: '',
+                description: ''
+            }
+        )
+        this.forceUpdate();
+    }
+    handleClear() {
+        console.log(this.state.newTask)
+        this.state.newTask = [
+            {
+                id: undefined,
+                status: 1,
+                priority: 1,
+                name: '',
+                description: ''
+            }
+        ]
+        this.forceUpdate();
     }
     ramdomIdTodo() {
         return Math.random().toString(35).substr(3, 34);
     }
-
-    //default run
+    inputTask(e) {
+        this.setState({
+            task: e.target.value
+        })
+    }
+    filterTask = () => {
+        const filter = this.state.filter;
+        const result = this.state.taskList.map(task => {
+            if (filter.status && task.status != filter.status) return null;
+            if (filter.priority && task.status != filter.priority) return null;
+            if (filter.from && task.createdAt < filter.from) return null;
+            if (filter.to && task.createdAt > filter.to) return null;
+            if (task.name.search(filter.s) == -1 && task.description.search(filter.s) == -1) return null;
+            return task;
+        })
+        console.log(result)
+        return result.filter(function (el) {
+            return el != null;
+        });
+    }
+    handleFilter = () => {
+        this.state.filter.s = '222';
+        this.state.showListTask = this.filterTask()
+        console.log(this.state.showListTask)
+        this.forceUpdate()
+    }
     componentDidMount() {
-        let url = new URL(window.location.href);
-        this.setState({
-            id: url.searchParams.get('id'),
-            username: url.searchParams.get('username')
+        /* axios.get('http://localhost:4000/todolist/edit/' + this.props.match.params.id)
+             .then(response => {
+                 this.setState({
+                     username: response.data.username,
+                     password: response.data.password,
+                     taskList: response.data.taskList
+                 });
+                 console.log(response);
+             })
+             .catch(function (error) {
+                 console.log(error);
+             })*/
+
+    }
+    handleSort = (e) => {
+
+        this.state.conditionSort = e.target.value
+        console.log(e.target.value)
+        this.state.showListTask.sort((task1, task2) => {
+            if (this.state.conditionSort == CONDITION_SORT.PRIORITY) {
+                if (this.state.order == 'INSC' /*DESC*/) {
+                    if (task1.priority > task2.priority) return 1;
+                    else return -1;
+                }
+            }
         })
-        this.onShowTodoList(url.searchParams.get('id'));
-        this.timeText();
-    }
-
-    // process display: name login -- start
-    struc = () => {
-        let url = new URL(window.location.href);
-        this.setState({
-            id: url.searchParams.get('id'),
-            username: url.searchParams.get('username')
+        this.state.showListTask.sort((task1, task2) => {
+            if (this.state.conditionSort == CONDITION_SORT.STATUS) {
+                if (this.state.order == 'INSC' /*DESC*/) {
+                    if (task1.status > task2.status) return 1;
+                    else return -1;
+                }
+            }
         })
-        return {
-            id: url.searchParams.get('id'),
-            username: url.searchParams.get('username')
-        }
-        // console.log(url.searchParams.get('id'))
+        console.log(this.state.showListTask)
     }
 
-    // process display: name login -- end
-
-    // show todo lsit-- start
-    onShowTodoList = (id = null) => {
-        if(id === null){
-            axios.get('http://localhost:4000/todolist/' + this.state.id)
-            .then(res => {
-                this.setState({
-                    todolist: res.data
-                })
-                console.log(res.data)
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-        }else{
-            axios.get('http://localhost:4000/todolist/' + id)
-            .then(res => {
-                this.setState({
-                    todolist: res.data
-                })
-                console.log(res.data)
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-        } 
+    styleFunction(task) {
+        if(task.status == STATUS.PENDING) return "background-color: lightred";
+        else if(task.status == STATUS.DONE) return "background-color: lightgreen";
+        else if(task.status == STATUS.PROCESS) return "background-color: white";
     }
-    task = () => {
-        return this.state.todolist.map((val, i) => {
-            return <Task data={val} key={i}
-                onClick={this.test}
-            />;
-        });
-    }
-    test() {
-        console.log('hello')
-    }
-    // show todo lsit-- END
-
-    // add task --start
-    onChangeTask(e) {
-        this.setState({
-            taskInput: e.target.value
-        });
-    }
-    onChangeStatus(e) {
-        this.setState({
-            status: e.target.value
-        });
-    }
-    onChangePriority(e) {
-        this.setState({
-            priority: e.target.value
-        });
-    }
-    addTask(e) {
+    handleSubmit(e) {
         e.preventDefault();
-        const obj = {
-            _id: this.ramdomIdTodo(),
-            id_sub: this.state.id,
-            task: this.state.taskInput,
-            status: this.state.status,
-            priority: this.state.priority
+        let obj = {
+            content: this.state.task
         }
-        axios.post('http://localhost:4000/todolist/add', obj)
-            .then(res => console.log(res.data));
-        this.setState({
-            task: ''
-        });
-        this.onShowTodoList()
-    }
-    // add task --end
-
-
-    // get day
-    timeText() {
-        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurday', 'Friday', 'Satuday'];
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1;
-        var yyyy = today.getFullYear();
-        var day = days[today.getDay()];
-        today = day + ' , ' + dd + '-' + mm + '-' + yyyy;
-        this.setState({
-            time: today
-        });
-
+        axios
+            .post(
+                'http://localhost:4000/todolist/add' + this.props.match.params.id, obj
+            )
+            .then(res => console.log(res.data))
     }
 
-    // delete --start
-
-    // delete --end
-
-
-    // sort
-    sortINSC() {
-        this.setState(prevState => {
-            this.state.todolist.sort((a) => (a.task))
-        });
+    test() {
+        console.log(this.props.id)
     }
 
-    sortDESC() {
-        let arr = this.state.todolist
-        this.setState({
-            todolist: arr.sort().reverse()
-        })
-    }
 
-    onChangeDirection(e) {
-        this.setState({
-            direction: e.target.value
-        })
-    }
-    btnApply() {
-        let direc = this.state.direction;
-        if (direc === 'insc') {
-            this.sortINSC()
-        } else {
-            this.sortDESC()
-        }
-    }
+
 
 
 
 
     render() {
+        this.state.showListTask = this.state.taskList;
+
         return (
             <div className="task-todolist">
-
                 <div className="heading">
                     <p>Task Manager</p>
                     <div className="user">
                         <p>Hi,
-                  <span className="nameUser">{this.state.username}</span>
+                            <span className="nameUser">Tan</span>
                             <i className="fas fa-sort-down" />
                         </p>
                         <div className="logout">
@@ -196,27 +241,26 @@ export default class Todolist extends Component {
                         </div>
                     </div>
                 </div>
-                <p>My Task</p>
+                <div className="header-mytask">
+                    <h1 id="task1">My Tasks</h1>
+                </div>
                 <div className="filter-all">
                     <form className="sort">
                         <label htmlFor="sort">Sort by:</label>
-                        <select id="sort" name="sort">
-                            <option value="status">Status</option>
-                            <option value="priority">Priority</option>
+                        <select id="sort" name="sort" onChange={e => this.handleSort(e)}>
+                            <option value={CONDITION_SORT.STATUS}>Status</option>
+                            <option value={CONDITION_SORT.PRIORITY}>Priority</option>
                         </select>
                     </form>
                     <form className="direction">
                         <label htmlFor="direction">Direction:</label>
-                        <select id="direction" name="direction"
-                            value={this.state.direction}
-                            onChange={(e) => this.onChangeDirection(e)}
-                        >
+                        <select id="direction" name="direction">
                             <option value="desc">DESC</option>
                             <option value="insc">INSC</option>
                         </select>
                     </form>
                     <form className="filter">
-                        <label htmlFor="filter"> Filter</label>
+                        <label htmlFor="filter"> Filter:</label>
                         <input type="checkbox" id="filter" name="filter" defaultValue="filter" />
                     </form>
                     <form className="day-from">
@@ -235,61 +279,38 @@ export default class Todolist extends Component {
                             <option value="25-06-17">25-06-17</option>
                         </select>
                     </form>
-                    <input className="btn-apply" type="button" defaultValue="Apply"
-                        onClick={() => this.btnApply()}
-                    />
+                    <input className="btn-apply" type="button" defaultValue="Apply" />
                 </div>
                 <div className="my-tasks">
+                    <p>My Tasks</p>
                     <div className="content-l-r">
                         <div className="content-left">
                             <div className="list-tasks">
                                 <ul className="tasks">
-                                    {this.task()}
+                                    {this.state.showListTask && this.state.showListTask.map((task) => (
+                                        <li 
+                                            className={"task" + " status"+task.status} 
+                                            key={task.id}
+                                        >
+                                            {task.name}({task.description})
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
                         <div className="content-right">
+                            {this.state.newTask.map((task, index) => {
+                                return <NewTask key={index}
 
-                            <div className="add-tasks">
-                                <label htmlFor="input-task">Task:</label>
-                                <input type="text" placeholder="Enter your task here" id="input-task"
-                                    value={this.state.inputTask}
-                                    onChange={(e) => this.onChangeTask(e)}
                                 />
-
-                            </div>
-                            <form className="status">
-                                <label htmlFor="status">Status:</label>
-                                <select id="status" name="status" value={this.state.status} onChange={(e) => this.onChangeStatus(e)}>
-                                    <option value="1">Done</option>
-                                    <option value="2">Dependency</option>
-                                    <option value="3">Process</option>
-                                </select>
-                            </form>
-                            <form className="priority">
-                                <label htmlFor="priority">Priority:</label>
-                                <select id="priority" name="priority" value={this.state.priority} onChange={(e) => this.onChangePriority(e)}>
-                                    <option value="1">High</option>
-                                    <option value="2">Midium</option>
-                                    <option value="3">Low</option>
-                                </select>
-                            </form>
-                            <div className="created">
-                                <p>Created:
-                      <span>{this.state.time}</span>
-                                    <span>By:</span>
-                                    <span>{this.state.username}</span>
-                                </p>
-                            </div>
-                            <div className="edit-delete-add">
-                                <input type="button" defaultValue="Delete" />
-                                <input type="button" defaultValue="Clear" />
-                                <input type="button" defaultValue="Add new" onClick={(e) => this.addTask(e)} />
-                            </div>
+                            })}
+                            <button onClick={e => this.handleAddNew()}>add new</button>
+                            <button onClick={e => this.handleClear()}>clear</button>
                         </div>
                     </div>
                 </div>
             </div>
+
         )
     }
 }

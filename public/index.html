@@ -127,7 +127,8 @@ code {
   }
 
   /* =================TASK MANAGER=================== */
-  .task-todolist{
+
+.task-todolist{
     width: 1030px;
     height: 700px;
     margin: 0px auto;
@@ -153,14 +154,11 @@ code {
     display: inline-block;
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 30px;
     cursor: pointer;
 }
 .task-todolist .heading .user .logout{
     display: none;
-    position: absolute;
-    top: 20px;
-    right: -15px;
     color: #000;
     background-color: #fff;
     border: 2px solid #c0c0c0;
@@ -174,50 +172,6 @@ code {
     display: block;
 }
 
-.task-todolist > p{
-    font-size: 24px;
-    padding: 10px 30px;
-    color: #64a7dc;
-}
-
-/* ----filter---- */
-
-.filter-all{
-    height: 27px;
-    margin-left: 40px;
-}
-.filter-all form{
-    display: inline-block;
-    margin: 4px;
-}
-
-.filter-all form label{
-    padding: 4px;
-    color: #000;
-}
-
-.filter-all form select{
-    padding: 3px 5px;
-    color: #8f8f8f;
-    border: 2px solid #c7d8e6;
-}
-
-.filter-all .filter{
-    margin-left: 100px;
-}
-
-.filter-all .btn-apply{
-    background-color: #64a7dc;
-    color: #fff;
-    padding: 6px 25px;
-    outline: none;
-    border: none;
-    border-radius: 2px;
-}
-
-.filter-all .btn-apply:hover{
-    background-color: #95a5a6;
-}
 
 /* ----content---- */
 .task-todolist .my-tasks{
@@ -236,8 +190,6 @@ code {
     height: 550px;
    
 }
-
-/* content-left */
 .task-todolist .my-tasks .content-left{
     flex: 60%;
     /* background-color: blueviolet; */
@@ -263,24 +215,22 @@ code {
 }
 
 
-/* content-right */
+
 
 .task-todolist .my-tasks .content-right{
     flex: 40%;
-    margin: 30px;
 }
 .task-todolist .my-tasks .content-right .add-tasks{
-    margin: 30px 0px; 
+    margin: 30px;
 }
 .task-todolist .my-tasks .content-right .add-tasks label{
     padding-right: 20px;
-    
 }
 .task-todolist .my-tasks .content-right .add-tasks input{
     padding: 5px;
     width: 240px;
     border-radius: 3px;
-    border: 2px solid #c7d8e6;
+    border: 1px solid #c7d8e6;
     outline: none;
 }
 .task-todolist .my-tasks .content-right .add-tasks input::placeholder{
@@ -288,64 +238,24 @@ code {
     opacity: 0.4;
 }
 
-
-.content-right form{
-    display: inline-block;
-    margin: 4px 10px 4px 0px;
-}
-
- .content-right form label{
-    padding: 4px 8px 4px 0;
-}
-
- .content-right form select{
-    padding: 3px 5px;
-    color: #8f8f8f;
-    border: 2px solid #c7d8e6;
-}
-
- .content-right .filter{
-    margin-left: 100px;
-}
-
- .my-tasks .content-right .edit-delete-add{
+.task-todolist .my-tasks .content-right .edit-delete-add{
     display: flex;
     margin: 150px 30px auto 30px;
     width: 307px;
     justify-content: space-between;
 }
 
- .my-tasks .content-right .edit-delete-add input{
-    border:none;
-    border-radius: 3px;
-    padding: 6px 20px;
+.task-todolist .my-tasks .content-right .edit-delete-add input{
+    padding: 5px 10px;
     background-color: #64a7dc;
     transition: all 300ms ease-in;
     outline: none;
     cursor: pointer;
 }
 
- .my-tasks .content-right .edit-delete-add input:hover{
-    background-color: #95a5a6;
+.task-todolist .my-tasks .content-right .edit-delete-add input:hover{
+    background-color: red;
 }
-
-.low{
-    background-color: #c7d8e6;
-}
-
-.medium{
-    background-color: #ececec;
-}
-.high{
-    background-color: #cce8ff;
-}
-
-.active{
-    background-color: #ffc6c6;
-}
-
-
-
   </style>
   <body>
     <noscript>

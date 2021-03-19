@@ -1,112 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 *{
-  padding: 0px;
-  margin: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-
-.login-container {
-  width: 1030px;
-  max-width: 100%;
-  height: 700px;
-  margin: 0px auto;
-  background:url(./images/background.png) left top no-repeat;
-  display: flex;
-}
-
-
-/*=============LOGIN content left============= */
-  .login-container .aside-left{
-    width: 50%;
-  }
-  .login-container .aside-left .header{
-    width: 250px;
-    margin: 240px auto auto 105px;
-  }
-
-  .login-container .aside-left .header h3{
-    font-size: 60px;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-
-  }
-
-  /*============= content right============= */
-
-  .login-container .aside-right{
-    width: 50%;
-    /* background-color: antiquewhite; */
-  }
-
-  .login-container .aside-right #login-form{
-    width: 265px;
-    max-width: 100%;
-    margin: 240px auto auto 140px;
-    
-  }
-
-  .login-container .aside-right #login-form .input-wrapper input{
-    font: bold 18px 'Roboto', sans-serif;
-    width: 229px;
-    height: 35px;
-    outline: none;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 30px;
-    padding:0px 18px;
-    color: black;
-    
-  }
-
-  .login-container .aside-right #login-form .form-action .btn{
-    font: 900 18px 'Roboto', sans-serif;
-    margin-top: 30px;
-    width: 227px;
-    height: 35px;
-    border-radius: 5px;
-    border: none;
-    background-color: #2b47be;
-    outline: none;
-    color: #fff;
-    cursor: pointer;
-    transition: all 250ms ease-in;
-  }
-
-  .login-container .aside-right #login-form .form-action .btn:hover{
-    background-color: rgb(36, 36, 232);
-  }
-
-  .login-container .aside-right #login-form .form-action span{
-    display: block;
-    margin-top: 20px;
-    transition: all 250ms ease-in;
-  }
-
-  .login-container .aside-right #login-form .form-action span:hover{
-    text-decoration: underline;
-  }
-
-  /* =================TASK MANAGER=================== */
+/* =================TASK MANAGER=================== */
 
 .task-todolist{
     width: 1030px;
     height: 700px;
     margin: 0px auto;
     background-color: rgb(253, 253, 253);
+    
 }
 
 .task-todolist .heading{
@@ -128,11 +33,14 @@ code {
     display: inline-block;
     position: absolute;
     top: 20px;
-    right: 30px;
+    right: 20px;
     cursor: pointer;
 }
 .task-todolist .heading .user .logout{
     display: none;
+    position: absolute;
+    top: 20px;
+    right: -15px;
     color: #000;
     background-color: #fff;
     border: 2px solid #c0c0c0;
@@ -145,11 +53,73 @@ code {
 .task-todolist .heading .user:hover .logout, .task-todolist .heading .user:focus .logout{
     display: block;
 }
+/* task-mytask*/
+.task-todolist .header-mytask{
+    height: 60px;
+    max-height: 60px;
+    width: 100%;
+    
+    font-family: 'Roboto', sans-serif;
+    position: relative;
 
+
+   
+   
+}
+.task-todolist .header-mytask #task1{
+position: absolute;
+top: 15px;
+left: 30px;
+color: #64a7dc; 
+font-size: 200%;
+}
+
+/* ----filter---- */
+
+.filter-all{
+    height: 27px;
+    
+}
+.filter-all form{
+    display: inline-block;
+    margin: 4px;
+}
+
+.filter-all form label{
+    padding: 4px;
+    color: #8f8f8f;
+}
+
+.filter-all form select{
+    padding: 3px 5px;
+    color: #8f8f8f;
+    border: 2px solid #c7d8e6;
+}
+
+.filter-all .filter{
+    margin-left: 70px;
+}
+
+.filter-all .btn-apply{
+    background-color: #64a7dc;
+    color: #fff;
+    padding: 6px 35px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+}
+
+.filter-all .btn-apply:hover{
+    background-color: #95a5a6;
+}
+.filter-all .btn-apply #filter{
+  
+}
 
 /* ----content---- */
 .task-todolist .my-tasks{
     margin: 20px 35px;
+   
 }
 
 .task-todolist .my-tasks p.test{
@@ -164,6 +134,8 @@ code {
     height: 550px;
    
 }
+
+/* content-left */
 .task-todolist .my-tasks .content-left{
     flex: 60%;
     /* background-color: blueviolet; */
@@ -189,7 +161,7 @@ code {
 }
 
 
-
+/* content-right */
 
 .task-todolist .my-tasks .content-right{
     flex: 40%;
@@ -202,7 +174,7 @@ code {
 }
 .task-todolist .my-tasks .content-right .add-tasks input{
     padding: 5px;
-    width: 240px;
+    width: 255px;
     border-radius: 3px;
     border: 1px solid #c7d8e6;
     outline: none;
@@ -212,15 +184,56 @@ code {
     opacity: 0.4;
 }
 
+.content-right .status-priority{
+    height:auto ;
+
+}
+.content-right .status-priority .status{
+  margin-left: 30px;
+}
+.content-right form{
+    display: inline-block;
+    margin: 4px;
+}
+
+.content-right form label{
+    padding: 4px;
+    color: #8f8f8f;
+}
+
+.content-right form select{
+    padding: 3px 5px;
+    color: #8f8f8f;
+    border: 2px solid #c7d8e6;
+    margin-left: 5px;
+}
+
+.content-right .filter{
+    margin-left: 100px;
+}
+.content-right .created{
+  margin-left: 33px;
+
+}
+
+
 .task-todolist .my-tasks .content-right .edit-delete-add{
     display: flex;
-    margin: 150px 30px auto 30px;
-    width: 307px;
-    justify-content: space-between;
+    
+     width: 307px;
+    
+   
+}
+.edit-delete-add #delete{
+  justify-content: flex-start;
+  visibility: hidden;
+  
 }
 
 .task-todolist .my-tasks .content-right .edit-delete-add input{
-    padding: 5px 10px;
+    border:none;
+    border-radius: 3px;
+    padding: 6px 20px;
     background-color: #64a7dc;
     transition: all 300ms ease-in;
     outline: none;
@@ -228,5 +241,17 @@ code {
 }
 
 .task-todolist .my-tasks .content-right .edit-delete-add input:hover{
-    background-color: red;
+    background-color: #95a5a6;
+}
+
+
+
+.status1 {
+  background-color: red;
+}
+.status0 {
+  background-color: green;
+}
+.status2 {
+  background-color: blue;
 }

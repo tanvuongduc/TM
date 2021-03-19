@@ -3,20 +3,17 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Business
 let Todolist = new Schema({
-  _id:{
+  id:{
+    type: Number
+  },
+  username: {
     type: String
   },
-  id_sub: {
+  password: {
     type: String
   },
-  task: {
-    type: String
-  },
-  status:{
-    type: String
-  },
-  priority:{
-    type: String
+  taskList:{
+    type: Array
   },
 },{
     collection: 'todolist'
