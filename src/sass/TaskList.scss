@@ -3,7 +3,6 @@
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .taskList {
         @include applyStyleTableContent;
-
         padding-left: 0;
     }
 

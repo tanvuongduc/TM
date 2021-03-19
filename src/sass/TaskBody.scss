@@ -17,7 +17,7 @@
         }
 
         &-table {
-            height: 94%;
+            height: 85%;
 
             @include applydisplayFlex(row, space-between, center);
 
@@ -54,7 +54,7 @@
     }
 
     &-table {
-        height: 94%;
+        height: 85%;
 
         @include applydisplayFlex(row, space-between, center);
 

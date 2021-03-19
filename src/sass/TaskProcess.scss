@@ -5,17 +5,35 @@
         @include applyStyleTableContent;
 
         .editArea {
-            @include applydisplayFlex(row, space-between, center);
+            &-formGroup {
+                @include applydisplayFlex(row, space-between, center);
 
-            height: 7%;
+                margin-bottom: 20px;
 
-            .editLabel {
-                font-size: 1.2rem;
-                margin: 0;
-            }
+                .editLabel {
+                    font-size: 1.2rem;
+                    margin: 0;
+                    height: 7%;
+                    padding-left: 0;
+                }
 
-            .editTask {
-                width: 70%;
+                .form-control {
+                    height: 7%;
+                }
+
+                .status, .priority {
+                    font-size: 1.1rem;
+                    min-width: 100px;
+                    padding: 0;
+
+                    @include applydisplayFlex(row, space-between, center);
+
+                    label {
+                        margin: 0;
+                    }
+
+                    &-select {}
+                }
             }
         }
 
@@ -23,8 +41,7 @@
             @include applydisplayFlex(row, flex-end, center);
 
             height: 8%;
-            margin-top: 75%;
-            
+            margin-top: 50%;
 
             .removeBtn {
                 background-color: #ff7575;
@@ -49,17 +66,35 @@
     @include applyStyleTableContent;
 
     .editArea {
-        @include applydisplayFlex(row, space-between, center);
+        &-formGroup {
+            @include applydisplayFlex(row, space-between, center);
 
-        height: 7%;
+            margin-bottom: 20px;
 
-        .editLabel {
-            font-size: 1.2rem;
-            margin: 0;
-        }
+            .editLabel {
+                font-size: 1.2rem;
+                margin: 0;
+                height: 7%;
+                padding-left: 0;
+            }
 
-        .editTask {
-            width: 70%;
+            .form-control {
+                height: 7%;
+            }
+
+            .status, .priority {
+                font-size: 1.1rem;
+                min-width: 100px;
+                padding: 0;
+
+                @include applydisplayFlex(row, space-between, center);
+
+                label {
+                    margin: 0;
+                }
+
+                &-select {}
+            }
         }
     }
 
@@ -67,7 +102,7 @@
         @include applydisplayFlex(row, flex-end, center);
 
         height: 8%;
-        margin-top: 75%;
+        margin-top: 50%;
 
         .removeBtn {
             background-color: #ff7575;

@@ -21,7 +21,6 @@
             cursor: pointer;
         }
     }
-        
 }
 
 .taskHeader {
@@ -29,7 +28,6 @@
     height: 5vh;
     color: white;
     box-shadow: 0 5px 5px grey;
-    position: relative;
 
     @include applydisplayFlex(row, space-between, center);
 
@@ -44,5 +42,4 @@
         font-weight: normal;
         cursor: pointer;
     }
-    
 }

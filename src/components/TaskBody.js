@@ -3,18 +3,18 @@ import '../css/TaskBody.css';
 import TaskList from './TaskList';
 import TaskProcess from './TaskProcess';
 import { Col } from 'reactstrap';
-
+import FilterBar from './FilterBar';
 
 const TaskBody = ({
-    taskList, isLoading,
+    taskList, isLoading, username,
     isError, onReloadpage, userID
 }) => {
 
     const [taskPackage, setTaskPackage] = useState({
         userID: userID,
-        taskname: '',
-        priority: '',
-        status: '',
+        taskName: '',
+        priority: 'medium',
+        status: 'pending',
         createdDate: '',
         _id: ''
     });
@@ -23,17 +23,31 @@ const TaskBody = ({
         setTaskPackage(task);
     }
 
-    const handleEditTask = taskname => {
+    const handleEditTask = taskName => {
         setTaskPackage(state => ({
             ...state,
-            taskname
+            taskName
+        }));
+    }
+
+    const handleChangeStatus = status => {
+        setTaskPackage(state => ({
+            ...state,
+            status
+        }));
+    }
+
+    const handleChangePriority = priority => {
+        setTaskPackage(state => ({
+            ...state,
+            priority
         }));
     }
 
     const handleResetPackage = () => {
         setTaskPackage({
             userID: userID,
-            taskname: '',
+            taskName: '',
             priority: '',
             status: '',
             createdDate: '',
@@ -44,6 +58,7 @@ const TaskBody = ({
     return (
         <div className="taskBody">
             <p className="taskBody-title">My Tasks</p>
+            <FilterBar />
             <div className="taskBody-table">
                 <TaskList taskList = {taskList} onGetTask={handleGetTask}
                 isLoading={isLoading} isError={isError}
@@ -52,7 +67,8 @@ const TaskBody = ({
                     <div className="split-bar"></div>
                 </Col>
                 <TaskProcess onEditTask={handleEditTask} onResetPackage = {handleResetPackage}
-                   onReloadpage={onReloadpage} taskPackage = {taskPackage}
+                   onReloadpage={onReloadpage} taskPackage = {taskPackage} username={username}
+                   onChangeStatus={handleChangeStatus} onChangePriority={handleChangePriority}
                 />
             </div>
         </div>

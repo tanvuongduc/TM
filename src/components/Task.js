@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/Task.css';
 import TaskHeader from './TaskHeader';
 import TaskBody from './TaskBody';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { updateTaskList } from '../taskAPI';
 
 const Task = () => {
@@ -11,9 +11,8 @@ const Task = () => {
     const [isError, setisError] = useState(false);
     const [reloadTime, setReloadPage] = useState(0);
     const [taskList, setTaskList] = useState([]);
-
     const history = useHistory();
-    const location = useLocation();
+
     const tokenPackage = JSON.parse(localStorage.getItem("tokenPackage"));
 
     useEffect(() => {
@@ -39,7 +38,7 @@ const Task = () => {
     return tokenPackage ? (
         <div className="task">
             <TaskHeader username={tokenPackage.username} token={tokenPackage.token}/>
-            <TaskBody taskList={taskList} 
+            <TaskBody taskList={taskList} username={tokenPackage.username}
             isLoading={isLoading} isError={isError} 
             onReloadpage = {reloadPage} userID = {tokenPackage.userID}
             />

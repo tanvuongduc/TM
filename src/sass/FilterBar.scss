@@ -1,0 +1,92 @@
+@import "./mixin";
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Retina-specific stuff here */
+    .filterBar {
+        @include applydisplayFlex(row, space-between, center);
+
+        padding: 0;
+        height: 50px;
+        min-width: 300px;
+
+        &-left {
+            height: 100%;
+
+            @include applydisplayFlex(row, flex-start, center);
+
+            .sortByStatus, .sortByPriority {
+                @include applydisplayFlex(row, space-around, center);
+
+                padding: 0;
+
+                label {
+                    font-size: 1rem;
+                    margin: 0 5px 0 0;
+                }
+            }
+        }
+
+        &-right {
+            font-size: 1rem;
+            height: 100%;
+
+            @include applydisplayFlex(row, space-around, center);
+
+            label {
+                margin: 0 5px 0 0;
+            }
+
+            button {
+                background-color: #64a7dc;
+                color: white;
+                padding: 4px 15px;
+                border: none;
+                border-radius: 3px;
+            }
+        }
+    }
+}
+
+.filterBar {
+    @include applydisplayFlex(row, space-between, center);
+
+    padding: 0;
+    height: 50px;
+    min-width: 300px;
+
+    &-left {
+        height: 100%;
+
+        @include applydisplayFlex(row, flex-start, center);
+
+        .sortByStatus, .sortByPriority {
+            @include applydisplayFlex(row, space-around, center);
+
+            padding: 0;
+
+            label {
+                font-size: 1rem;
+                margin: 0 5px 0 0;
+            }
+        }
+    }
+
+    &-right {
+        font-size: 1rem;
+        height: 100%;
+
+        @include applydisplayFlex(row, space-around, center);
+
+        label {
+            margin: 0 5px 0 0;
+        }
+
+        button {
+            background-color: #64a7dc;
+            color: white;
+            padding: 4px 15px;
+            border: none;
+            border-radius: 3px;
+        }
+    }
+}

@@ -43,25 +43,25 @@ export const deleteTask = async taskID => {
     })
 }
 
-export const modifyTask = async (taskID, taskname, priority, status) => {
+export const modifyTask = async (taskID, taskName, priority, status) => {
     const modifyTaskURL = `${apiURL.modifyTask}/${taskID}`;
     await fetch(modifyTaskURL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ taskname, priority, status })
+        body: JSON.stringify({ taskName, priority, status })
     })
 }
 
-export const addTask = async (userID, taskname, priority) => {
+export const addTask = async (userID, taskName, priority, status) => {
     const addTaskURl = `${apiURL.addTask}/${userID}`;
     await fetch(addTaskURl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( {taskname, priority} )
+        body: JSON.stringify( {taskName, priority, status} )
     });
 }
 

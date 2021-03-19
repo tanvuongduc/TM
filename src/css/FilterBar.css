@@ -1,0 +1,80 @@
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Retina-specific stuff here */
+  .filterBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    height: 50px;
+    min-width: 300px; }
+    .filterBar-left {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center; }
+      .filterBar-left .sortByStatus, .filterBar-left .sortByPriority {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0; }
+        .filterBar-left .sortByStatus label, .filterBar-left .sortByPriority label {
+          font-size: 1rem;
+          margin: 0 5px 0 0; }
+    .filterBar-right {
+      font-size: 1rem;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center; }
+      .filterBar-right label {
+        margin: 0 5px 0 0; }
+      .filterBar-right button {
+        background-color: #64a7dc;
+        color: white;
+        padding: 4px 15px;
+        border: none;
+        border-radius: 3px; } }
+.filterBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  height: 50px;
+  min-width: 300px; }
+  .filterBar-left {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; }
+    .filterBar-left .sortByStatus, .filterBar-left .sortByPriority {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0; }
+      .filterBar-left .sortByStatus label, .filterBar-left .sortByPriority label {
+        font-size: 1rem;
+        margin: 0 5px 0 0; }
+  .filterBar-right {
+    font-size: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center; }
+    .filterBar-right label {
+      margin: 0 5px 0 0; }
+    .filterBar-right button {
+      background-color: #64a7dc;
+      color: white;
+      padding: 4px 15px;
+      border: none;
+      border-radius: 3px; }
+
+/*# sourceMappingURL=FilterBar.css.map */

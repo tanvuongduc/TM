@@ -4,7 +4,7 @@ import '../css/TaskItem.css';
 
 const TaskItem = ({task, orderNumber, onGetTask}) => {
     const [mouseEvent, setStatus] = useState({ clicked: false, hover: false });
-
+    const { taskName, status, priority } = task;
     const handleOnFocus = () => {
         setStatus({ clicked: true, hover: false });
         onGetTask(task);
@@ -26,7 +26,7 @@ const TaskItem = ({task, orderNumber, onGetTask}) => {
             <div className="onClickTask" onClick={handleOnFocus} 
             onMouseOver={handleOnMouseOver} onMouseOut = {handleOnMouseOut}>
                 <span>{`${orderNumber}.`}</span>
-                <span>{task.taskname}</span>
+                <span>{taskName}</span>
             </div>
         );
     }
@@ -36,20 +36,32 @@ const TaskItem = ({task, orderNumber, onGetTask}) => {
             <div className="onHoverTask" onClick={handleOnFocus} 
                 onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
                 <span>{`${orderNumber}.`}</span>
-                <span>{task.taskname}</span>
+                <span>{taskName}</span>
             </div>
         );
     }
 
     const renderTask = () => {
-        return (
-            <div className="taskItem" onClick={handleOnFocus} 
-                onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
-                <span>{`${orderNumber}.`}</span>
-                <span>{task.taskname}</span>
-            </div>
+        if (status === 'done') {
+            return (
+                <div className="taskItem" onClick={handleOnFocus} 
+                    onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
+                    <span>{`${orderNumber}.`}</span>
+                    <span>{taskName}</span>
+                    <img src="./img/check.png" alt="check"/>
+                </div>
+            );
+        } else return (
+                <div className="taskItem" onClick={handleOnFocus} 
+                    onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
+                    <span>{`${orderNumber}.`}</span>
+                    <span>{taskName}</span>
+                    <img src="./img/dash.png" alt="dash"/>
+                </div>
         );
+        
     }
+
     
     if (mouseEvent.clicked) return renderClickTask();
     if (mouseEvent.clicked === false && mouseEvent.hover === true) return renderHoverTask();
