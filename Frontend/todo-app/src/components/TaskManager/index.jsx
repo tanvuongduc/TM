@@ -66,7 +66,6 @@ const TaskManager = (props) => {
         newTasks[editItemIndex].priority = param.priority
         newTasks[editItemIndex].status = param.status
         setTasks(newTasks)
-        alert("saved!")
     }
 
     const addTask = async (param) => {
