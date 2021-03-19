@@ -304,8 +304,14 @@ export default class Todolist extends Component {
 
                                 />
                             })}
-                            <button onClick={e => this.handleAddNew()}>add new</button>
-                            <button onClick={e => this.handleClear()}>clear</button>
+                            
+                            <div className="edit-delete-add">
+                            <button id="delete" onClick={e=>this.handleDelete()}>Delete</button>
+                            <button id="clear" onClick={e => this.handleClear()}>clear</button>
+                            <button id="addnew" onClick={e => this.handleAddNew()}>add new</button>
+
+                            </div>
+                                                    
                         </div>
                     </div>
                 </div>

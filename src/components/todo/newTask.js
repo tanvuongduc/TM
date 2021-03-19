@@ -11,7 +11,7 @@ export default class NewTask extends Component {
                 <div className="status-priority">
                     <form className="status">
                         <label htmlFor="status">Status:</label>
-                        <select id="status" name="status" onChange={e => this.handleFilter()}>
+                        <select id="status" name="status" >
                             <option value={STATUS.PENDING} >Pending</option>
                             <option value={STATUS.PROCESS}>Process</option>
                             <option value={STATUS.DONE} >Done</option>
@@ -33,9 +33,7 @@ export default class NewTask extends Component {
                         <span style={{ marginLeft: "30px" }}>  you</span>
                     </p>
                 </div>
-                <div className="edit-delete-add">
-                    <button> delete</button>
-                </div>
+                
             </div>
     
         )
