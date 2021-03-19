@@ -67,7 +67,7 @@ export const PrioritySelect = ({onChangePriority, priority}) => {
 }
 
 
-export const SortStatus = () => {
+export const SortProperty = ({property, onChangeFilterProperty}) => {
   const useStyles = makeStyles(theme => ({
     formControl: {
       margin: 0,
@@ -80,28 +80,27 @@ export const SortStatus = () => {
       paddingLeft: '5px'
     },
   }));
-  const [sort, setStatus] = useState(1);
   const handleChange = e => {
-    setStatus(e.target.value);
+    onChangeFilterProperty(e.target.value);
   };
 
   return (
     <FormControl className={useStyles().formControl}>
       <Select
-        value={sort}
+        value={property}
         onChange={handleChange}
         className={useStyles().select}
   
         >
-          <MenuItem value={1}>Status</MenuItem>
-          <MenuItem value={2}>Priority</MenuItem>
+          <MenuItem value="status">Status</MenuItem>
+          <MenuItem value="priority">Priority</MenuItem>
         </Select>
       </FormControl>
       
   )
 }
 
-export const SortPriority = () => {
+export const SortOrder = ({order, onChangeFilterOder}) => {
   const useStyles = makeStyles(theme => ({
     formControl: {
       margin: 0,
@@ -114,21 +113,20 @@ export const SortPriority = () => {
       paddingLeft: '5px'
     },
   }));
-  const [sort, setStatus] = useState(1);
   const handleChange = e => {
-    setStatus(e.target.value);
+    onChangeFilterOder(e.target.value);
   };
 
   return (
     <FormControl className={useStyles().formControl}>
       <Select
-        value={sort}
+        value={order}
         onChange={handleChange}
         className={useStyles().select}
         
         >
-          <MenuItem value={1}>DESC</MenuItem>
-          <MenuItem value={2}>INCRE</MenuItem>
+          <MenuItem value="DESC">DESC</MenuItem>
+          <MenuItem value="INCRE">INCRE</MenuItem>
         </Select>
       </FormControl>
       

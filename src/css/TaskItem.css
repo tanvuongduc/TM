@@ -16,6 +16,15 @@
       height: 90%;
       font-size: 0.8rem; }
 
+  .low {
+    background-color: #cce8ff; }
+
+  .high {
+    background-color: #ffc6c6; }
+
+  .medium {
+    background-color: white; }
+
   .onClickTask {
     height: 8%;
     border-radius: 4px;
@@ -30,6 +39,9 @@
     .onClickTask span {
       padding-right: 10px;
       font-size: 1.2rem; }
+    .onClickTask img {
+      height: 90%;
+      font-size: 0.8rem; }
 
   .onHoverTask {
     height: 8%;
@@ -44,7 +56,10 @@
     align-items: center; }
     .onHoverTask span {
       padding-right: 10px;
-      font-size: 1.2rem; } }
+      font-size: 1.2rem; }
+    .onHoverTask img {
+      height: 90%;
+      font-size: 0.8rem; } }
 .taskItem {
   height: 8%;
   border-radius: 4px;
@@ -62,6 +77,15 @@
     height: 90%;
     font-size: 0.8rem; }
 
+.low {
+  background-color: #cce8ff; }
+
+.high {
+  background-color: #ffc6c6; }
+
+.medium {
+  background-color: white; }
+
 .onClickTask {
   height: 8%;
   border-radius: 4px;
@@ -76,6 +100,9 @@
   .onClickTask span {
     padding-right: 10px;
     font-size: 1.2rem; }
+  .onClickTask img {
+    height: 90%;
+    font-size: 0.8rem; }
 
 .onHoverTask {
   height: 8%;
@@ -91,5 +118,8 @@
   .onHoverTask span {
     padding-right: 10px;
     font-size: 1.2rem; }
+  .onHoverTask img {
+    height: 90%;
+    font-size: 0.8rem; }
 
 /*# sourceMappingURL=TaskItem.css.map */

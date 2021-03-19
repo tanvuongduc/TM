@@ -21,6 +21,18 @@
         }
     }
 
+    .low {
+        background-color: #cce8ff;
+    }
+
+    .high {
+        background-color: #ffc6c6;
+    }
+
+    .medium {
+        background-color: white;
+    }
+
     .onClickTask {
         height: 8%;
         border-radius: 4px;
@@ -34,6 +46,11 @@
         span {
             padding-right: 10px;
             font-size: 1.2rem;
+        }
+
+        img {
+            height: 90%;
+            font-size: 0.8rem;
         }
     }
 
@@ -50,6 +67,11 @@
         span {
             padding-right: 10px;
             font-size: 1.2rem;
+        }
+
+        img {
+            height: 90%;
+            font-size: 0.8rem;
         }
     }
 }
@@ -74,6 +96,18 @@
     }
 }
 
+.low {
+    background-color: #cce8ff;
+}
+
+.high {
+    background-color: #ffc6c6;
+}
+
+.medium {
+    background-color: white;
+}
+
 .onClickTask {
     height: 8%;
     border-radius: 4px;
@@ -87,6 +121,11 @@
     span {
         padding-right: 10px;
         font-size: 1.2rem;
+    }
+
+    img {
+        height: 90%;
+        font-size: 0.8rem;
     }
 }
 
@@ -103,5 +142,10 @@
     span {
         padding-right: 10px;
         font-size: 1.2rem;
+    }
+
+    img {
+        height: 90%;
+        font-size: 0.8rem;
     }
 }

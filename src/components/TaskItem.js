@@ -21,51 +21,45 @@ const TaskItem = ({task, orderNumber, onGetTask}) => {
         setStatus({ clicked: false, hover: false});
     }
 
-    const renderClickTask = () => {
+    if (mouseEvent.clicked) {
         return (
-            <div className="onClickTask" onClick={handleOnFocus} 
-            onMouseOver={handleOnMouseOver} onMouseOut = {handleOnMouseOut}>
-                <span>{`${orderNumber}.`}</span>
-                <span>{taskName}</span>
-            </div>
-        );
-    }
-
-    const renderHoverTask = () => {
-        return (
-            <div className="onHoverTask" onClick={handleOnFocus} 
+            <div className={`onClickTask ${priority}`} onClick={handleOnFocus} 
                 onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
                 <span>{`${orderNumber}.`}</span>
                 <span>{taskName}</span>
-            </div>
+                { (status === 'progress') ? (<img src="./img/dash.png" alt="dash"/>)
+                : (status === 'done') ? (<img src="./img/check.png" alt="check"/>)
+                : (<span></span>) }
+            </div> 
         );
     }
-
-    const renderTask = () => {
-        if (status === 'done') {
+    if (mouseEvent.clicked === false 
+        && mouseEvent.hover === true) {
             return (
-                <div className="taskItem" onClick={handleOnFocus} 
-                    onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
+            <div className={`onHoverTask ${priority}`} onClick={handleOnFocus} 
+                onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
                     <span>{`${orderNumber}.`}</span>
                     <span>{taskName}</span>
-                    <img src="./img/check.png" alt="check"/>
+                    { (status === 'progress') ? (<img src="./img/dash.png" alt="dash"/>)
+                    : (status === 'done') ? (<img src="./img/check.png" alt="check"/>)
+                    : (<span></span>) }
+                </div> 
+            );
+
+    }
+    if (mouseEvent.clicked === false 
+        && mouseEvent.hover === false) {
+            return (
+                <div className={`taskItem ${priority}`} onClick={handleOnFocus} 
+                onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
+                    <span>{`${orderNumber}.`}</span>
+                    <span>{taskName}</span>
+                    { (status === 'progress') ? (<img src="./img/dash.png" alt="dash"/>)
+                    : (status === 'done') ? (<img src="./img/check.png" alt="check"/>)
+                    : (<span></span>) }
                 </div>
             );
-        } else return (
-                <div className="taskItem" onClick={handleOnFocus} 
-                    onMouseOver={handleOnMouseOver} onMouseOut={handleOnMouseOut}>
-                    <span>{`${orderNumber}.`}</span>
-                    <span>{taskName}</span>
-                    <img src="./img/dash.png" alt="dash"/>
-                </div>
-        );
-        
     }
-
-    
-    if (mouseEvent.clicked) return renderClickTask();
-    if (mouseEvent.clicked === false && mouseEvent.hover === true) return renderHoverTask();
-    if (mouseEvent.clicked === false && mouseEvent.hover === false) return renderTask();
     
 };
 
