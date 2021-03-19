@@ -89,6 +89,17 @@ body{
     margin-left: 20px;
     margin-top: 40px;
 }
+.btn_nametask{
+    height: 35px;
+    line-height: 35px;
+    text-indent: 10px;
+    border-radius: 5px;
+    background-color: darksalmon;
+}
+.btn_nametask:hover{
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+}
 .myTask_right{
     margin-left: 70%;
     background: #fff;

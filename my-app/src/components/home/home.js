@@ -144,7 +144,7 @@ class Home extends Component {
                 return (
                   <Fragment>
                     <div class="myTask_left">
-                      <p id={task._id} onClick={(props) => this.getnametask(props)} >{task.name}</p>
+                      <p id={task._id} className="btn_nametask" onClick={(props) => this.getnametask(props)} >{task.name}</p>
                     </div>
                   </Fragment>
                 );
