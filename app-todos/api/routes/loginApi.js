@@ -1,42 +1,71 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
+const express = require('express')
+const db = require('./config/conectDb')
+const app = express()
 
+let userId = 0;
+const user = [];
+app.get('/api/user', (req, res) => {
+    res.json(user);
+})
+app.post('/api/user', (req, res) => {
+    userId++;
+    const item = {
+        id: userId,
+        name: req.body ? req.body.name : ''
+    };
+    user.push(item);
+    res.json(item);
+});
+app.get('/hello', (req, res) => {
+    res.end('hello');
+});
+
+app.get('/hello/:name', (req, res) => {
+    res.end(`hello ${req.params.name}`);
+});
 
 app.use(express.json());
-app.use(cors());
-let todoId = 0
-const todoList = []
 
-//get all todo list
-app.get('/api/todoList', (req, res) => {
-    res.json(todoList)
-})
+const users = [
 
-//create a work
-app.post('api/todoList', (req, res) => {
-    todoId++
-    const item = {
-        id: todoId,
-        text: req.body.text
+    { username: "admin", password: "123456" }
+
+
+];
+const all_tokens = [];
+
+function newToken() {
+    return "123456";
+}
+
+app.post('/login', (req, res) => {
+
+    for (let i = 0; i < users.length; i++) {
+        if (req.body.username == users[i].username && req.body.password == users[i].password) {
+            const tokenValue = newToken();
+            // console.log(token);
+            const result = { ok: true, token: tokenValue }
+            all_tokens.push({ token: tokenValue, username: users[i].username })
+            res.json(result);
+            return;
+        }
+
     }
-    todoList.push(item)
-    res.json(item)
-})
 
-//delete all todoList
-app.delete('api/todolist', (req, res) => {
-    while (todoList.length) { todoList.pop() }
-    res.json(todoList)
-})
+    res.json({ ok: false });
+});
 
-//delete one todolist
-app.delete('api/todoList/:id', (req, res) => {
-    const id = +req.params.id
-    for (let i = 0; i < todoList.length; i++) {
-        if (todoList[i].id === id) {
-            res.json(todoList[i])
-            todoList.splice(i, 1)
+app.get('/info', (req, res) => {
+    const token = req.query.token;
+    // console.log(token)
+    for (let i = 0; i < all_tokens.length; i++) {
+        // console.log(all_tokens[i])
+        if (all_tokens[i].token == token) {
+            res.json({ ok: true, username: all_tokens[i].username })
+            return;
         }
     }
-})
+    res.json({})
+});
+
+app.listen(3000);
