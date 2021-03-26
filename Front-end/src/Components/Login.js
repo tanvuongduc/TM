@@ -1,16 +1,33 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 import "../CSS/login.css";
 
 class Login extends Component {
-  
-
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       password: "",
     };
+  }
+
+  login() {
+    axios({
+      method: "post",
+      url: "http://localhost:3000/login",
+      headers: {
+        "Authorization": "Basic XNXX",
+        "Content-Type": "application/json; charset=utf-8",
+        "X-Powered-By": "Express"
+      },
+      data: {
+        user: this.state.username,
+        password: this.state.password,
+      },
+    }).then(function (response) {
+      console.log(response);
+    });
   }
   changeInpurValue(e) {
     this.setState({
@@ -36,7 +53,7 @@ class Login extends Component {
         msg: "Password không được để trống",
       };
     }
-    return returnData;
+    this.login(username, password);
   }
   submitForm(e) {
     e.preventDefault();
@@ -46,7 +63,7 @@ class Login extends Component {
       p.innerHTML = validation.msg;
       document.getElementById("alert-box").appendChild(p);
     } else {
-      document.getElementById("alert-box").style.display='none';
+      document.getElementById("alert-box").style.display = "none";
     }
   }
   render() {
@@ -58,15 +75,7 @@ class Login extends Component {
               Task<br></br> Manager
             </h1>
             <div className="bar-border"></div>
-            <form
-            method="post"
-              id="form-login"
-              action=""
-              className="form-group"
-              onSubmit={(e) => {
-                this.submitForm(e);
-              }}
-            >
+            <form id="form-login" action="" className="form-group">
               <input
                 type="text"
                 name="username"
@@ -87,11 +96,12 @@ class Login extends Component {
               <br></br>
 
               <input
-                type="submit"
+                type="button"
                 value="LOGIN"
                 name="submit"
                 className="form-control"
                 id="btn-submit"
+                onClick={() => this.login()}
               ></input>
               <br></br>
               <b
