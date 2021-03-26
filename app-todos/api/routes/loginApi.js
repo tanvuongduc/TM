@@ -2,6 +2,8 @@ const express = require('express')
 const db = require('./config/conectDb')
 const app = express()
 
+
+
 let userId = 0;
 const user = [];
 app.get('/api/user', (req, res) => {
