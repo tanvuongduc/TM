@@ -9,7 +9,7 @@ mongoClient.connect('mongodb://localhost/TM', {
         useUnifiedTopology: true
 })
     .then(() => console.log("Connect database successfully"))
-    .then((error) => console.error("Connect database false"))
+    .catch((error) => console.error("Connect database false"))
 
 const app = express()
 

@@ -4,7 +4,7 @@ import Login from './components/mainlogin';
 class App extends Component {
   render() {
     return (
-      <Login></Login>
+      <Login data="/lgoin"></Login>
     )
   }
 }
