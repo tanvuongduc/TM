@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import './App.css';
 import Login from './Components/Login';
 
 class App extends Component{
@@ -18,7 +17,11 @@ class App extends Component{
              <Route exact path="/">
                  <Login></Login>
              </Route>
-             
+             <Route exact path="/tasklist">
+               {
+                 //Đô sau khi hoàn thành tasklist rồi cho vô đây
+               }
+             </Route>
            </Switch>
         </Fragment>
       </BrowserRouter>

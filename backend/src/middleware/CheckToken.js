@@ -7,7 +7,7 @@ const CheckToken = (req, res, next)=>{
         if(err)console.log(err)
         else if(!data){
             res.json({
-                msg:"Err token, please relogin!"
+                err:"Access denied!!"
             })
         }
         else{
@@ -24,7 +24,7 @@ const CheckToken = (req, res, next)=>{
                     
                 })
                 res.json({
-                    msg: "relogin!!"
+                    err: "Access denied!!"
                 })
             }
             

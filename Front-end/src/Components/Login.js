@@ -11,23 +11,24 @@ class Login extends Component {
       password: "",
     };
   }
-
+  //call api get token 
   login() {
-    axios({
-      method: "post",
-      url: "http://localhost:3000/login",
-      headers: {
-        "Authorization": "Basic XNXX",
-        "Content-Type": "application/json; charset=utf-8",
-        "X-Powered-By": "Express"
-      },
-      data: {
-        user: this.state.username,
-        password: this.state.password,
-      },
-    }).then(function (response) {
-      console.log(response);
-    });
+    let data ={
+      user: this.state.username,
+      password: this.state.password
+    }
+    axios.post(`http://localhost:3000/login`,data)
+      .then(res => {
+        if (res.data.token) {
+          // đăng nhập thành công
+          if(localStorage)localStorage.setItem ('token', res.data.token)//if browser support localstorage save token in to localStorage
+          
+          this.props.history.push('tasklist')//chuyển qua trang tasklist
+        }
+        else{
+          // cần thông báo người dùng nhập sai tk hoặc mật khẩu..... 
+        }
+      })
   }
   changeInpurValue(e) {
     this.setState({
@@ -67,6 +68,14 @@ class Login extends Component {
     }
   }
   render() {
+    //kiểm tra localStorage có token không nếu có thì chuyển trang /tasklist
+    if(localStorage){
+      const token = localStorage.getItem('token')
+      if (token){
+        this.props.history.push('tasklist')
+      }
+    }
+    //render
     return (
       <Fragment>
         <div className="main-box">
