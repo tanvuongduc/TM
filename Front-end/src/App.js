@@ -17,9 +17,6 @@ class App extends Component{
         <Fragment>
           <NavBar> </NavBar>
            <Switch>
-             <Route exact path="/">
-                 <Login></Login>
-             </Route>
              
            </Switch>
         </Fragment>
