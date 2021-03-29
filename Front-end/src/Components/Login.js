@@ -11,25 +11,26 @@ class Login extends Component {
       password: "",
     };
   }
-  //call api get token 
+  //call api get token
   async login() {
-    let data ={
+    let data = {
       user: this.state.username,
-      password: this.state.password
-    }
-    await axios.post(`http://localhost:3000/login`,data)
-      .then(res => {
-        if (res.data.token) {
-          // đăng nhập thành công
-          if(localStorage)localStorage.setItem ('token', res.data.token)//if browser support localstorage save token in to localStorage
-          this.props.history.push('/tasklist')
-        }
-        else{
-          // cần thông báo người dùng nhập sai tk hoặc mật khẩu..... 
-          var validate=document.getElementById("alert-box");
-          validate.innerHTML="Nhập sai tài khoản hoặc mật khẩu";
-        }
-      })
+      password: this.state.password,
+    };
+    await axios.post(`http://localhost:3000/login`, data).then((res) => {
+      if (res.data.token) {
+        // đăng nhập thành công
+        if (localStorage) localStorage.setItem("token", res.data.token); //if browser support localstorage save token in to localStorage
+        this.props.history.push("/tasklist");
+      } else if (this.state.username == "" || this.state.password == "") {
+        var validate = document.getElementById("alert-box");
+        validate.innerHTML = "Username và Password không được để trống";
+      } else {
+        // cần thông báo người dùng nhập sai tk hoặc mật khẩu.....
+        var validate = document.getElementById("alert-box");
+        validate.innerHTML = "Nhập sai tài khoản hoặc mật khẩu";
+      }
+    });
   }
   changeInpurValue(e) {
     this.setState({
@@ -47,7 +48,6 @@ class Login extends Component {
         error: true,
         msg: "Username không được để trống",
       };
-
     }
 
     if (!password) {
@@ -71,10 +71,12 @@ class Login extends Component {
     }
   }
   render() {
-    if (localStorage.getItem('token')) {
-      this.props.history.push('/',{state:{
-        username: this.state.username
-      }})
+    if (localStorage.getItem("token")) {
+      this.props.history.push("/", {
+        state: {
+          username: this.state.username,
+        },
+      });
     }
     //render
     return (
@@ -85,9 +87,12 @@ class Login extends Component {
               Task<br></br> Manager
             </h1>
             <div className="bar-border"></div>
-            <form id="form-login" action="" className="form-group"
-            //  onSubmit={e => {this.submitForm(e)}}
-             >
+            <form
+              id="form-login"
+              action=""
+              className="form-group"
+              //  onSubmit={e => {this.submitForm(e)}}
+            >
               <input
                 type="text"
                 name="username"
@@ -110,7 +115,7 @@ class Login extends Component {
               <br></br>
 
               <input
-                type="submit"
+                type="button"
                 value="LOGIN"
                 name="submit"
                 className="form-control"
