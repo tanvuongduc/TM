@@ -1,0 +1,76 @@
+.left{
+    float: left;
+    width: 65%;
+}
+.right{
+    float: right;
+    width: 33%;
+    border-left: 2px solid gray;
+    padding-right: 50px;
+}
+.form{
+    padding-left: 20px;
+}
+.bgc{
+    background-color: rgb(189, 180, 180);
+    ;
+}
+.center{
+    text-align: center;
+}
+/* .chia{
+    width: 10px;
+    background-color: gray;
+    top:100px;
+    bottom:100px;
+    left: 67%;
+} */
+.ngan{
+    border-bottom: white solid 1px;
+
+}
+.pdr10{
+    padding-right: 10px;
+}
+.pdr22{
+    padding-right: 22px;
+}
+#task{
+    width: 80%;
+}
+.mgl20{
+    margin-left: 20px;
+}
+.mgl300{
+    margin-left: 300px;
+}
+tr:hover {
+    background-color: goldenrod;
+}
+.buttonRight{
+    margin-top: 200px;
+    border-radius: 8%;
+    width: 80px;
+    margin-left: 20px;
+    background-color: rgb(97, 172, 181);
+    border-color: rgb(97, 172, 181);
+}
+.buttonTop{
+    border-radius: 8%;
+    width: 80px;
+    margin-left: 20px;
+    background-color: rgb(97, 172, 181);
+    border-color: rgb(97, 172, 181);
+}
+select{
+    border-color: rgb(37, 141, 233);
+}
+input{
+    border-color: rgb(37, 141, 233);
+}
+.input{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './Components/Login';
+import TaskManager from './Components/TaskManager';
 
 class App extends Component{
   constructor(props){
@@ -16,7 +17,8 @@ class App extends Component{
         <Fragment>
            <Switch>
              <Route exact path="/">
-                 <Login></Login>
+                 {/* <Login></Login> */}
+                 <TaskManager/>
              </Route>
              
            </Switch>
