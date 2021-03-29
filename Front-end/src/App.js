@@ -15,7 +15,7 @@ class App extends Component{
     return(
       <BrowserRouter>
         <Fragment>
-          <NavBar> </NavBar>
+          <NavBar username="Admin"> a</NavBar>
            <Switch>
              
            </Switch>

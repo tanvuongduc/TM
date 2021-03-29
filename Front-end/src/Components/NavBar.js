@@ -2,6 +2,7 @@ import { Component } from "react";
 import React, { Components, Fragment } from "react";
 import "../CSS/NavBar.css";
 import "fontawesome/css/all.min.css"
+
 class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -14,14 +15,16 @@ class NavBar extends Component {
 
             <Fragment>
                 <div className="header">
-                    <h2>Task Manager </h2>
+                    <b className="h">Task Manager </b>
                     <div className='logout'>
                         <div class="dropdown">
-                            <button class="dropbtn" > User </button>
-                            <i class="fas fa-angle-down"> </i>
+
+                            <button class="dropbtn" > Hi, {this.props.username} &ensp;
+                                 <i class="fas fa-sort-down"> </i>
+                            </button>
+
                             <div class="dropdown-content">
-                                <a class="fas fa-user" href="#">  Profile</a> 
-                                <a class="fas fa-sign-out-alt" href="#">  Logout</a>
+                                <a class="fas fa-sign-out-alt" href=" "> &ensp; Logout</a>
                             </div>
                         </div>
 
