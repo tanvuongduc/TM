@@ -1,16 +1,33 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 import "../CSS/login.css";
 
 class Login extends Component {
-  
-
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       password: "",
     };
+  }
+  //call api get token 
+  async login() {
+    let data ={
+      user: this.state.username,
+      password: this.state.password
+    }
+    await axios.post(`http://localhost:3000/login`,data)
+      .then(res => {
+        if (res.data.token) {
+          // đăng nhập thành công
+          if(localStorage)localStorage.setItem ('token', res.data.token)//if browser support localstorage save token in to localStorage
+          this.props.history.push('/tasklist')
+        }
+        else{
+          // cần thông báo người dùng nhập sai tk hoặc mật khẩu..... 
+        }
+      })
   }
   changeInpurValue(e) {
     this.setState({
@@ -23,20 +40,21 @@ class Login extends Component {
       error: false,
       msg: "",
     };
-    if (username == "") {
+    if (username === "") {
       returnData = {
         error: true,
         msg: "Username không được để trống",
       };
+
     }
 
-    if (password.length <= 0) {
+    if (!password) {
       returnData = {
         error: true,
         msg: "Password không được để trống",
       };
     }
-    return returnData;
+    this.login(username, password);
   }
   submitForm(e) {
     e.preventDefault();
@@ -46,10 +64,16 @@ class Login extends Component {
       p.innerHTML = validation.msg;
       document.getElementById("alert-box").appendChild(p);
     } else {
-      document.getElementById("alert-box").style.display='none';
+      document.getElementById("alert-box").style.display = "none";
     }
   }
   render() {
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/',{state:{
+        username: this.state.username
+      }})
+    }
+    //render
     return (
       <Fragment>
         <div className="main-box">
@@ -58,15 +82,7 @@ class Login extends Component {
               Task<br></br> Manager
             </h1>
             <div className="bar-border"></div>
-            <form
-            method="post"
-              id="form-login"
-              action=""
-              className="form-group"
-              onSubmit={(e) => {
-                this.submitForm(e);
-              }}
-            >
+            <form id="form-login" action="" className="form-group">
               <input
                 type="text"
                 name="username"
@@ -87,11 +103,12 @@ class Login extends Component {
               <br></br>
 
               <input
-                type="submit"
+                type="button"
                 value="LOGIN"
                 name="submit"
                 className="form-control"
                 id="btn-submit"
+                onClick={() => this.login()}
               ></input>
               <br></br>
               <b
