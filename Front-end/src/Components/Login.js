@@ -27,6 +27,8 @@ class Login extends Component {
         }
         else{
           // cần thông báo người dùng nhập sai tk hoặc mật khẩu..... 
+          var validate=document.getElementById("alert-box");
+          validate.innerHTML="Nhập sai tài khoản hoặc mật khẩu";
         }
       })
   }
@@ -54,7 +56,8 @@ class Login extends Component {
         msg: "Password không được để trống",
       };
     }
-    this.login(username, password);
+    // this.login(username, password);
+    return returnData;
   }
   submitForm(e) {
     e.preventDefault();
@@ -84,13 +87,16 @@ class Login extends Component {
               Task<br></br> Manager
             </h1>
             <div className="bar-border"></div>
-            <form id="form-login" action="" className="form-group">
+            <form id="form-login" action="" className="form-group"
+            //  onSubmit={e => {this.submitForm(e)}}
+             >
               <input
                 type="text"
                 name="username"
                 placeholder="User Name "
                 className="form-control"
                 id="input-name"
+                required
                 onChange={(e) => this.changeInpurValue(e)}
               ></input>
               <br></br>
@@ -100,12 +106,13 @@ class Login extends Component {
                 placeholder="Password"
                 className="form-control"
                 id="input-password"
+                required
                 onChange={(e) => this.changeInpurValue(e)}
               ></input>
               <br></br>
 
               <input
-                type="button"
+                type="submit"
                 value="LOGIN"
                 name="submit"
                 className="form-control"
