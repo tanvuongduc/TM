@@ -3,6 +3,7 @@ const taskController = require("../controller/TaskController")
 const checkToken = require("../middleware/CheckToken")
 
 router.use(checkToken)
-router.get('/', taskController.index)
-router.post('/',taskController.update)
+
+
+router.post('/', taskController.index)//clineent get username from token in req.body 
 module.exports = router
