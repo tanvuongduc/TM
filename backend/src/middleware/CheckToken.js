@@ -1,6 +1,7 @@
 const Token = require('../models/Token')
 
 const CheckToken = (req, res, next)=>{
+    console.log(req.body)
     Token.find({
         token: req.body.token,
     }, async (err, data)=>{
@@ -12,7 +13,7 @@ const CheckToken = (req, res, next)=>{
         }
         else{
 
-            if(data.length==1&&Date.now() - data[0].createdAt<10*60*1000){
+            if(data.length==1&&Date.now() - data[0].createdAt<10*60*1000000){
                 req.body.user=data[0].user
                 return next()           //Check Token oke
             }

@@ -12,18 +12,17 @@ class Login extends Component {
     };
   }
   //call api get token 
-  login() {
+  async login() {
     let data ={
       user: this.state.username,
       password: this.state.password
     }
-    axios.post(`http://localhost:3000/login`,data)
+    await axios.post(`http://localhost:3000/login`,data)
       .then(res => {
         if (res.data.token) {
           // đăng nhập thành công
           if(localStorage)localStorage.setItem ('token', res.data.token)//if browser support localstorage save token in to localStorage
-          
-          this.props.history.push('tasklist')//chuyển qua trang tasklist
+          this.props.history.push('/tasklist')
         }
         else{
           // cần thông báo người dùng nhập sai tk hoặc mật khẩu..... 
@@ -41,14 +40,15 @@ class Login extends Component {
       error: false,
       msg: "",
     };
-    if (username == "") {
+    if (username === "") {
       returnData = {
         error: true,
         msg: "Username không được để trống",
       };
+
     }
 
-    if (password.length <= 0) {
+    if (!password) {
       returnData = {
         error: true,
         msg: "Password không được để trống",
@@ -68,12 +68,10 @@ class Login extends Component {
     }
   }
   render() {
-    //kiểm tra localStorage có token không nếu có thì chuyển trang /tasklist
-    if(localStorage){
-      const token = localStorage.getItem('token')
-      if (token){
-        this.props.history.push('tasklist')
-      }
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/',{state:{
+        username: this.state.username
+      }})
     }
     //render
     return (
