@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import Login from './Components/Login';
 import TaskManager from './Components/TaskManager';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +24,9 @@ class App extends Component {
             <Route exact path="/tasklist">
                 <TaskManager/>
              </Route>
-          </Switch>
+
+             
+           </Switch>
         </Fragment>
       </BrowserRouter>
 

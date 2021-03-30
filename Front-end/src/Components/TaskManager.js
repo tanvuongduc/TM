@@ -3,8 +3,9 @@ import { withRouter } from "react-router";
 import "../CSS/taskManager.css";
 import Filter from "./Filter";
 import List from "./List";
-import axios from 'axios'
+import axios from "axios";
 import InputFrame from "./InputFrame";
+import NavBar from "./NavBar";
 class TaskManager extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ class TaskManager extends Component {
     await axios
       .post(`http://localhost:3000/task`, data)
       .then((res) => {
-          console.log(res.data)
+        console.log(res.data);
         let user = res.data.user;
         let tasks = res.data.tasks;
         if (user) {
@@ -29,19 +30,19 @@ class TaskManager extends Component {
             tasks: tasks,
           });
         } else {
-          
         }
       })
       .catch((err) => {
-        
         console.log(err);
       });
   };
   render() {
     return (
       <Fragment>
+        <NavBar username={this.state.user} />
+        <Filter />
         <div className="container">
-          <Filter />
+          
           <div className="left">
             <List tasks={this.state.tasks} />
           </div>
