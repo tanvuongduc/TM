@@ -1,5 +1,5 @@
 const Token = require('../models/Token')
-
+const Auth = require('../models/Auth')
 const CheckToken = (req, res, next)=>{
     Token.find({
         token: req.body.token,
@@ -12,8 +12,11 @@ const CheckToken = (req, res, next)=>{
         }
         else{
 
-            if(data.length==1&&Date.now() - data[0].createdAt<10*60*1000){
-                req.body.user=data[0].user
+            if(data.length==1&&Date.now() - data[0].createdAt<10*60*100000000){
+                let query = {
+                    user: data[0].user
+                }
+                req.auth = await Auth.findOne(query)
                 return next()           //Check Token oke
             }
             else{
