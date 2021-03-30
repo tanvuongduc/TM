@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const Auth = new Schema({
     user: String,
     password: String,
-    permission: Number, //0: Admin, 1: Manager, 2: Staff
+    permission: Number, //0:Staff , 1: Manager, 2: Admin
     email: String,
     tasks: [ObjectId]
 })
