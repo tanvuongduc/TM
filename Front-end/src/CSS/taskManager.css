@@ -73,3 +73,7 @@ select{
 .list:hover{
     background-color: #ececec;
 }
+.if{
+    text-align: right;
+    padding-left: 15px;
+}

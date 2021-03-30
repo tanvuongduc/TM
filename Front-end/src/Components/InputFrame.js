@@ -3,7 +3,7 @@ import "../CSS/taskManager.css";
 class InputFrame extends Component {
     render() {
         return (
-            <div>
+            <div className="if" >
                     <div className="form">
                         <p>
                             <label className="pdr22">Task:</label>
@@ -13,8 +13,8 @@ class InputFrame extends Component {
                             <label className="pdr10">Status:</label>
                             <select>
                                 <option>Pending</option>
-                                <option>Vân vân</option>
-                                <option>Mây mây</option>
+                                <option>Progress</option>
+                                <option>Done</option>
                             </select>
                             <label className="pdr10 mgl20">Priority:</label>
                             <select>
