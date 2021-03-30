@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const mongoClient = require('mongoose')
 const workRoute = require('./routes/work')
 const loginRouter =require('./routes/login')
+const createUser = require('./routes/createUsers')
 
 mongoClient.connect('mongodb://localhost/task_list', {
         useNewUrlParser: true,
@@ -21,6 +22,7 @@ app.use(bodyParser.json())
 //config routes cua works
 app.use('/work', workRoute)
 app.use('/login', loginRouter)
+app.use('./create', createUser)
 
 //routers
 app.get('/', (req, res, next) => {
