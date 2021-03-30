@@ -12,13 +12,9 @@ class RegController {
                     await Auth.create(
                         {
                             user: req.body.user,
-                            password: md5(req.body.password)
-                        }
-                    )
-                    await Task.create(
-                        {
-                            user: req.body.user,
-                            tasks: []
+                            password: md5(req.body.password),
+                            permission: req.body.permission,
+
                         }
                     )
                     res.json(
