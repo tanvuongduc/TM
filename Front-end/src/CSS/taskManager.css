@@ -46,6 +46,7 @@ tr:hover {
     margin-left: 20px;
     background-color: #64a7dc;
     border: none;
+    
 }
 .buttonTop{
     border-radius: 3px;
@@ -74,6 +75,17 @@ select{
     background-color: #ececec;
 }
 .if{
-    text-align: right;
-    padding-left: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding-top: 25px;
+    display: block;
+    padding-right: 20px;
+    width: 40%;
+    float: right ;
+    margin-top: 50px;
+    border-left: 2px solid #707070;
+
+}
+.option{
+    font-weight: 300;
 }
