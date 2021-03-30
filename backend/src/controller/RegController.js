@@ -13,8 +13,8 @@ class RegController {
                         {
                             user: req.body.user,
                             password: md5(req.body.password),
-                            permission: 0,
-                            tasks:[]
+                            permission: req.body.permission,
+
                         }
                     )
                     res.json(

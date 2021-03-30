@@ -60,7 +60,7 @@ class TaskController {
     }
     async addTaskForStaffId(req, res) {
         const auth = req.auth
-        if (auth.permission > 0 && req.body._id) {
+        if (auth.permission == 1 && req.body._id) {
             let data = {
                 content: req.body.content,
                 status: 0,     //0: Pendding, 1: Progress, 2: Done
@@ -137,7 +137,43 @@ class TaskController {
             res.json(`Not permission`)
         }
     }
+    addStaff(req, res) {
+        const auth=req.auth
+        if(auth.permission<2){
+            res.json('Access denied!!!!!')
+            return
+        }
+        Auth.find({
+            user: req.body.user,
+        }, async (err, data) => {
+            if(err)console.log(err)
+            else {
+                if(data.length===0){
+                    await Auth.create(
+                        {
+                            user: req.body.user,
+                            password: md5(req.body.password),
+                            permission: req.body.permission,
 
+                        }
+                    )
+                    res.json(
+                        {
+                            msg: 'Susccessfully Registed!'
+                        }
+                    )
+                }
+                else{
+                    res.json(
+                        {
+                            msg: 'Your username existed!'
+                        }
+                    )
+                }
+            }
+        }
+        )
+    }
 }
 
 module.exports = new TaskController()

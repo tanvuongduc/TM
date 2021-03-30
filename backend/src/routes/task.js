@@ -4,7 +4,9 @@ const checkToken = require("../middleware/CheckToken")
 
 router.use(checkToken)
 
-router.post('/add', taskController.addTask)//staff add a task for himself
+
+router.post('/add', taskController.addTask)
+router.post('/addstaff', taskController.addStaff)//staff add a task for himself
 router.post('/addtaskid', taskController.addTaskForStaffId)// add a task for uid from admin or manager
 
 router.put('/edittaskid', taskController.editTaskId)
