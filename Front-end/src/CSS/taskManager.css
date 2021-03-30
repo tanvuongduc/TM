@@ -46,6 +46,8 @@ tr:hover {
     margin-left: 20px;
     background-color: #64a7dc;
     border: none;
+    font-weight: 300;
+    color: white;
     
 }
 .buttonTop{
@@ -73,19 +75,4 @@ select{
 }
 .list:hover{
     background-color: #ececec;
-}
-.if{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    padding-top: 25px;
-    display: block;
-    padding-right: 20px;
-    width: 40%;
-    float: right ;
-    margin-top: 50px;
-    border-left: 2px solid #707070;
-
-}
-.option{
-    font-weight: 300;
 }

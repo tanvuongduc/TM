@@ -5,6 +5,7 @@ import TaskManager from './Components/TaskManager';
 import Task from './Components/Task'
 import NavBar from './Components/NavBar';
 import InputFrame from './Components/InputFrame';
+import Footer from './Components/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
         <Fragment>
           <NavBar username="Admin"> a</NavBar>
           <InputFrame> </InputFrame>
+          <Footer> </Footer>
           <Switch>
 
           </Switch>
