@@ -1,7 +1,8 @@
 import { Component } from "react";
 import React, { Components, Fragment } from "react";
 import "../CSS/NavBar.css";
-import "fontawesome/css/all.min.css"
+
+
 
 class NavBar extends Component {
     constructor(props) {
@@ -14,6 +15,9 @@ class NavBar extends Component {
         return (
 
             <Fragment>
+                <head> 
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+                </head>
                 <div className="header">
                     <b className="h">Task Manager </b>
                     <div className='logout'>
