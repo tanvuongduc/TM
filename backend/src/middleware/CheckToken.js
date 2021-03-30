@@ -1,34 +1,37 @@
 const Token = require('../models/Token')
-
-const CheckToken = (req, res, next)=>{
+const Auth = require('../models/Auth')
+const CheckToken = (req, res, next) => {
     console.log(req.body)
     Token.find({
         token: req.body.token,
-    }, async (err, data)=>{
-        if(err)console.log(err)
-        else if(!data){
+    }, async (err, data) => {
+        if (err) console.log(err)
+        else if (!data) {
             res.json({
-                err:"Access denied!!"
+                err: "Access denied!!"
             })
         }
-        else{
+        else {
 
-            if(data.length==1&&Date.now() - data[0].createdAt<10*60*1000000){
-                req.body.user=data[0].user
+            if (data.length == 1 && Date.now() - data[0].createdAt < 10 * 60 * 100000000) {
+                let query = {
+                    user: data[0].user
+                }
+                req.auth = await Auth.findOne(query)
                 return next()           //Check Token oke
             }
-            else{
-                data.forEach(d=>{
-                    Token.deleteOne(d,(err)=>{
-                        if(err) console.log(err)
+            else {
+                data.forEach(d => {
+                    Token.deleteOne(d, (err) => {
+                        if (err) console.log(err)
                     })
-                    
+
                 })
                 res.json({
                     err: "Access denied!!"
                 })
             }
-            
+
         }
 
     })

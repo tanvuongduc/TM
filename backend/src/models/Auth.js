@@ -6,6 +6,7 @@ const Auth = new Schema({
     user: String,
     password: String,
     permission: Number, //0: Admin, 1: Manager, 2: Staff
+    email: String,
     tasks: [ObjectId]
 })
 
