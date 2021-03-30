@@ -13,7 +13,7 @@ class RegController {
                         {
                             user: req.body.user,
                             password: md5(req.body.password),
-                            permission: req.body.permission,
+                            permission: 0,
 
                         }
                     )

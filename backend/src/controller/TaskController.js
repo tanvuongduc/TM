@@ -9,11 +9,12 @@ class TaskController {
         let data = {}
 
         data.user = auth.user
-        data.tasks = tasks
         switch (auth.permission) {
             case 0:
+                data.tasks = tasks
                 break
             case 1:
+                data.tasks = tasks
                 data.staffs = await Auth.find().select('user').$where(`this.permission<${auth.permission}`).exec()
                 break
             case 2:
