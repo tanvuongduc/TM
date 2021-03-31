@@ -19,7 +19,7 @@ class App extends Component {
       <BrowserRouter>
         <Fragment>
           <NavBar username="Admin"> a</NavBar>
-          <InputFrame> </InputFrame>
+          <InputFrame username="Admin"> </InputFrame>
           <Footer> </Footer>
           <Switch>
 

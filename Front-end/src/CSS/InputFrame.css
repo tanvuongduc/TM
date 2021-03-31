@@ -1,37 +1,39 @@
-.if{
+.if {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    padding-top: 25px;
+    padding-top: 55px;
     display: block;
     padding-right: 20px;
-    width: 40%;
-    height: 30%;
-    float: right ;
+    width: 30%;
+    float: right;
     margin-top: 50px;
-    border-left: 2px solid #707070;
+    border-left: 1.5px solid #707070;
+}
 
-}
-.option{
+.option {
     font-weight: 300;
+    border: 1.8px solid #a4bbce;
 }
-.pdr10{
+
+.pdr10 {
     padding-right: 10px;
 }
-.pdr22{
+
+.pdr22 {
     padding-right: 22px;
 }
-.mgl20{
+
+.mgl20 {
     margin-left: 20px;
 }
-.buttonRight{
-    margin-top: 200px;
+
+.buttonRight {
+    margin-top: 400px;
     border-radius: 3px;
     width: 100px;
     height: 40px;
-    margin-left: 20px;
+    margin-left: 138px;
     background-color: #64a7dc;
-    border: none;
     font-weight: 300;
     color: white;
-    
 }
