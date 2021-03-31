@@ -3,26 +3,26 @@ import "../CSS/List.css";
 import { Row, Col } from "reactstrap";
 // import InputFrame from "./InputFrame";
 class List extends Component {
-  // list() {
-  //   let i = 0;
-  //   if(!this.props.tasks){
-  //       return "May chua co task dm luoi"
-  //   }
-  //   return this.props.tasks.map((task) => {
-  //     i++;
-  //     return (
-  //       <Row className="list">
-  //         <Col xs="1" className="borderRadius">
-  //           {i}.
-  //         </Col>
-  //         <Col>{task.content}</Col>
-  //         <Col xs="1" >
-  //           ticker
-  //         </Col>
-  //       </Row>
-  //     );
-  //   });
-  // }
+  list() {
+    let i = 0;
+    if(!this.props.tasks){
+        return "May chua co task dm luoi"
+    }
+    return this.props.tasks.map((task) => {
+      i++;
+      return (
+        <Row className="list" key={i}>
+          <Col xs="1" className="borderRadius">
+            {i}.
+          </Col>
+          <Col>{task.content}</Col>
+          <Col xs="1" >
+            ticker
+          </Col>
+        </Row>
+      );
+    });
+  }
   render() {
     // const list = this.list();
     return (
@@ -34,17 +34,6 @@ class List extends Component {
           <div className="font">
             <div className="row">
             <div className="col-8">
-              <Row className="list">
-                <Col xs="1" className="STT">
-                  1.
-                </Col>
-                <Col className="text">
-                  Eat (No background means priority: medium; No icon means status: pending)
-                </Col>
-                <Col xs="1" >
-                  ticker
-                </Col>
-              </Row>
               <Row className="list">
                 <Col xs="1" className="STT">
                   1.

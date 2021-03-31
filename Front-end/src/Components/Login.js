@@ -22,12 +22,12 @@ class Login extends Component {
         // đăng nhập thành công
         if (localStorage) localStorage.setItem("token", res.data.token); //if browser support localstorage save token in to localStorage
         this.props.history.push("/tasklist");
-      } else if (this.state.username == "" || this.state.password == "") {
-        var validate = document.getElementById("alert-box");
+      } else if (this.state.username === "" || this.state.password === "") {
+        let validate = document.getElementById("alert-box");
         validate.innerHTML = "Username và Password không được để trống";
       } else {
         // cần thông báo người dùng nhập sai tk hoặc mật khẩu.....
-        var validate = document.getElementById("alert-box");
+        let validate = document.getElementById("alert-box");
         validate.innerHTML = "Nhập sai tài khoản hoặc mật khẩu";
       }
     });
@@ -63,7 +63,7 @@ class Login extends Component {
     e.preventDefault();
     const validation = this.validateForm();
     if (validation.error) {
-      var p = document.createElement("p");
+      let p = document.createElement("p");
       p.innerHTML = validation.msg;
       document.getElementById("alert-box").appendChild(p);
     } else {
