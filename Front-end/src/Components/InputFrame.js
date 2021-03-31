@@ -20,7 +20,7 @@ class InputFrame extends Component {
     }
     render() {
         return (
-            <div className="if" >
+            <div className="input-frame-container" >
                 <div className="form">
                     <p>
                         <label className="pdr22">Task: &ensp; </label>
@@ -44,9 +44,9 @@ class InputFrame extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    {/* <div className="col-4">
+                    <div className="col-4">
                         <button className="buttonRight" name="Remove" type='button'>Remove</button>
-                    </div> */}
+                    </div>
                     <div className="col-4">
                         <button className="buttonRight" name="Clear" type='button'>Clear</button>
                     </div>
