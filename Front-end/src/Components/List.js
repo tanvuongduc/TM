@@ -28,7 +28,10 @@ class List extends Component {
     return (
       <div>
         <Container>{list}</Container>
-        <InputFrame />
+        <div className="right">
+            <InputFrame/>
+        </div>
+
       </div>
     );
   }
