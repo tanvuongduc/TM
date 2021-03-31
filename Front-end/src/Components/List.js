@@ -6,7 +6,7 @@ class List extends Component {
   list() {
     let i = 0;
     if(!this.props.tasks){
-        return "May chua co task dm luoi"
+        return "..."
     }
     return this.props.tasks.map((task) => {
       i++;

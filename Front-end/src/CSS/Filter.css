@@ -1,3 +1,6 @@
+.contain-box{
+    width: 1920px;
+}
 .filter-box{
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -59,9 +62,9 @@
     margin-top: 5px;
 }
 .form-check-button{
-    width: 30px;
-    height: 30px;
-    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
     margin-left: 10px;
 }
 .from-date-box{
@@ -80,7 +83,7 @@
     float: left;
     font-weight: 300;
 }
-.from-date-box a{
+.from-date-box-2 a{
     display: block;
     text-decoration: none;
     color: aliceblue;
