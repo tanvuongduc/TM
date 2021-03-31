@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "../CSS/List.css";
 import { Row, Col } from "reactstrap";
-// import InputFrame from "./InputFrame";
+import InputFrame from "./InputFrame";
 class List extends Component {
+
   list() {
     let i = 0;
     if(!this.props.tasks){
@@ -47,7 +48,7 @@ class List extends Component {
               </Row>
             </div>
             <div className="col-4">
-
+              <InputFrame/>
             </div>
           </div>
           </div>
