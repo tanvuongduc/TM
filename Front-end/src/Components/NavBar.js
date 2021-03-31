@@ -1,8 +1,5 @@
-import { Component } from "react";
-import React, { Components, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import "../CSS/NavBar.css";
-
-
 
 class NavBar extends Component {
     constructor(props) {
@@ -10,6 +7,9 @@ class NavBar extends Component {
         this.state = {
 
         };
+    }
+    logout(){
+        localStorage.setItem('token','')
     }
     render() {
         return (
@@ -25,8 +25,8 @@ class NavBar extends Component {
                             <button class="dropbtn" > Hi, {this.props.username} &ensp;
                                  <i class="fas fa-sort-down"> </i>
                             </button>
-                            <div class="dropdown-content">
-                                <a class="fas fa-sign-out-alt" href=" "> &ensp; Logout</a>
+                            <div className="dropdown-content">
+                                <a className="fas fa-sign-out-alt" href="http://localhost:4200/login" onClick={()=>this.logout()}> &ensp; Logout</a>
                             </div>
                         </div>
 

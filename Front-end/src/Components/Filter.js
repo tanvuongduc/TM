@@ -1,36 +1,60 @@
-import React, { Component } from 'react';
-import "../CSS/taskManager.css";
+import React, { Component } from "react";
+import "../CSS/Filter.css";
 class Filter extends Component {
-    render() {
-        return (
-            <div>
-                <h2>My Tasks</h2>
-                <div>
-                    <p className="input">
-                        <label className="pdr10">Sort by:</label>
-                        <select>
-                            <option>Status</option>
-                        </select>
-                        <label className="pdr10 mgl20">Direction:</label>
-                        <select>
-                            <option>DESC</option>
-                        </select>
-                        <label className="pdr10 mgl300">Filter:</label>
-                        <input type="checkbox"></input>
-                        <label className="pdr10 mgl20">From:</label>
-                        <select>
-                            <option>21-03-17</option>
-                        </select>
-                        <label className="pdr10 mgl20">To:</label>
-                        <select>
-                            <option>21-04-17</option>
-                        </select>
-                        <button className="buttonTop" name="apply" type='button'>Apply</button>
-                    </p>
-                </div>
+  hideOptionDate(){
+      
+  }
+  render() {
+    return (
+      <div className="contain-box">
+        <div className="filter-box">
+          <h4 className="my-task-title">My Tasks</h4>
+          <div className="sort-by-bar">
+            <div className="sort-by">
+              <span className="sort-by-title">Sort by:</span>
+              <select className="sort-select form-control shadow-none ">
+                <option selected>Status </option>
+                <option>Pending</option>
+                <option>Progress</option>
+                <option>Done</option>
+              </select>
             </div>
-        );
-    }
+            <div className="direction-box">
+              <span className="direction-title">Direction:</span>
+              <select className=" direction-select form-control shadow-none ">
+                <option selected>DESC </option>
+                <option>ASC</option>
+              </select>
+            </div>
+
+            <div className="form-check">
+              <label className="filter-title">Filter: </label>
+              <input
+                className="form-check-button"
+                type="checkbox"
+                id="gridCheck1"
+              />
+            </div>
+            <div className="from-date-box">
+              <label>From: </label>
+              <select className="date-filter form-control shadow-none ">
+                <option selected>21-03-17 </option>
+              </select>
+              <label>To: </label>
+              <select className="date-filter form-control shadow-none ">
+                <option selected>21-04-17 </option>
+              </select>
+              
+            </div>
+            <div className="from-date-box-2" id="from-date-box-2">
+                <a className="btn-apply">Apply</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Filter;
