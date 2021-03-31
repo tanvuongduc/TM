@@ -24,23 +24,23 @@ class InputFrame extends Component {
                 <div className="form">
                     <p>
                         <label className="pdr22">Task: &ensp; </label>
-                        <input className="option" id="task" name="task" type="text" placeholder="Enter your task here" />
+                        <input className="option" id="task" name="task" type="text" placeholder="Enter your task here" value={this.props.task.content}/>
                     </p>
                     <p>
                         <label className="pdr10">Status: &ensp; </label>
-                        <select className="option">
-                            <option className="option">Pending</option>
-                            <option className="option">Progress</option>
-                            <option className="option">Done</option>
+                        <select className="option" value={this.props.task.status}>
+                            <option className="option" value={0}>Pending</option>
+                            <option className="option" value={1}>Progress</option>
+                            <option className="option" value={2}>Done</option>
                         </select>
                         <label className="pdr10 mgl20"> &ensp; &nbsp; &emsp; Priority:&ensp; </label>
-                        <select className="option">
-                            <option className="option">Low</option>
-                            <option className="option">Medium</option>
-                            <option className="option">High</option>
+                        <select className="option" value={this.props.task.priority}>
+                            <option className="option" value={0}>Low</option>
+                            <option className="option" value={1}>Medium</option>
+                            <option className="option" value={2}>High</option>
                         </select>
                     </p>
-                    <div> Created:&ensp; {date} &emsp; By: &ensp; {this.props.username}
+                    <div> Created:&ensp; {this.props.task.createdAt} &emsp; By: &ensp; {this.props.task.createdBy}
                     </div>
                 </div>
                 <div className="row">

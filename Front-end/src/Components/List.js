@@ -4,57 +4,55 @@ import { Row, Col } from "reactstrap";
 import InputFrame from "./InputFrame";
 
 class List extends Component {
-
+  constructor(props){
+    super(props)
+    this.state={
+      dataInputFrame:{}
+    }
+  }
+  postToInputFrame(task){
+    console.log(task)
+    this.setState({
+      dataInputFrame:task
+    })
+  }
   list() {
     let i = 0;
-    if(!this.props.tasks.length){
-        return "..."
+    let status = ['Pendding', 'Progress', 'Done']
+    if (!this.props.tasks) {
+      return "..."
     }
     return this.props.tasks.map((task) => {
       i++;
       return (
-        <Row className="list" key={i} >
-          <Col xs="1" className="borderRadius">
+        <Row className="list" key={i} onClick={()=>this.postToInputFrame(task)}>
+          <Col xs="1" className="STT">
             {i}.
+                </Col>
+          <Col className="text">
+            {task.content}
           </Col>
-          <Col>{task.content}</Col>
           <Col xs="1" >
-            ticker
+            {status[task.status]}
           </Col>
         </Row>
       );
     });
   }
   render() {
-    // const list = this.list();
+    const list = this.list();
     return (
       <div>
-        
-        {/* <Container>{list}</Container>
-        <div className="right">
-            <InputFrame/>
-        </div> */}
-          <div className="font">
-            <div className="row">
+        <div className="font">
+          <div className="row">
             <div className="col-8">
-              <Row className="list">
-                <Col xs="1" className="STT">
-                  1.
-                </Col>
-                <Col className="text">
-                  Eat (No background means priority: medium; No icon means status: pending)
-                </Col>
-                <Col xs="1" >
-                  ticker
-                </Col>
-              </Row>
+              {list}
             </div>
             <div className="col-4">
-              <InputFrame/>
+              <InputFrame task={this.state.dataInputFrame}/>
             </div>
           </div>
-          </div>
-
+        </div>
       </div>
     );
   }
