@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import "../CSS/Filter.css";
 class Filter extends Component {
-  hideOptionDate(){
-      
+  hideOptionDate() {
+    if (document.getElementById("from-date-box").style.display === "block") {
+      document.getElementById("from-date-box").style.display = "none";
+    } else {
+      document.getElementById("from-date-box").style.display = "block";
+    }
   }
+
   render() {
     return (
       <div className="contain-box">
@@ -31,11 +36,12 @@ class Filter extends Component {
               <label className="filter-title">Filter: </label>
               <input
                 className="form-check-button"
+                onClick={() => this.hideOptionDate()}
                 type="checkbox"
                 id="gridCheck1"
               />
             </div>
-            <div className="from-date-box">
+            <div className="from-date-box" id="from-date-box">
               <label>From: </label>
               <select className="date-filter form-control shadow-none ">
                 <option selected>21-03-17 </option>
@@ -44,12 +50,8 @@ class Filter extends Component {
               <select className="date-filter form-control shadow-none ">
                 <option selected>21-04-17 </option>
               </select>
-              
+              <a className="btn-apply">Apply</a>
             </div>
-            <div className="from-date-box-2" id="from-date-box-2">
-                <a className="btn-apply">Apply</a>
-            </div>
-
           </div>
         </div>
       </div>
