@@ -46,9 +46,9 @@ class TaskManager extends Component {
         this.getData();
     }
     render() {
-        // if(!localStorage.getItem("token")){
-        //     this.props.history.push("/login");
-        // }
+        if(!localStorage.getItem("token")){
+            this.props.history.push("/login");
+        }
         return (
             <Fragment>
                 <NavBar username={this.state.user} />

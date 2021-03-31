@@ -15,9 +15,9 @@ class App extends Component {
       <BrowserRouter>
         <Fragment>
           <Switch>
-            {/* <Route exact path="/">
+            <Route exact path="/">
               {localStorage.getItem('token') ? <Redirect to="/tasklist" /> : <Redirect to="/login" />}
-            </Route> */}
+            </Route>
             <Route exact path="/login">
               <Login></Login>
             </Route>
