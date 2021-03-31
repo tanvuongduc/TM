@@ -11,7 +11,7 @@ class List extends Component {
     return this.props.tasks.map((task) => {
       i++;
       return (
-        <Row className="list">
+        <Row className="list" key={i}>
           <Col xs="1" className="borderRadius">
             {i}.
           </Col>
@@ -27,8 +27,11 @@ class List extends Component {
     const list = this.list();
     return (
       <div>
-        <Container>{list}</Container>
-        <InputFrame />
+        <Container>
+        <InputFrame/>
+        
+        </Container>
+        
       </div>
     );
   }
