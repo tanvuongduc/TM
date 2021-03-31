@@ -41,13 +41,7 @@ class TaskManager extends Component {
       <Fragment>
         <NavBar username={this.state.user} />
         <Filter />
-        <div className="container">
-          
-          <div className="left">
             <List tasks={this.state.tasks} />
-          </div>
-          <div className="right"></div>
-        </div>
       </Fragment>
     );
   }
