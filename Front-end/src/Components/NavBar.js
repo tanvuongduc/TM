@@ -9,6 +9,9 @@ class NavBar extends Component {
 
         };
     }
+    logout(){
+        localStorage.setItem('token','')
+    }
     render() {
         return (
 
@@ -23,8 +26,8 @@ class NavBar extends Component {
                             <button class="dropbtn" > Hi, {this.props.username} &ensp;
                                  <i class="fas fa-sort-down"> </i>
                             </button>
-                            <div class="dropdown-content">
-                                <a class="fas fa-sign-out-alt" href=" "> &ensp; Logout</a>
+                            <div className="dropdown-content">
+                                <a className="fas fa-sign-out-alt" href="http://localhost:4200/login" onClick={()=>this.logout()}> &ensp; Logout</a>
                             </div>
                         </div>
 
