@@ -36,12 +36,19 @@ class TaskManager extends Component {
         console.log(err);
       });
   };
+
+  onSelectTask(taskIndex){
+
+  }
+  onSort(sortObject){
+     
+  }
   render() {
     return (
       <Fragment>
         <NavBar username={this.state.user} />
-        <Filter />
-            <List tasks={this.state.tasks} />
+        <Filter onSort={this.onSort}/>
+        <List tasks={this.state.tasks} />
       </Fragment>
     );
   }

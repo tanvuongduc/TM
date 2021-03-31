@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import "../CSS/List.css";
 import { Row, Col } from "reactstrap";
 import InputFrame from "./InputFrame";
+
 class List extends Component {
 
   list() {
     let i = 0;
-    if(!this.props.tasks){
+    if(!this.props.tasks.length){
         return "..."
     }
     return this.props.tasks.map((task) => {
       i++;
       return (
-        <Row className="list" key={i}>
+        <Row className="list" key={i} >
           <Col xs="1" className="borderRadius">
             {i}.
           </Col>
@@ -28,6 +29,7 @@ class List extends Component {
     // const list = this.list();
     return (
       <div>
+        
         {/* <Container>{list}</Container>
         <div className="right">
             <InputFrame/>

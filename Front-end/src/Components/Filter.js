@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import "../CSS/Filter.css";
 class Filter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sort: {
+        softBy: "status",
+        direction: "DESC",
+      },
+    };
+  }
   hideOptionDate() {
     if (document.getElementById("from-date-box").style.display === "block") {
       document.getElementById("from-date-box").style.display = "none";
@@ -9,6 +18,22 @@ class Filter extends Component {
     }
   }
 
+  onSortChange(ev) {
+    this.setState({
+      soft: {
+        softBy: ev.target.value,
+      },
+    });
+    this.props.onSort(this.state.soft);
+  }
+  onDirectionChange(ev) {
+    this.setState({
+      soft: {
+        direction: ev.target.value,
+      },
+    });
+    this.props.onSort(this.state.soft);
+  }
   render() {
     return (
       <div className="contain-box">
@@ -17,16 +42,22 @@ class Filter extends Component {
           <div className="sort-by-bar">
             <div className="sort-by">
               <span className="sort-by-title">Sort by:</span>
-              <select className="sort-select form-control shadow-none ">
-                <option selected>Status </option>
-                <option>Pending</option>
-                <option>Progress</option>
-                <option>Done</option>
+              <select
+                className="sort-select form-control shadow-none "
+                value={this.state.soft.softBy}
+                onChange={(ev) => this.onSortChange(ev)}
+              >
+                <option value="status">Status </option>
+                <option value="priority">Priority</option>
               </select>
             </div>
             <div className="direction-box">
               <span className="direction-title">Direction:</span>
-              <select className=" direction-select form-control shadow-none ">
+              <select
+                className=" direction-select form-control shadow-none "
+                value={this.state.sort.direction}
+                onChange={(ev) => this.onDirectionChange(ev)}
+              >
                 <option selected>DESC </option>
                 <option>ASC</option>
               </select>
