@@ -22,7 +22,7 @@ app.use(bodyParser.json())
 //config routes cua works
 app.use('/work', workRoute)
 app.use('/login', loginRouter)
-app.use('./create', createUser)
+app.use('/create', createUser)
 
 //routers
 app.get('/', (req, res, next) => {
