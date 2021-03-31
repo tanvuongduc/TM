@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "../CSS/taskManager.css";
-import { Container, Row, Col } from "reactstrap";
+import "../CSS/List.css";
+import { Row, Col } from "reactstrap";
 import InputFrame from "./InputFrame";
 class List extends Component {
+
   list() {
     let i = 0;
     if(!this.props.tasks){
@@ -24,14 +25,34 @@ class List extends Component {
     });
   }
   render() {
-    const list = this.list();
+    // const list = this.list();
     return (
       <div>
-        <Container>
-        <InputFrame/>
-        
-        </Container>
-        
+        {/* <Container>{list}</Container>
+        <div className="right">
+            <InputFrame/>
+        </div> */}
+          <div className="font">
+            <div className="row">
+            <div className="col-8">
+              <Row className="list">
+                <Col xs="1" className="STT">
+                  1.
+                </Col>
+                <Col className="text">
+                  Eat (No background means priority: medium; No icon means status: pending)
+                </Col>
+                <Col xs="1" >
+                  ticker
+                </Col>
+              </Row>
+            </div>
+            <div className="col-4">
+              <InputFrame/>
+            </div>
+          </div>
+          </div>
+
       </div>
     );
   }
