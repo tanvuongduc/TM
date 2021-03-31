@@ -1,12 +1,12 @@
 .input-frame-container {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    padding-top: 55px;
+    /* padding-top: 55px; */
     display: block;
     padding-right: 20px;
-    width: 30%;
-    float: right;
-    margin-top: 50px;
+    /* width: 30%; */
+    /* float: right; */
+    /* margin-top: 50px; */
     border-left: 1.5px solid #707070;
 }
 
