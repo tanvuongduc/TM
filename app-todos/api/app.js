@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 
 
 //start the server
-const port = app.get('port') || 3000
+const port = app.get('port') || 3001
 app.listen(port, () => 
     console.log(`Server is listening on port ${port}`)
 )
