@@ -71,6 +71,7 @@
     width: auto;
     height: auto;
     margin-left: 15px;
+    display: none;
 }
 .from-date-box label{
     padding-left: 15px;
@@ -83,7 +84,8 @@
     float: left;
     font-weight: 300;
 }
-.from-date-box-2 a{
+
+.from-date-box a{
     display: block;
     text-decoration: none;
     color: aliceblue;
