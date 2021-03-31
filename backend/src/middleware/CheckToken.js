@@ -1,7 +1,11 @@
 const Token = require('../models/Token')
 const Auth = require('../models/Auth')
 const CheckToken = (req, res, next) => {
-    console.log(req.body)
+    let regx = /^[a-zA-Z0-9]{1,100}$/
+    if (!regx.exec(req.body.token)){
+        res.json("Format err")
+        return
+    }
     Token.find({
         token: req.body.token,
     }, async (err, data) => {
