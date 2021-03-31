@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import Login from './components/mainlogin';
-import readAllTodo from './fetch/main';
+import readAllUser from './fetch/main';
+// import Work from './components/mainwork';
 
 class App extends Component {
   render() {
     return (
       <React.StrictMode>
-      <readAllTodo />
-      </React.StrictMode>,
-
-      <Login></Login>
+        <readAllUser />
+        <Login></Login>
+      </React.StrictMode>
+      // <Work></Work>
     )
   }
 }
