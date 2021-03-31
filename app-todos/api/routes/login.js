@@ -2,13 +2,6 @@ const exrpess = require("express");
 const router = exrpess.Router();
 const User = require('../models/User')
 
-<<<<<<< HEAD
-
-=======
-router.get('/', async (req, res) => {
-    res.json('ok')
-})
->>>>>>> 70c1a36040c22bf1704d24e06b03b94ac6edb831
 
 router.post('/', async (req, res) => {
     const userName = req.body.userName;
@@ -29,19 +22,6 @@ router.post('/', async (req, res) => {
     res.json({ login: false })
 })
 
-function insertToken(token, userName) {
-    const url = 'http://localhost:3000/api/todos';
-    const data = {
-        idToken: token,
-        userName: userName
-    };
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    }).then(r => r.json()).then(d => callback(d));
-}
+
 
 module.exports = router;
