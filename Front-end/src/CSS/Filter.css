@@ -1,0 +1,99 @@
+.filter-box{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin-top: 25px;
+    padding: 0 40px;
+    margin-bottom: 100px;
+    
+
+}
+.my-task-title{
+   color: #64a7dc;
+   font-weight: 300;
+}
+.sort-by{
+    float: left;
+}
+.sort-by-bar .sort-by-title{
+    float: left;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-left: 22px;
+}
+.sort-select{
+    width: 115px;
+    height: 36px;
+    color: black;
+    z-index: 1;
+    font-weight: 300;
+}
+.form-control option{
+    font-size: 16px;
+    font-weight: 300;
+}
+.direction-box{
+    float: left;
+}
+.direction-title{
+    float: left;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-left: 22px;
+}
+.direction-select{
+    width: 90px;
+    height: 36px;
+    color: black;
+    z-index: 1;
+    font-weight: 300;
+}
+.form-check{
+    width: auto;
+    height: auto;
+    margin-left: 500px;
+    float: left;
+}
+.filter-title{
+    display: block;
+    float: left;
+    margin-top: 5px;
+}
+.form-check-button{
+    width: 30px;
+    height: 30px;
+    margin-top: 2px;
+    margin-left: 10px;
+}
+.from-date-box{
+    width: auto;
+    height: auto;
+    margin-left: 15px;
+}
+.from-date-box label{
+    padding-left: 15px;
+    padding-top: 6px;
+    padding-right: 15px;
+    float: left;
+}
+.date-filter{
+    width: 130px;
+    float: left;
+    font-weight: 300;
+}
+.from-date-box a{
+    display: block;
+    text-decoration: none;
+    color: aliceblue;
+    background-color: #64a7dc;
+    float: left;
+    margin-left: 27px;
+}
+.btn-apply{
+  
+    cursor: pointer;
+    border-radius:5px;
+    text-align: center;
+    padding:  6px 30px 8px;
+    
+ 
+}
