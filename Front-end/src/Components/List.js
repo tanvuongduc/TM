@@ -3,7 +3,18 @@ import "../CSS/List.css";
 import { Row, Col } from "reactstrap";
 import InputFrame from "./InputFrame";
 class List extends Component {
-
+  constructor(props){
+    super(props)
+    this.state={
+      dataInputFrame:{}
+    }
+  }
+  postToInputFrame(task){
+    console.log(task)
+    this.setState({
+      dataInputFrame:task
+    })
+  }
   list() {
     let i = 0;
     let status = ['Pendding', 'Progress', 'Done']
@@ -13,7 +24,7 @@ class List extends Component {
     return this.props.tasks.map((task) => {
       i++;
       return (
-        <Row className="list" key={i}>
+        <Row className="list" key={i} onClick={()=>this.postToInputFrame(task)}>
           <Col xs="1" className="STT">
             {i}.
                 </Col>
@@ -37,7 +48,7 @@ class List extends Component {
               {list}
             </div>
             <div className="col-4">
-              <InputFrame />
+              <InputFrame task={this.state.dataInputFrame}/>
             </div>
           </div>
         </div>
