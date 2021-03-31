@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../CSS/List.css";
-import { Container, Row, Col } from "reactstrap";
-import InputFrame from "./InputFrame";
+import { Row, Col } from "reactstrap";
+// import InputFrame from "./InputFrame";
 class List extends Component {
   // list() {
   //   let i = 0;
@@ -33,7 +33,7 @@ class List extends Component {
         </div> */}
           <div className="font">
             <div className="row">
-            <div className="col-8 boder">
+            <div className="col-8">
               <Row className="list">
                 <Col xs="1" className="STT">
                   1.
