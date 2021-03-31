@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { BrowserRouter } from 'react';
 
 class Login extends Component {
     render() {
@@ -10,7 +11,7 @@ class Login extends Component {
                         <h2>Manager</h2>
                     </div>
                     <div className='mainright'>
-                        <form>
+                        <form action='./components/mainwork'>
                             <input type='text' placeholder='Username'></input>
                             <input type='password' placeholder='Password'></input>
                             <br></br>
