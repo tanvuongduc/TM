@@ -4,7 +4,6 @@ import "../CSS/taskManager.css";
 import Filter from "./Filter";
 import List from "./List";
 import axios from "axios";
-import InputFrame from "./InputFrame";
 import NavBar from "./NavBar";
 class TaskManager extends Component {
     constructor(props) {

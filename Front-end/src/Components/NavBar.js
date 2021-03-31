@@ -1,5 +1,4 @@
-import { Component } from "react";
-import React, { Components, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import "../CSS/NavBar.css";
 
 class NavBar extends Component {
