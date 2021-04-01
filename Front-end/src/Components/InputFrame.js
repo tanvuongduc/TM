@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import "../CSS/InputFrame.css";
 
 // var today = new Date();
@@ -18,23 +19,39 @@ class InputFrame extends Component {
 
         };
     }
+    async addNewTask() {
+        console.log(document.getElementById('task').value)
+        let data = {
+            token: localStorage.getItem('token'),
+            content: document.getElementById('task').value,
+            status: document.getElementById('status').value,
+            priority: document.getElementById('priority').value
+        };
+        await axios.post(`http://localhost:3000/task/add`, data)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    }
     render() {
         return (
             <div className="input-frame-container" >
                 <div className="form">
                     <div>
                         <label className="pdr22">Task: &ensp; </label>
-                        <input className="option" id="task" name="task" type="text" placeholder="Enter your task here" value={this.props.task.content}/>
+                        <input className="option" id="task" name="task" type="text" placeholder="Enter your task here" value={this.props.task.content} />
                     </div>
                     <div>
                         <label className="pdr10">Status: &ensp; </label>
-                        <select className="option" value={this.props.task.status}>
+                        <select className="option" id="status" value={this.props.task.status}>
                             <option className="option" value={0}>Pending</option>
                             <option className="option" value={1}>Progress</option>
                             <option className="option" value={2}>Done</option>
                         </select>
                         <label className="pdr10 mgl20"> &ensp; &nbsp; &emsp; Priority:&ensp; </label>
-                        <select className="option" value={this.props.task.priority}>
+                        <select className="option" id="priority" value={this.props.task.priority}>
                             <option className="option" value={0}>Low</option>
                             <option className="option" value={1}>Medium</option>
                             <option className="option" value={2}>High</option>
@@ -51,7 +68,7 @@ class InputFrame extends Component {
                         <button className="buttonRight" name="Clear" type='button'>Clear</button>
                     </div>
                     <div className="col-4">
-                        <button className="buttonRight" name="Add new" type='button'>Add new</button>
+                        <button className="buttonRight" name="Add new" type='button' onClick={() => this.addNewTask()}>Add new</button>
                     </div>
                 </div>
             </div>

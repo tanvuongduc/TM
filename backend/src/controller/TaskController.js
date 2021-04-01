@@ -46,7 +46,7 @@ class TaskController {
             status: 0,     //0: Pendding, 1: Progress, 2: Done
             createdBy: auth.user,
             createdAt: Date.now(),
-            priority:0,
+            priority:req.body.priority,
         }
 
         await Task.create(data, async (err, r) => {
@@ -67,7 +67,7 @@ class TaskController {
                 status: 0,     //0: Pendding, 1: Progress, 2: Done
                 createdBy: auth.user,
                 createdAt: Date.now(),
-                priority:0,
+                priority:req.body.priority,
             }
             let staff = await Auth.findById(req.body._id).exec()
             if (!staff) {
