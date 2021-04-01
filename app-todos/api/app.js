@@ -3,12 +3,15 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const mongoClient = require('mongoose')
 const workRoute = require('./routes/work')
-const loginRouter =require('./routes/login')
+const loginRouter = require('./routes/login')
 const createUser = require('./routes/createUsers')
+const userRoute = require('./routes/user')
+const User = require('./models/User')
+// const Work = require('../models/Work')
 
-mongoClient.connect('mongodb://localhost/task_list', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
+mongoClient.connect('mongodb://localhost/TM', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
     .then(() => console.log("Connect database successfully"))
     .catch((error) => console.error("Connect database false"))
@@ -23,12 +26,32 @@ app.use(bodyParser.json())
 app.use('/work', workRoute)
 app.use('/login', loginRouter)
 app.use('/create', createUser)
+app.use('/user', userRoute)
 
 //routers
 app.get('/', (req, res, next) => {
     return res.status(200).json({
         message: 'Server was run'
     })
+
+})
+
+app.get("/users/:userName", (req, res) => {
+    const user = new User({
+        userName: req.params.userName
+    })
+    res.json(user)
+    user.save()
+})
+
+app.get("/works/:userId/:name", (req, res) => {
+    const work = new Work({
+        name: req.params.name,
+        userId: req.params.userId,
+        userName: userId.userName
+    })
+    res.json(work)
+    user.save()
 })
 
 //bắt lỗi
@@ -54,6 +77,6 @@ app.use((req, res, next) => {
 
 //start the server
 const port = app.get('port') || 3000
-app.listen(port, () => 
+app.listen(port, () =>
     console.log(`Server is listening on port ${port}`)
 )

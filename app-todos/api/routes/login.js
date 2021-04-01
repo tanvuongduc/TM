@@ -2,13 +2,6 @@ const exrpess = require("express");
 const router = exrpess.Router();
 const User = require('../models/User')
 
-<<<<<<< HEAD
-
-=======
-router.get('/', async (req, res) => {
-    res.json('ok')
-})
->>>>>>> 70c1a36040c22bf1704d24e06b03b94ac6edb831
 
 router.post('/', async (req, res) => {
     const userName = req.body.userName;
