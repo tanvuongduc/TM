@@ -2,16 +2,13 @@ const exrpess = require("express");
 const router = exrpess.Router();
 const User = require('../models/User')
 
-router.get('/', async (req, res) => {
-    res.json('ok')
-})
+
 
 router.post('/', async (req, res) => {
     const userName = req.body.userName;
     const passWord = req.body.passWord;
 
     const users = await User.find()
-    console.log(users)
     for (let i in users) {
         if (users[i].userName === userName && users[i].passWord === passWord) {
 
