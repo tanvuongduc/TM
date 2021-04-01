@@ -41,8 +41,6 @@ class TaskManager extends Component {
       });
   };
   updateTasks(tasks, sort) {
-    console.log(tasks)
-    console.log(sort)
     this.setState({
       tasks: tasks,
       sort: sort

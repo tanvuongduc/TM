@@ -7,13 +7,13 @@ class List extends Component {
   constructor(props){
     super(props)
     this.state={
-      dataInputFrame:{}
+      task:{}
     }
   }
-  postToInputFrame(task){
-    console.log(task)
+
+  updateInputFrame(task){
     this.setState({
-      dataInputFrame:task
+      task:task
     })
   }
   list() {
@@ -25,7 +25,7 @@ class List extends Component {
     return this.props.tasks.map((task) => {
       i++;
       return (
-        <Row className="list" key={i} onClick={()=>this.postToInputFrame(task)}>
+        <Row className="list" key={i} onClick={()=>this.updateInputFrame(task)}>
           <Col xs="1" className="STT">
             {i}.
                 </Col>
@@ -49,7 +49,7 @@ class List extends Component {
               {list}
             </div>
             <div className="col-4">
-              <InputFrame task={this.state.dataInputFrame}/>
+              <InputFrame task={this.state.task} update={(task)=>this.updateInputFrame(task)}/>
             </div>
           </div>
         </div>

@@ -13,37 +13,49 @@ import "../CSS/InputFrame.css";
 // weekday[6] = "Sat";
 // var date = weekday[today.getDay()] + ', ' + today.getFullYear() + ' - ' + (today.getMonth() + 1) + ' - ' + today.getDate();
 class InputFrame extends Component {
-    constructor(props) {
-        super(props);
-        console.log(props)
-        this.state = {
-            content: props.content,
-            status: props.status,
-            priority: props.priority
-        };
+    componentDidMount(){
+        console.log(this.props.task)
     }
-    onContentChange(ev){
-        this.setState({
-            content: ev.target.value
-        })
+    async onContentChange(ev){
+        let data = {
+            content: ev.target.value,
+            status: this.props.task.status,
+            priority: this.props.task.priority,
+            createdBy: this.props.task.createdBy,
+            createdAt: this.props.task.createdAt
+
+        }
+        await this.props.update(data)
     }
-    onStatusChange(ev){
-        this.setState({
-            status: ev.target.value
-        })
+    async onStatusChange(ev){
+        let data = {
+            content: this.props.task.content,
+            status: ev.target.value,
+            priority: this.props.task.priority,
+            createdBy: this.props.task.createdBy,
+            createdAt: this.props.task.createdAt
+        }
+        
+        await this.props.update(data)
     }
-    onPriorityChange(ev){
-        this.setState({
-            priority: ev.target.value
-        })
+    async onPriorityChange(ev){
+        let data = {
+            content: this.props.task.content,
+            status: this.props.task.status,
+            priority: ev.target.value,
+            createdBy: this.props.task.createdBy,
+            createdAt: this.props.task.createdAt
+        }
+        console.log(data)
+        await this.props.update(data)
     }
     async addNewTask() {
         console.log(document.getElementById('task').value)
         let data = {
             token: localStorage.getItem('token'),
-            content: this.state.content,
-            status: this.state.status,
-            priority: this.state.priority
+            content: this.props.task.content,
+            status: this.props.task.status,
+            priority: this.props.task.priority
         };
         await axios.post(`http://localhost:3000/task/add`, data)
             .then((res) => {
@@ -59,23 +71,23 @@ class InputFrame extends Component {
                 <div className="form">
                     <div>
                         <label className="pdr22">Task: &ensp; </label>
-                        <input className="option" id="task" name="task" type="text" value={this.state.content} placeholder="Enter your task here" onChange={(ev)=>{this.onContentChange(ev)}} />
+                        <input className="option" id="task" name="task" type="text" value={this.props.task.content?this.props.task.content:""} placeholder="Enter your task here" onChange={(ev)=>{this.onContentChange(ev)}} />
                     </div>
                     <div>
                         <label className="pdr10">Status: &ensp; </label>
-                        <select className="option" value={this.state.status} onChange={(ev)=>this.onStatusChange(ev)}>
+                        <select className="option" value={this.props.task.status?this.props.task.status:0} onChange={(ev)=>this.onStatusChange(ev)}>
                             <option className="option" value={0}>Pending</option>
                             <option className="option" value={1}>Progress</option>
                             <option className="option" value={2}>Done</option>
                         </select>
                         <label className="pdr10 mgl20"> &ensp; &nbsp; &emsp; Priority:&ensp; </label>
-                        <select className="option" value={this.state.priority} onChange={(ev)=>this.onPriorityChange(ev)}>
+                        <select className="option" value={this.props.task.priority?this.props.task.priority:0} onChange={(ev)=>this.onPriorityChange(ev)}>
                             <option className="option" value={0}>Low</option>
                             <option className="option" value={1}>Medium</option>
                             <option className="option" value={2}>High</option>
                         </select>
                     </div>
-                    <div> Created:&ensp; {this.props.task.createdAt} &emsp; By: &ensp; {this.props.task.createdBy}
+                <div> Created:&ensp; {this.props.task.createdAt?this.props.task.createdAt:Date.now()} &emsp; By: &ensp; {this.props.task.createdBy?this.props.task.createdBy:""}
                     </div>
                 </div>
                 <div className="row">
