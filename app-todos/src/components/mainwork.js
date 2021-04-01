@@ -101,7 +101,7 @@ class Work extends Component {
                                     </div>
                                     <div className='add-task'>
                                         <label>Created: </label>
-                                        <a>web, 2021-03-17</a>&emsp;&emsp;&emsp;
+                                        <a>web, 2021-03-17</a>&emsp;&emsp;
                                         <label>By: </label>
                                         <a>you</a>
                                     </div>

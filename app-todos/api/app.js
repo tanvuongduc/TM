@@ -27,6 +27,7 @@ app.use('/work', workRoute)
 app.use('/login', loginRouter)
 app.use('/create', createUser)
 app.use('/user', userRoute)
+app.use('./create', createUser)
 
 //routers
 app.get('/', (req, res, next) => {
