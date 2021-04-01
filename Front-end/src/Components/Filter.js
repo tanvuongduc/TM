@@ -44,7 +44,7 @@ class Filter extends Component {
               <span className="sort-by-title">Sort by:</span>
               <select
                 className="sort-select form-control shadow-none "
-                value={this.state.soft.softBy}
+                value={this.state.sort.softBy}
                 onChange={(ev) => this.onSortChange(ev)}
               >
                 <option value="status">Status </option>

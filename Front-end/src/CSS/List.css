@@ -1,6 +1,6 @@
 
 .list{
-    padding-left: 40px;
+
     margin-bottom: 2px;
     border-radius: 3px;   
     font-family: 'Roboto', sans-serif;
@@ -10,10 +10,14 @@
     background-color: #ececec; 
 }
 .STT{
-    padding-right: 0px;
     text-align: center;
     align-items: center;
+    margin-left: -15px;
+    padding-right: 0px;
 }
 .text{
-    padding-left: 0px;
+    margin-left: -20px;
+}
+.font{
+    padding-left: 40px;
 }

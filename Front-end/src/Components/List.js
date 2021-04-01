@@ -47,6 +47,18 @@ class List extends Component {
           <div className="row">
             <div className="col-8">
               {list}
+              {/* <Row className="list" key={i} onClick={()=>this.postToInputFrame(task)}> */}
+              {/* <Row className="list">
+                <Col xs="1" className="STT">
+                  1.
+                      </Col>
+                <Col className="text">
+                  ăn ngủ để sống khỏe
+                </Col>
+                <Col xs="1" >
+                  cười
+                </Col>
+              </Row> */}
             </div>
             <div className="col-4">
               <InputFrame task={this.state.dataInputFrame}/>
