@@ -1,9 +1,13 @@
 const mongoose = require('mongoose')
-const WorkSchema = mongoose.Schema({
-    name: String,
-    userId: { type: mongoose.Schema.Types.ObjectId },
+const Schema = mongoose.Schema
+
+//cấu hình cho kiểu dữ liệu của work bằng Schema
+const WorkSchema = new Schema({
+    name: {
+        type: String
+    }
 })
 
-
 //đăng ký lớp Work 
-module.exports = mongoose.model('Work', WorkSchema)
+const Work = mongoose.model('Work', WorkSchema)
+module.exports = Work
