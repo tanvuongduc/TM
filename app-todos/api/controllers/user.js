@@ -53,11 +53,13 @@ const updateUser = async (req, res, next) => {
     return res.status(200).json({ user: result })
 }
 
+
+
 module.exports = {
     createUser,
     getAllUser,
     updateUser,
     // deleteOneUser,
     getOneUser,
-    replaceUser
+    replaceUser,
 }

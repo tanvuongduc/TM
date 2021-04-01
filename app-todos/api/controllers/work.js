@@ -33,10 +33,10 @@ const getAllWork = (req, res, next) => {
 }
 
 const getOneWork = async (req, res, next) => {
-    const { userID } = req.params
+    const { userId } = req.params
 
     //get user
-    const user = await User.findById(userID).populate('works')
+    const user = await User.findById(userId).populate('works')
     console.log('get work', user.works);
     return res.status(200).json({ works: user.works })
 }

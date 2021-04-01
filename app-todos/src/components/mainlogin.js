@@ -1,8 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter } from 'react';
-
+import axios from 'axios'
 class Login extends Component {
     render() {
+        axios({
+            methods: 'POST',
+            url: 'http://localhost:3000/login',
+            data: null
+        })
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
         return (
             <Fragment>
                 <div className='mainlogin'>
