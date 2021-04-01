@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import "../CSS/InputFrame.css";
 
-var today = new Date();
-var weekday = new Array(7);
-weekday[0] = "Sun";
-weekday[1] = "Mon";
-weekday[2] = "Tue";
-weekday[3] = "Wed";
-weekday[4] = "Thu";
-weekday[5] = "Fri";
-weekday[6] = "Sat";
-var date = weekday[today.getDay()] + ', ' + today.getFullYear() + ' - ' + (today.getMonth() + 1) + ' - ' + today.getDate();
+// var today = new Date();
+// var weekday = new Array(7);
+// weekday[0] = "Sun";
+// weekday[1] = "Mon";
+// weekday[2] = "Tue";
+// weekday[3] = "Wed";
+// weekday[4] = "Thu";
+// weekday[5] = "Fri";
+// weekday[6] = "Sat";
+// var date = weekday[today.getDay()] + ', ' + today.getFullYear() + ' - ' + (today.getMonth() + 1) + ' - ' + today.getDate();
 class InputFrame extends Component {
     constructor(props) {
         super(props);
@@ -22,11 +22,11 @@ class InputFrame extends Component {
         return (
             <div className="input-frame-container" >
                 <div className="form">
-                    <p>
+                    <div>
                         <label className="pdr22">Task: &ensp; </label>
                         <input className="option" id="task" name="task" type="text" placeholder="Enter your task here" value={this.props.task.content}/>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <label className="pdr10">Status: &ensp; </label>
                         <select className="option" value={this.props.task.status}>
                             <option className="option" value={0}>Pending</option>
@@ -39,7 +39,7 @@ class InputFrame extends Component {
                             <option className="option" value={1}>Medium</option>
                             <option className="option" value={2}>High</option>
                         </select>
-                    </p>
+                    </div>
                     <div> Created:&ensp; {this.props.task.createdAt} &emsp; By: &ensp; {this.props.task.createdBy}
                     </div>
                 </div>

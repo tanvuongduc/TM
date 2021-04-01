@@ -8,6 +8,9 @@ class Filter extends Component {
       tasks: props.tasks
     }
   }
+  componentDidMount() {
+    this.onSort()
+  }
   hideOptionDate() {
     if (document.getElementById("from-date-box").style.display === "block") {
       document.getElementById("from-date-box").style.display = "none";
@@ -15,7 +18,7 @@ class Filter extends Component {
       document.getElementById("from-date-box").style.display = "block";
     }
   }
-  async onSort(sort) {
+  async onSort() {
     let sortArray = [0, 1, 2]
     let res = []
 
@@ -28,7 +31,7 @@ class Filter extends Component {
         })
       }
       else {
-        arr = this.state.tasks.filter(task => {
+        arr = this.props.tasks.filter(task => {
           return task.priority === v
         })
       }
@@ -65,11 +68,11 @@ class Filter extends Component {
       }
       res = res.concat(arrSorted)
     })
-    console.log(sort)
+    if(!res.length)return
     this.setState({
       tasks: res
     })
-    this.props.updateTasks(res, sort)
+    this.props.updateTasks(res, this.state.sort)
   }
   async onSortChange(ev) {
     let sort = {
@@ -79,7 +82,7 @@ class Filter extends Component {
     await this.setState({
       sort: sort
     })
-    this.onSort(sort);
+    this.onSort();
   }
   async onDirectionChange(ev) {
     let sort = {
@@ -89,7 +92,7 @@ class Filter extends Component {
     await this.setState({
       sort: sort
     })
-    this.onSort(sort);
+    this.onSort();
   }
   render() {
     return (
