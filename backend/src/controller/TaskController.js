@@ -14,7 +14,6 @@ class TaskController {
                 data.tasks = tasks
                 break
             case 1:
-                data.tasks = tasks
                 data.staffs = await Auth.find().select('user').$where(`this.permission<${auth.permission}`).exec()
                 break
             case 2:
@@ -46,7 +45,8 @@ class TaskController {
             content: req.body.content,
             status: 0,     //0: Pendding, 1: Progress, 2: Done
             createdBy: auth.user,
-            createdAt: Date.now()
+            createdAt: Date.now(),
+            priority:0,
         }
 
         await Task.create(data, async (err, r) => {
@@ -66,7 +66,8 @@ class TaskController {
                 content: req.body.content,
                 status: 0,     //0: Pendding, 1: Progress, 2: Done
                 createdBy: auth.user,
-                createdAt: Date.now()
+                createdAt: Date.now(),
+                priority:0,
             }
             let staff = await Auth.findById(req.body._id).exec()
             if (!staff) {
