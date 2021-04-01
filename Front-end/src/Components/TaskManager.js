@@ -4,12 +4,15 @@ import "../CSS/taskManager.css";
 import Filter from "./Filter";
 import List from "./List";
 import axios from "axios";
-import InputFrame from "./InputFrame";
 import NavBar from "./NavBar";
 class TaskManager extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sort: {
+        sortBy: "status",
+        direction: "ASC"
+      },
       user: "",
       tasks: [],
     };
@@ -30,24 +33,29 @@ class TaskManager extends Component {
             tasks: tasks,
           });
         } else {
+          localStorage.setItem("token", '')
         }
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  onSelectTask(taskIndex){
-
-  }
-  onSort(sortObject){
-     
+  updateTasks(tasks, sort) {
+    console.log(tasks)
+    console.log(sort)
+    this.setState({
+      tasks: tasks,
+      sort: sort
+    })
   }
   render() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push('login')
+    }
     return (
       <Fragment>
         <NavBar username={this.state.user} />
-        <Filter onSort={this.onSort}/>
+        <Filter  updateTasks={(tasks,sort) => this.updateTasks(tasks,sort)} tasks={this.state.tasks} sort={this.state.sort}/>
         <List tasks={this.state.tasks} />
       </Fragment>
     );

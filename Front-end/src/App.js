@@ -23,9 +23,7 @@ class App extends Component {
             </Route>
             <Route exact path="/tasklist">
                 <TaskManager/>
-             </Route>
-
-             
+             </Route>    
            </Switch>
         </Fragment>
       </BrowserRouter>
