@@ -141,7 +141,7 @@ class Filter extends Component {
               <select className="date-filter form-control shadow-none ">
                 <option selected>21-04-17 </option>
               </select>
-              <div className="btn-apply">Apply</div>
+              <a className="btn-apply">Apply</a>
             </div>
           </div>
         </div>
