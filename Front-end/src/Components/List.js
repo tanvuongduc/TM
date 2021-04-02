@@ -7,25 +7,35 @@ class List extends Component {
   constructor(props){
     super(props)
     this.state={
-      dataInputFrame:{}
+      dataInputFrame:{},
+      selectedIndex: -1,
     }
   }
-  postToInputFrame(task){
+  postToInputFrame(task, i){
     console.log(task)
     this.setState({
-      dataInputFrame:task
+      dataInputFrame:task,
+      selectedIndex:i,
     })
   }
+
+  //
+  
+  //
   list() {
     let i = 0;
     let status = ['Pendding', 'Progress', 'Done']
+    let priority = ['Medium', 'Low', 'High']
+    //
+
+    //
     if (!this.props.tasks) {
       return "..."
     }
-    return this.props.tasks.map((task) => {
+    return this.props.tasks.map((task, i) => {
       i++;
       return (
-        <Row className="list" key={i} onClick={()=>this.postToInputFrame(task)}>
+        <Row className={(i!=this.state.selectedIndex)?priority[task.priority]:'list select'} key={i} onClick={()=>this.postToInputFrame(task, i)}>
           <Col xs="1" className="STT">
             {i}.
                 </Col>
@@ -47,18 +57,6 @@ class List extends Component {
           <div className="row">
             <div className="col-8">
               {list}
-              {/* <Row className="list" key={i} onClick={()=>this.postToInputFrame(task)}> */}
-              {/* <Row className="list">
-                <Col xs="1" className="STT">
-                  1.
-                      </Col>
-                <Col className="text">
-                  ăn ngủ để sống khỏe
-                </Col>
-                <Col xs="1" >
-                  cười
-                </Col>
-              </Row> */}
             </div>
             <div className="col-4">
               <InputFrame task={this.state.dataInputFrame}/>

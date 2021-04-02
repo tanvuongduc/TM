@@ -21,3 +21,15 @@
 .font{
     padding-left: 40px;
 }
+.select{
+    background-color: #c7d8e6;
+}
+.Low{
+    background-color: #cce8ff;
+}
+.High{
+    background-color: #ffc6c6;
+}
+.Medium{
+    background-color: white;
+}
