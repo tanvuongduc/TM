@@ -44,7 +44,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:4200/login',{
+        fetch('https://jsonplaceholder.typicode.com/users',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'},

@@ -6,9 +6,9 @@ const User = require('../models/User')
 router.get('/', async(req, res ) =>{
     try {
         const user = await User.find()
-        res.json(user)
+        res.status(200).send(user)
     } catch (error) {
-        res.json(error)
+        res.status(500).send(error)
     }
 });
  
