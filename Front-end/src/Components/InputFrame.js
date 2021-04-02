@@ -18,6 +18,7 @@ class InputFrame extends Component {
     }
     async btnClear() {
         let data = {
+            _id: this.props.task._id,
             content: "",
             status: 0,
             priority: 0,
@@ -29,10 +30,33 @@ class InputFrame extends Component {
     }
     async btnUpdate() {
         let data = {
+            token: localStorage.getItem('token'),
+            _id: this.props.task._id,
             content: this.props.task.content,
             status: this.props.task.status,
         }
-        await this.props.update(data)
+        console.log(data)
+        await axios.put(`http://localhost:3000/task/edittaskid`, data)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+    async btnRemove() {
+        let data = {
+            token: localStorage.getItem('token'),
+            _id: this.props.task._id,
+        }
+        console.log(data)
+        await axios.delete(`http://localhost:3000/task/deletetask`, data)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     async btnAddNew() {
         let data = {
@@ -63,6 +87,7 @@ class InputFrame extends Component {
     }
     async onContentChange(ev) {
         let data = {
+            _id: this.props.task._id,
             content: ev.target.value,
             status: this.props.task.status,
             priority: this.props.task.priority,
@@ -74,6 +99,7 @@ class InputFrame extends Component {
     }
     async onStatusChange(ev) {
         let data = {
+            _id: this.props.task._id,
             content: this.props.task.content,
             status: ev.target.value,
             priority: this.props.task.priority,
@@ -85,6 +111,7 @@ class InputFrame extends Component {
     }
     async onPriorityChange(ev) {
         let data = {
+            _id: this.props.task._id,
             content: this.props.task.content,
             status: this.props.task.status,
             priority: ev.target.value,
@@ -122,7 +149,7 @@ class InputFrame extends Component {
                 </div>
                 <div className="row">
                     <div className="col-4">
-                        <button className={!this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Remove" type='button'>Remove</button>
+                        <button className={!this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Remove" type='button' onClick={()=>this.btnRemove()}>Remove</button>
                     </div>
                     <div className="col-4">
                         <button className={!this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Clear" type='button' onClick={() => this.btnClear()}>Clear</button>

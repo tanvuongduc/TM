@@ -110,10 +110,13 @@ class TaskController {
     }
     async editTaskId(req, res) {
         const auth = req.auth
+        console.log(req.body._id)
         let task = await Task.findById(req.body._id).exec()
-        if (auth.user === task.createdBy) {
+        
+        if (task&&auth.user === task.createdBy) {
             task.content = req.body.content ? req.body.content : "Trống kìa thằng ngu"
-            task.status = (req.body.status>2||req.body.status<0)?req.body.status:0
+            task.status = (req.body.status>2||req.body.status<0)?0:req.body.status
+            console.log(task)
             await task.save()
             res.json(`Success update!`)
         }
@@ -126,7 +129,7 @@ class TaskController {
     async deleteTaskId(req, res) {
         const auth = req.auth
         let task = await Task.findById(req.body._id).exec()
-
+        console.log(task)
         if (task && auth.user == task.createdBy) {
             await task.delete()
             for (let i = 0; i < auth.tasks.length; i++) {
