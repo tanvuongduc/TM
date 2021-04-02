@@ -4,6 +4,12 @@ import { readAllUser } from '../fetch/fetch'
 /*==========================================================*/
 
 class Login extends Component {
+    constructor(posts) {
+        super(posts)
+        this.state = {
+            data: ''
+        }
+    }
 
     componentDidMount() {
         readAllUser().then(res => {
@@ -13,7 +19,10 @@ class Login extends Component {
         })
     }
 
+
+
     render() {
+        console.log(this.state.data)
         return (
             <Fragment>
                 <div className='mainlogin'>
@@ -33,6 +42,15 @@ class Login extends Component {
             </Fragment>
         )
     }
+
+    componentDidMount() {
+        fetch('http://localhost:4200/login')
+        .then(res => res.json())
+       
+        .then(data => console.log(data))
+    }
+
+
 }
 
 export default Login;
