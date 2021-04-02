@@ -64,16 +64,16 @@ class Work extends Component {
                         <div className='component'>
                             <h5>From:
                                 <select>
-                                    <option>21-03-17</option>
-                                    <option>21-03-17</option>
+                                    <option type='date'></option>
+                                    <option type='date'></option>
                                 </select>
                             </h5>
                         </div>
                         <div className='component'>
                             <h5>To:
                                 <select>
-                                    <option>21-04-17</option>
-                                    <option>21-04-17</option>
+                                    <option type='date'></option>
+                                    <option type='date'></option>
                                 </select>
                             </h5>
                         </div>
@@ -122,7 +122,7 @@ class Work extends Component {
                                     </div>
                                     <div className='add-task'>
                                         <label>Created: </label>
-                                        <a>web, 2021-03-17</a>&emsp;&emsp;
+                                        <a>web, 2021-03-17</a>&emsp;&emsp;&emsp;
                                         <label>By: </label>
                                         <a>you</a>
                                     </div>
@@ -142,3 +142,5 @@ class Work extends Component {
 }
 
 export default Work;
+
+/*==========================================================*/

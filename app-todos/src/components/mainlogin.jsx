@@ -2,6 +2,15 @@ import React, { Component, Fragment } from 'react';
 // import { BrowserRouter } from 'react';
 import axios from 'axios'
 class Login extends Component {
+
+    componentDidMount() {
+        readAllUser().then(res => {
+            console.log('Data', res);
+        }).catch(err => {
+            console.log('Err: ', err)
+        })
+    }
+
     render() {
         axios({
             methods: 'POST',
@@ -37,3 +46,5 @@ class Login extends Component {
 }
 
 export default Login;
+
+/*==========================================================*/
