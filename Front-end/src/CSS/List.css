@@ -9,7 +9,7 @@
     font-weight: 300; 
 }
 .list:hover{
-    background-color: #ececec; 
+    background-color: #ececec !important 
 }
 .STT{
     text-align: center;

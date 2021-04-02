@@ -125,7 +125,7 @@ class InputFrame extends Component {
                         <button className={!this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Remove" type='button'>Remove</button>
                     </div>
                     <div className="col-4">
-                        <button className={!this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Clear" type='button' onClick={() => this.btnClear()}>Clear</button>
+                        <button className={this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Clear" type='button' onClick={() => this.btnClear()}>Clear</button>
                     </div>
                     <div className="col-4">
                         <button className={!this.props.task.createdBy ? "buttonNone" : "buttonRight"} name="Update" type='button' onClick={() => this.btnUpdate()}>Update</button>

@@ -25,7 +25,7 @@ class List extends Component {
   list() {
     let i = 0;
     let status = ['Pendding', 'Progress', 'Done']
-    let priority = ['Medium', 'Low', 'High']
+    let priority = ['list Low', 'list Medium', 'list High']
     //
 
     //
@@ -48,9 +48,10 @@ class List extends Component {
       return "..."
     }
     return this.props.tasks.map((task, i) => {
+      console.log(priority[task.priority]);
       i++;
       return (
-        <Row className={(i!=this.state.selectedIndex)?priority[task.priority]:'list select'} key={i} onClick={() => this.updateInputFrame(task, i)}>
+        <Row className={(i!==this.state.selectedIndex)?priority[task.priority]:'list select'} key={i} onClick={() => this.updateInputFrame(task, i)}>
           <Col xs="1" className="STT">
             {i}.
                 </Col>
@@ -59,6 +60,7 @@ class List extends Component {
           </Col>
           <Col xs="1" >
             {status[task.status]}
+            {/* <i className={status[task.status]}></i> */}
           </Col>
         </Row>
       );
