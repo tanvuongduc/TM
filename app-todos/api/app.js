@@ -3,8 +3,9 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const mongoClient = require('mongoose')
 const workRoute = require('./routes/work')
+const loginRoute = require('./routes/login')
 
-mongoClient.connect('mongodb://localhost/TM', {
+mongoClient.connect('mongodb://localhost/task_list', {
         useNewUrlParser: true,
         useUnifiedTopology: true
 })
@@ -19,6 +20,8 @@ app.use(bodyParser.json())
 
 //config routes cua works
 app.use('/work', workRoute)
+
+app.use('./login', loginRoute)
 
 //routers
 app.get('/', (req, res, next) => {
