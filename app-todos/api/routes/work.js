@@ -12,6 +12,4 @@ router.route('/:workID')
     .get(workController.getOneWork)
     .patch(workController.updateWork)
     .delete(workController.deleteOneWork)
-
-router.route()
 module.exports = router

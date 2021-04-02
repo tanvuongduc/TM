@@ -3,23 +3,37 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const mongoClient = require('mongoose')
 const workRoute = require('./routes/work')
+<<<<<<< HEAD
 const loginRoute = require('./routes/login')
 
 mongoClient.connect('mongodb://localhost/task_list', {
         useNewUrlParser: true,
         useUnifiedTopology: true
+=======
+const loginRouter = require('./routes/login')
+const userRoute = require('./routes/user')
+// const User = require('./models/User')
+
+mongoClient.connect('mongodb://localhost/TM', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+>>>>>>> 89238a473b194962c0825a2d93080b778761353d
 })
     .then(() => console.log("Connect database successfully"))
     .catch((error) => console.error("Connect database false"))
 
 const app = express()
 
+
 //middleware
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
+
 //config routes cua works
 app.use('/work', workRoute)
+app.use('/login', loginRouter)
+app.use('/user', userRoute)
 
 app.use('./login', loginRoute)
 
@@ -30,12 +44,14 @@ app.get('/', (req, res, next) => {
     })
 })
 
+
 //bắt lỗi
 app.use((req, res, next) => {
     const err = new Error('Not Found')
     err.status = 404
     next(err)
 })
+
 
 //hứng lỗi bằng hàm function
 app.use((req, res, next) => {
@@ -52,7 +68,7 @@ app.use((req, res, next) => {
 
 
 //start the server
-const port = app.get('port') || 3000
-app.listen(port, () => 
+const port = app.get('port') || 3001
+app.listen(port, () =>
     console.log(`Server is listening on port ${port}`)
 )

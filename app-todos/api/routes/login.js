@@ -1,29 +1,17 @@
-const express = require('express');
-const router = express.Router()
-const User = require('../models/login')
+const exrpess = require("express");
+const router = exrpess.Router();
+const LoginController = require('../controllers/login')
 
-router.get('./',(req, res)=>{
-    res.json('ok')
-})
 
-router.post('/', async (req, res) => {
-    const userName = req.body.userName;
-    const passWord = req.body.passWord;
-    const users = await User.find()
-    for( let i in users){
-        if(users[i].userName === userName && users[i].passWord === passWord){
-            
-            const token = Math.random().toFixed(6)
-            const update = await User.updateOne( {userName: userName},{$set :{token: token}})
-            res.json({userName: users[i].userName, token: token ,update})
-            return;
-        }
-       
+router.get('/', async(req, res ) =>{
+    try {
+        const user = await User.find()
+        res.status(200).send(user)
+    } catch (error) {
+        res.status(500).send(error)
     }
-    res.json({login: false})
+});
 
-
-})
 
 
 module.exports = router;
