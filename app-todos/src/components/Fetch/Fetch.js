@@ -1,6 +1,6 @@
 
 export function readAllUser() {
-    const url = 'http://127.0.0.1:4200/api/'
+    const url = 'https://jsonplaceholder.typicode.com/users'
     return fetch(url, {
         method: 'GET'
     })

@@ -1,27 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios'
+import { NavLink } from 'react-router-dom';
 
-const getWorkFromUser = () => {
-    return axios.get('http://localhost:3000/work/:userId')
-        .then((res) => res.data)
-}
-class Work extends Component {
+/*==========================================================*/
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            data: null
-        }
-    }
-    componentWillUnmount() {
-        if (this.state.data === null) {
-            getWorkFromUser().then((res) => {
-                this.setState({
-                    data: res
-                })
-            })
-        }
-    }
+export default class Work extends Component {
     render() {
         return (
             <Fragment>
@@ -31,7 +13,9 @@ class Work extends Component {
                             <h5>Task Manager</h5>
                         </div>
                         <div className='navbarright'>
-                            <h5>Hi, Tun<span>&#9660;</span></h5>
+                            <NavLink to="/" activeStyle={{ color: "white" }}>
+                                <h5>Hi, Tun<span>&#9660;</span></h5>
+                            </NavLink>
                         </div>
                     </div>
                     <div className='header'>
@@ -64,16 +48,16 @@ class Work extends Component {
                         <div className='component'>
                             <h5>From:
                                 <select>
-                                    <option type='date'></option>
-                                    <option type='date'></option>
+                                    <option>01-03-2021</option>
+                                    <option>01-03-2021</option>
                                 </select>
                             </h5>
                         </div>
                         <div className='component'>
                             <h5>To:
                                 <select>
-                                    <option type='date'></option>
-                                    <option type='date'></option>
+                                    <option>01-04-2021</option>
+                                    <option>01-04-2021</option>
                                 </select>
                             </h5>
                         </div>
@@ -140,7 +124,5 @@ class Work extends Component {
         )
     }
 }
-
-export default Work;
 
 /*==========================================================*/

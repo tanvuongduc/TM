@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-// import Login from './components/mainlogin';
-import Task from './components/mainwork'
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import Login from "./components/login-page/login-page.jsx";
+import Work from "./components/work-page/work-page.jsx";
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <React.StrictMode>
-        <Task></Task>
-        {/* <Login></Login> */}
-      </React.StrictMode>
-
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Login} ></Route>
+          <Route path="/work" component={Work} ></Route>
+          <Route component={Login} ></Route>
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
-
-export default App;

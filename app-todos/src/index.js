@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import './App.css';
 import reportWebVitals from './reportWebVitals';
-import './components/sass/work-style.scss';
+import './sass/style.scss';
 
 const _App = (
   <App></App>
