@@ -7,7 +7,8 @@ class List extends Component {
   constructor(props){
     super(props)
     this.state={
-      task:{}
+      task:{},
+      user:''
     }
   }
 
@@ -61,7 +62,7 @@ class List extends Component {
               </Row> */}
             </div>
             <div className="col-4">
-              <InputFrame task={this.state.task} update={(task)=>this.updateInputFrame(task)}/>
+              <InputFrame username={this.state.user} task={this.state.task} update={(task)=>this.updateInputFrame(task)}/>
             </div>
           </div>
         </div>
