@@ -1,6 +1,27 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios'
 
+const getWorkFromUser = () => {
+    return axios.get('http://localhost:3000/work/:userId')
+        .then((res) => res.data)
+}
 class Work extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            data: null
+        }
+    }
+    componentWillUnmount() {
+        if (this.state.data === null) {
+            getWorkFromUser().then((res) => {
+                this.setState({
+                    data: res
+                })
+            })
+        }
+    }
     render() {
         return (
             <Fragment>
@@ -36,7 +57,7 @@ class Work extends Component {
                         <div className='component'>
                             <h5>Filter:
                                 <label>
-                                    <input type="radio" name="radio" value=""/>
+                                    <input type="radio" name="radio" value="" />
                                 </label>
                             </h5>
                         </div>

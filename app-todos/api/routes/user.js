@@ -9,8 +9,6 @@ router.route('/')
 router.route('/:userId')
     .get(UserController.getOneUser)
     .patch(UserController.updateUser)
-
-
-
+    .delete(UserController.deleteOneUser)
 
 module.exports = router

@@ -11,9 +11,7 @@ const login = async (req, res, next) => {
             const token = Math.random().toFixed(6)
             const update = await User.updateOne({ userName: userName }, { $set: { token: token } })
             return res.status(200).json({ userName: users[i].userName, token: token, update })
-
         }
-
     }
     res.json({ login: false })
 }

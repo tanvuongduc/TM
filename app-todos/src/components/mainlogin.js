@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter } from 'react';
+// import { BrowserRouter } from 'react';
 import axios from 'axios'
 class Login extends Component {
     render() {
@@ -9,11 +9,12 @@ class Login extends Component {
             data: null
         })
             .then(res => {
-                console.log(res);
+                console.log('kq', res);
             })
             .catch(err => {
-                console.log(err);
+                console.log('lỗi', err);
             })
+
         return (
             <Fragment>
                 <div className='mainlogin'>

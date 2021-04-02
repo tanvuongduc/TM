@@ -53,13 +53,19 @@ const updateUser = async (req, res, next) => {
     return res.status(200).json({ user: result })
 }
 
+const deleteOneUser = async (req, res, next) => {
+    const userId = req.params
+    const user = new User.findById(userId)
+    await user.delete()
+    console.log('dã xóa');
+}
 
 
 module.exports = {
     createUser,
     getAllUser,
     updateUser,
-    // deleteOneUser,
+    deleteOneUser,
     getOneUser,
     replaceUser,
 }
