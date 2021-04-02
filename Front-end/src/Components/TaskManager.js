@@ -22,6 +22,10 @@ class TaskManager extends Component {
     };
   }
   componentDidMount = async () => {
+    this.updateAll()
+  };
+
+  async updateAll() {
     let data = {
       token: localStorage.getItem("token"),
     };
@@ -47,10 +51,8 @@ class TaskManager extends Component {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-
-  async getTasksOfStaff(id){
+  }
+  async getTasksOfStaff(id) {
     let data = {
       token: localStorage.getItem("token"),
       _id: id
@@ -58,18 +60,19 @@ class TaskManager extends Component {
     await axios
       .post(`http://localhost:3000/task/get`, data)
       .then((res) => {
-        if (res.data.staffName){
+        if (res.data.staffName) {
           this.setState({
             staffName: res.data.staffName,
             tasks: res.data.tasks,
             staffId: id
           })
         }
-        else{
+        else {
           console.log(res)
         }
       })
-      .catch(err=>console.log(err))
+      .catch(err => console.log(err))
+      
   }
 
 
@@ -87,7 +90,7 @@ class TaskManager extends Component {
       <Fragment>
         <NavBar username={this.state.user} />
         <Filter staffName={this.state.staffName} updateTasks={(tasks, sort) => this.updateTasks(tasks, sort)} tasks={this.state.tasks} sort={this.state.sort} />
-        <List staffId={this.state.staffId} tasks={this.state.tasks} staffs={this.state.staffs} permission={this.state.permission} getTasksOfStaff={(id)=>this.getTasksOfStaff(id)}/>
+        <List staffId={this.state.staffId} tasks={this.state.tasks} staffs={this.state.staffs} permission={this.state.permission} getTasksOfStaff={(id) => this.getTasksOfStaff(id)} updateAll={this.updateAll}/>
       </Fragment>
     );
   }

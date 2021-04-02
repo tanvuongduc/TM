@@ -43,6 +43,7 @@ class InputFrame extends Component {
             .catch(err => {
                 console.log(err)
             })
+        this.props.updateTask()
     }
     async btnRemove() {
         let data = {
@@ -50,13 +51,14 @@ class InputFrame extends Component {
             _id: this.props.task._id,
         }
         console.log(data)
-        await axios.delete(`http://localhost:3000/task/deletetask`, data)
+        await axios.post(`http://localhost:3000/task/deletetask`, data)
             .then((res) => {
                 console.log(res)
             })
             .catch(err => {
                 console.log(err)
             })
+        this.props.updateTask()
     }
     async btnAddNew() {
         let data = {
@@ -67,14 +69,15 @@ class InputFrame extends Component {
             priority: this.props.task.priority
         };
         console.log(data)
-        if(this.props.staff){
+        if (this.props.staff) {
             await axios.post(`http://localhost:3000/task/addtaskforid`, data)
-            .then((res) => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            this.props.updateTask()
             return
         }
         await axios.post(`http://localhost:3000/task/add`, data)
@@ -84,6 +87,7 @@ class InputFrame extends Component {
             .catch(err => {
                 console.log(err)
             })
+        this.props.updateTask()
     }
     async onContentChange(ev) {
         let data = {
@@ -96,6 +100,7 @@ class InputFrame extends Component {
 
         }
         await this.props.update(data)
+
     }
     async onStatusChange(ev) {
         let data = {
@@ -149,7 +154,7 @@ class InputFrame extends Component {
                 </div>
                 <div className="row">
                     <div className="col-4">
-                        <button className={!this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Remove" type='button' onClick={()=>this.btnRemove()}>Remove</button>
+                        <button className={!this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Remove" type='button' onClick={() => this.btnRemove()}>Remove</button>
                     </div>
                     <div className="col-4">
                         <button className={!this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Clear" type='button' onClick={() => this.btnClear()}>Clear</button>

@@ -11,7 +11,7 @@ router.post('/addtaskforid', taskController.addTaskForStaffId)// add a task for 
 
 router.put('/edittaskid', taskController.editTaskId)
 
-router.delete('/deletetask',taskController.deleteTaskId)
+router.post('/deletetask',taskController.deleteTaskId)
 
 router.put('/updateui', taskController.updateUserInfo)
 

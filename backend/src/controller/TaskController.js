@@ -9,7 +9,6 @@ class TaskController {
         let data = {}
 
         data.user = auth.user
-        data.permission = auth.permission
         switch (auth.permission) {
             case 0:
                 data.tasks = tasks
@@ -43,11 +42,11 @@ class TaskController {
     async addTask(req, res) {
         const auth = req.auth
         let data = {
-            content: req.body.content ? req.body.content : "Trống kìa thằng ngu",
+            content: req.body.content,
             status: 0,     //0: Pendding, 1: Progress, 2: Done
             createdBy: auth.user,
             createdAt: Date.now(),
-            priority: (req.body.priority>2||req.body.priority<0) ? req.body.priority : 0,
+            priority: req.body.priority,
         }
 
         await Task.create(data, async (err, r) => {
@@ -63,17 +62,18 @@ class TaskController {
     async addTaskForStaffId(req, res) {
         const auth = req.auth
         if (auth.permission == 1 && req.body._id) {
-            let data = {
-                content: req.body.content ? req.body.content : "Trống kìa thằng ngu",
-                status: 0,     //0: Pendding, 1: Progress, 2: Done
-                createdBy: auth.user,
-                createdAt: Date.now(),
-                priority: (req.body.priority>2||req.body.priority<0) ? req.body.priority : 0,
-            }
             let staff = await Auth.findById(req.body._id).exec()
             if (!staff) {
                 res.json('Not found staff!!!')
                 return
+            }
+            let data = {
+                content: req.body.content,
+                status: 0,     //0: Pendding, 1: Progress, 2: Done
+                createdBy: auth.user,
+                createdAt: Date.now(),
+                priority: req.body.priority,
+                ofId: staff._id
             }
             await Task.create(data, async (err, r) => {
                 if (err) res.json('Err, pls try again')
@@ -83,9 +83,6 @@ class TaskController {
                     res.json('added!!')
                 }
             })
-        }
-        else {
-            res.json("Acess denied")
         }
 
     }
@@ -110,13 +107,10 @@ class TaskController {
     }
     async editTaskId(req, res) {
         const auth = req.auth
-        console.log(req.body._id)
         let task = await Task.findById(req.body._id).exec()
-        
-        if (task&&auth.user === task.createdBy) {
-            task.content = req.body.content ? req.body.content : "Trống kìa thằng ngu"
-            task.status = (req.body.status>2||req.body.status<0)?0:req.body.status
-            console.log(task)
+        if (auth.user === task.createdBy) {
+            task.content = req.body.content
+            task.status = req.body.status
             await task.save()
             res.json(`Success update!`)
         }
@@ -127,9 +121,20 @@ class TaskController {
     }
 
     async deleteTaskId(req, res) {
-        const auth = req.auth
+
         let task = await Task.findById(req.body._id).exec()
-        console.log(task)
+        const auth
+        
+        if (task.ofId){
+            let Staff = await Auth.findById(task.ofId)
+            if(Staff){
+                auth=Staff
+            }
+            else
+            auth=req.auth
+        }
+           
+        
         if (task && auth.user == task.createdBy) {
             await task.delete()
             for (let i = 0; i < auth.tasks.length; i++) {
@@ -150,11 +155,6 @@ class TaskController {
         const auth = req.auth
         if (auth.permission < 2) {
             res.json('Access denied!!!!!')
-            return
-        }
-        let regx = /^[a-zA-Z0-9]{3,100}$/
-        if (!regx.exec(req.body.user) || !regx.exec(req.body.password)){
-            res.json("Format err")
             return
         }
         Auth.find({

@@ -15,13 +15,20 @@ class List extends Component {
   updateInputFrame(task, i) {
     this.setState({
       task: task,
-      selectedIndex:i,
+      selectedIndex: i,
     })
   }
-  getStaffInfo(staffID){    
+  getStaffInfo(staffID) {
     this.props.getTasksOfStaff(staffID)
   }
-
+  updateTask() {
+    if (this.props.staffId) {
+      this.props.getTasksOfStaff(this.props.staffId)
+    }
+    else {
+      this.props.updateAll()
+    }
+  }
   list() {
     let i = 0;
     let status = ['Pendding', 'Progress', 'Done']
@@ -30,7 +37,7 @@ class List extends Component {
 
     //
     if (!this.props.tasks) {
-      if (this.props.permission&&this.props.staffs.length) {
+      if (this.props.staffs.length) {
         return this.props.staffs.map((staff) => {
           i++;
           return (
@@ -50,7 +57,7 @@ class List extends Component {
     return this.props.tasks.map((task, i) => {
       i++;
       return (
-        <Row className={(i!=this.state.selectedIndex)?priority[task.priority]:'list select'} key={i} onClick={() => this.updateInputFrame(task, i)}>
+        <Row className={(i !== this.state.selectedIndex) ? priority[task.priority] : 'list select'} key={i} onClick={() => this.updateInputFrame(task, i)}>
           <Col xs="1" className="STT">
             {i}.
                 </Col>
@@ -74,7 +81,7 @@ class List extends Component {
               {list}
             </div>
             <div className="col-4">
-              <InputFrame staff={this.props.staffId} task={this.state.task} update={(task) => this.updateInputFrame(task)} />
+              <InputFrame staff={this.props.staffId} task={this.state.task} update={(task) => this.updateInputFrame(task)} updateTask={()=>this.updateTask()}/>
             </div>
           </div>
         </div>
