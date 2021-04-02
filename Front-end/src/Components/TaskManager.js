@@ -18,6 +18,7 @@ class TaskManager extends Component {
       staffs: {},
       permission: 0,
       staffName: "",
+      staffId: "",
     };
   }
   componentDidMount = async () => {
@@ -60,7 +61,8 @@ class TaskManager extends Component {
         if (res.data.staffName){
           this.setState({
             staffName: res.data.staffName,
-            tasks: res.data.tasks
+            tasks: res.data.tasks,
+            staffId: id
           })
         }
         else{
@@ -85,7 +87,7 @@ class TaskManager extends Component {
       <Fragment>
         <NavBar username={this.state.user} />
         <Filter staffName={this.state.staffName} updateTasks={(tasks, sort) => this.updateTasks(tasks, sort)} tasks={this.state.tasks} sort={this.state.sort} />
-        <List tasks={this.state.tasks} staffs={this.state.staffs} permission={this.state.permission} getTasksOfStaff={(id)=>this.getTasksOfStaff(id)}/>
+        <List staffId={this.state.staffId} tasks={this.state.tasks} staffs={this.state.staffs} permission={this.state.permission} getTasksOfStaff={(id)=>this.getTasksOfStaff(id)}/>
       </Fragment>
     );
   }

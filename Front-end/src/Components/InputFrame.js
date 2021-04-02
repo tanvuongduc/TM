@@ -29,12 +29,8 @@ class InputFrame extends Component {
     }
     async btnUpdate() {
         let data = {
-            content: "",
-            status: 0,
-            priority: 0,
-            createdBy: "",
-            createdAt: Date.now()
-
+            content: this.props.task.content,
+            status: this.props.task.status,
         }
         await this.props.update(data)
     }
@@ -46,6 +42,7 @@ class InputFrame extends Component {
             status: this.props.task.status,
             priority: this.props.task.priority
         };
+        console.log(data)
         if(this.props.staff){
             await axios.post(`http://localhost:3000/task/addtaskforid`, data)
             .then((res) => {
@@ -132,7 +129,7 @@ class InputFrame extends Component {
                     </div>
                     <div className="col-4">
                         <button className={!this.props.task.createdBy ? "buttonNone" : "buttonRight"} name="Update" type='button' onClick={() => this.btnUpdate()}>Update</button>
-                        <button className={this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Add new" type='button' onClick={() => this.addNewTask()}>Add new</button>
+                        <button className={this.props.task.createdBy ? "buttonHide" : "buttonRight"} name="Add new" type='button' onClick={() => this.btnAddNew()}>Add new</button>
                     </div>
                 </div>
             </div>

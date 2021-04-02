@@ -9,7 +9,7 @@ class TaskController {
         let data = {}
 
         data.user = auth.user
-        data.permission= auth.permission
+        data.permission = auth.permission
         switch (auth.permission) {
             case 0:
                 data.tasks = tasks
@@ -43,11 +43,11 @@ class TaskController {
     async addTask(req, res) {
         const auth = req.auth
         let data = {
-            content: req.body.content,
+            content: req.body.content ? req.body.content : "Trống kìa thằng ngu",
             status: 0,     //0: Pendding, 1: Progress, 2: Done
             createdBy: auth.user,
             createdAt: Date.now(),
-            priority:req.body.priority,
+            priority: (req.body.priority>2||req.body.priority<0) ? req.body.priority : 0,
         }
 
         await Task.create(data, async (err, r) => {
@@ -64,11 +64,11 @@ class TaskController {
         const auth = req.auth
         if (auth.permission == 1 && req.body._id) {
             let data = {
-                content: req.body.content,
+                content: req.body.content ? req.body.content : "Trống kìa thằng ngu",
                 status: 0,     //0: Pendding, 1: Progress, 2: Done
                 createdBy: auth.user,
                 createdAt: Date.now(),
-                priority:req.body.priority,
+                priority: (req.body.priority>2||req.body.priority<0) ? req.body.priority : 0,
             }
             let staff = await Auth.findById(req.body._id).exec()
             if (!staff) {
@@ -83,6 +83,9 @@ class TaskController {
                     res.json('added!!')
                 }
             })
+        }
+        else {
+            res.json("Acess denied")
         }
 
     }
@@ -109,8 +112,8 @@ class TaskController {
         const auth = req.auth
         let task = await Task.findById(req.body._id).exec()
         if (auth.user === task.createdBy) {
-            task.content = req.body.content
-            task.status = req.body.status
+            task.content = req.body.content ? req.body.content : "Trống kìa thằng ngu"
+            task.status = (req.body.status>2||req.body.status<0)?req.body.status:0
             await task.save()
             res.json(`Success update!`)
         }
@@ -141,17 +144,22 @@ class TaskController {
         }
     }
     addStaff(req, res) {
-        const auth=req.auth
-        if(auth.permission<2){
+        const auth = req.auth
+        if (auth.permission < 2) {
             res.json('Access denied!!!!!')
+            return
+        }
+        let regx = /^[a-zA-Z0-9]{3,100}$/
+        if (!regx.exec(req.body.user) || !regx.exec(req.body.password)){
+            res.json("Format err")
             return
         }
         Auth.find({
             user: req.body.user,
         }, async (err, data) => {
-            if(err)console.log(err)
+            if (err) console.log(err)
             else {
-                if(data.length===0){
+                if (data.length === 0) {
                     await Auth.create(
                         {
                             user: req.body.user,
@@ -166,7 +174,7 @@ class TaskController {
                         }
                     )
                 }
-                else{
+                else {
                     res.json(
                         {
                             msg: 'Your username existed!'

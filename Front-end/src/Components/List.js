@@ -8,22 +8,16 @@ class List extends Component {
     super(props)
     this.state = {
       task: {},
-      staffId: ""
     }
   }
 
   updateInputFrame(task) {
     this.setState({
       task: task,
-      staffId: ""
     })
   }
-  getStaffInfo(staffID){
-    
+  getStaffInfo(staffID){    
     this.props.getTasksOfStaff(staffID)
-    this.setState({
-      staffId: staffID
-    })
   }
 
   list() {
@@ -74,7 +68,7 @@ class List extends Component {
               {list}
             </div>
             <div className="col-4">
-              <InputFrame staff={this.state.staffId} task={this.state.task} update={(task) => this.updateInputFrame(task)} />
+              <InputFrame staff={this.props.staffId} task={this.state.task} update={(task) => this.updateInputFrame(task)} />
             </div>
           </div>
         </div>
