@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { readAllUser } from '../fetch/fetch'
-
-/*==========================================================*/
-
+// import { BrowserRouter } from 'react';
+import axios from 'axios'
 class Login extends Component {
     constructor(posts) {
         super(posts)

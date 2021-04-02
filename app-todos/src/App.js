@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import Login from './components/mainlogin.jsx';
-import Work from './components/mainwork.jsx';
+// import Login from './components/mainlogin';
+import Task from './components/mainwork'
 
 class App extends Component {
   render() {
     return (
       <React.StrictMode>
-        <Login></Login>
-        {/* <Work></Work> */}
+        <Task></Task>
+        {/* <Login></Login> */}
       </React.StrictMode>
+
     )
   }
 }
