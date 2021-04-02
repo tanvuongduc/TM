@@ -98,7 +98,7 @@ class Filter extends Component {
     return (
       <div className="contain-box">
         <div className="filter-box">
-          <h4 className="my-task-title">My Tasks</h4>
+          <h4 className="my-task-title">{this.props.staffName?this.props.staffName:"My Tasks"}</h4>
           <div className="sort-by-bar">
             <div className="sort-by">
               <span className="sort-by-title">Sort by:</span>

@@ -26,7 +26,12 @@
 .input-frame-container .mgl20 {
     margin-left: 20px;
 }
-
+.input-frame-container .buttonHide {
+    visibility:hidden;
+}
+.input-frame-container .buttonNone {
+    display: none;
+}
 .input-frame-container .buttonRight {
     margin-top: 400px;
     border-radius: 3px;

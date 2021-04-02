@@ -9,6 +9,7 @@ class TaskController {
         let data = {}
 
         data.user = auth.user
+        data.permission= auth.permission
         switch (auth.permission) {
             case 0:
                 data.tasks = tasks
