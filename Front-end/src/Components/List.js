@@ -4,24 +4,24 @@ import { Row, Col } from "reactstrap";
 import InputFrame from "./InputFrame";
 
 class List extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state={
-      dataInputFrame:{},
+    this.state = {
+      task: {},
       selectedIndex: -1,
     }
   }
-  postToInputFrame(task, i){
-    console.log(task)
+
+  updateInputFrame(task, i) {
     this.setState({
-      dataInputFrame:task,
+      task: task,
       selectedIndex:i,
     })
   }
+  getStaffInfo(staffID){    
+    this.props.getTasksOfStaff(staffID)
+  }
 
-  //
-  
-  //
   list() {
     let i = 0;
     let status = ['Pendding', 'Progress', 'Done']
@@ -30,12 +30,27 @@ class List extends Component {
 
     //
     if (!this.props.tasks) {
+      if (this.props.permission&&this.props.staffs.length) {
+        return this.props.staffs.map((staff) => {
+          i++;
+          return (
+            <Row className="list" key={i} onClick={() => this.getStaffInfo(staff._id)}>
+              <Col xs="1" className="STT">
+                {i}.
+                    </Col>
+              <Col className="text">
+                {staff.user}
+              </Col>
+            </Row>
+          );
+        });
+      }
       return "..."
     }
     return this.props.tasks.map((task, i) => {
       i++;
       return (
-        <Row className={(i!=this.state.selectedIndex)?priority[task.priority]:'list select'} key={i} onClick={()=>this.postToInputFrame(task, i)}>
+        <Row className={(i!=this.state.selectedIndex)?priority[task.priority]:'list select'} key={i} onClick={() => this.updateInputFrame(task, i)}>
           <Col xs="1" className="STT">
             {i}.
                 </Col>
@@ -59,7 +74,7 @@ class List extends Component {
               {list}
             </div>
             <div className="col-4">
-              <InputFrame task={this.state.dataInputFrame}/>
+              <InputFrame staff={this.props.staffId} task={this.state.task} update={(task) => this.updateInputFrame(task)} />
             </div>
           </div>
         </div>

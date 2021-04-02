@@ -15,6 +15,10 @@ class TaskManager extends Component {
       },
       user: "",
       tasks: [],
+      staffs: {},
+      permission: 0,
+      staffName: "",
+      staffId: "",
     };
   }
   componentDidMount = async () => {
@@ -26,11 +30,15 @@ class TaskManager extends Component {
       .then((res) => {
         console.log(res.data);
         let user = res.data.user;
+        let permission = res.data.permission;
         let tasks = res.data.tasks;
+        let staffs = res.data.staffs;
         if (user) {
           this.setState({
             user: user,
             tasks: tasks,
+            staffs: staffs,
+            permission: permission
           });
         } else {
           localStorage.setItem("token", '')
@@ -40,9 +48,32 @@ class TaskManager extends Component {
         console.log(err);
       });
   };
+
+
+  async getTasksOfStaff(id){
+    let data = {
+      token: localStorage.getItem("token"),
+      _id: id
+    };
+    await axios
+      .post(`http://localhost:3000/task/get`, data)
+      .then((res) => {
+        if (res.data.staffName){
+          this.setState({
+            staffName: res.data.staffName,
+            tasks: res.data.tasks,
+            staffId: id
+          })
+        }
+        else{
+          console.log(res)
+        }
+      })
+      .catch(err=>console.log(err))
+  }
+
+
   updateTasks(tasks, sort) {
-    console.log(tasks)
-    console.log(sort)
     this.setState({
       tasks: tasks,
       sort: sort
@@ -55,8 +86,8 @@ class TaskManager extends Component {
     return (
       <Fragment>
         <NavBar username={this.state.user} />
-        <Filter  updateTasks={(tasks,sort) => this.updateTasks(tasks,sort)} tasks={this.state.tasks} sort={this.state.sort}/>
-        <List tasks={this.state.tasks} />
+        <Filter staffName={this.state.staffName} updateTasks={(tasks, sort) => this.updateTasks(tasks, sort)} tasks={this.state.tasks} sort={this.state.sort} />
+        <List staffId={this.state.staffId} tasks={this.state.tasks} staffs={this.state.staffs} permission={this.state.permission} getTasksOfStaff={(id)=>this.getTasksOfStaff(id)}/>
       </Fragment>
     );
   }

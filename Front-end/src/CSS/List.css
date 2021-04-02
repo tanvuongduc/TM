@@ -1,4 +1,6 @@
-
+.font{
+    overflow: hidden;
+}
 .list{
 
     margin-bottom: 2px;

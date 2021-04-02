@@ -68,7 +68,7 @@ class Filter extends Component {
       }
       res = res.concat(arrSorted)
     })
-    if(!res.length)return
+    if (!res.length) return
     this.setState({
       tasks: res
     })
@@ -98,7 +98,7 @@ class Filter extends Component {
     return (
       <div className="contain-box">
         <div className="filter-box">
-          <h4 className="my-task-title">My Tasks</h4>
+          <h4 className="my-task-title">{this.props.staffName?this.props.staffName:"My Tasks"}</h4>
           <div className="sort-by-bar">
             <div className="sort-by">
               <span className="sort-by-title">Sort by:</span>
@@ -135,11 +135,11 @@ class Filter extends Component {
             <div className="from-date-box" id="from-date-box">
               <label>From: </label>
               <select className="date-filter form-control shadow-none ">
-                <option selected>21-03-17 </option>
+                <option >21-03-17 </option>
               </select>
               <label>To: </label>
               <select className="date-filter form-control shadow-none ">
-                <option selected>21-04-17 </option>
+                <option >21-04-17 </option>
               </select>
               <a className="btn-apply">Apply</a>
             </div>
