@@ -44,7 +44,11 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:4200/login')
+        fetch('http://localhost:4200/login',{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'},
+        })
         .then(res => res.json())
        
         .then(data => console.log(data))
