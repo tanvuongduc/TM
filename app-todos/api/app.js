@@ -3,6 +3,13 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const mongoClient = require('mongoose')
 const workRoute = require('./routes/work')
+<<<<<<< HEAD
+const loginRoute = require('./routes/login')
+
+mongoClient.connect('mongodb://localhost/task_list', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+=======
 const loginRouter = require('./routes/login')
 const userRoute = require('./routes/user')
 // const User = require('./models/User')
@@ -10,6 +17,7 @@ const userRoute = require('./routes/user')
 mongoClient.connect('mongodb://localhost/TM', {
     useNewUrlParser: true,
     useUnifiedTopology: true
+>>>>>>> 89238a473b194962c0825a2d93080b778761353d
 })
     .then(() => console.log("Connect database successfully"))
     .catch((error) => console.error("Connect database false"))
@@ -26,6 +34,8 @@ app.use(bodyParser.json())
 app.use('/work', workRoute)
 app.use('/login', loginRouter)
 app.use('/user', userRoute)
+
+app.use('./login', loginRoute)
 
 //routers
 app.get('/', (req, res, next) => {
