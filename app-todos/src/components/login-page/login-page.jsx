@@ -1,31 +1,33 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { readAllUser } from '../Fetch/Fetch';
+import { NavLink } from 'react-router-dom';
+import { readUser } from '../Fetch/readUser';
+import Work from '../work-page/work-page';
 
 /*==========================================================*/
 
 export default class Login extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+            username: '',
+            password: '',
+            link: ''
         }
     }
-    // Hàm này sẽ chạy sau render()
-    // componentDidMount() {
-    //     readAllUser().then(res => {
-    //         console.log('Data', res);
-    //     })
-    //     .catch(err => {
-    //         console.log('Err: ', err)
-    //     })
-    // }
 
-    confirmLogin() {
-        this.setState({
-            data: this.state.data
-        })
-        console.log('hihihihihih', this.state.data)
+    componentDidMount() {
+    }
+
+    Confirm() {
+        if (this.state.username === 'admin' & this.state.password === '123') {
+            this.setState({
+                link: '/work'
+            });
+        }
+        else {
+            alert ('Tên đăng nhập hoặc mật khẩu không đúng!');
+        }
     }
 
     render() {
@@ -38,15 +40,29 @@ export default class Login extends Component {
                     </div>
                     <div className='mainright'>
                         <form action=''>
-                            <input type='text' placeholder='Username' id='name' required></input>
-                            <input type='password' placeholder='Password' required></input>
+                            <input type='text' placeholder='Username' value={this.state.username} onChange={(ev) => this.onUsername(ev)} required></input>
+                            <input type='password' placeholder='Password' value={this.state.password} onChange={(ev) => this.onPassword(ev)} required></input>
                             <br></br>
-                            <Link to='/work'><button type='submit' id='submit' onClick={()=> this.confirmLogin()}>LOGIN</button></Link>
+                            <NavLink to={this.state.link}>
+                                <button type='submit' onClick={() => this.Confirm()}>LOGIN</button>
+                            </NavLink>
                         </form>
                     </div>
                 </div>
             </Fragment>
         )
+    }
+    onUsername(ev) {
+        this.setState({
+            username: ev.target.value
+        })
+        // console.log(this.state.username);
+    }
+    onPassword(ev) {
+        this.setState({
+            password: ev.target.value
+        })
+        // onsole.log(this.state.password);
     }
 }
 
