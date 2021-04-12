@@ -19,6 +19,7 @@ export default class Login extends Component {
     }
 
     componentDidMount() {
+      
     }
 
     // Confirm() {
@@ -54,6 +55,25 @@ export default class Login extends Component {
         ev.preventDefault()
         console.log(this.state.username);
         console.log(this.state.password);
+        const data = {
+            username: this.state.username,
+            password: this.state.password
+        };
+
+        fetch('http://localhost:3001/api/auth/login', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
     onUsername(ev) {
         this.setState({
