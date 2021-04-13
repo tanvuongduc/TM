@@ -53,8 +53,6 @@ export default class Login extends Component {
     }
     onHendleSutmit(ev) {
         ev.preventDefault()
-        console.log(this.state.username);
-        console.log(this.state.password);
         const data = {
             username: this.state.username,
             password: this.state.password
