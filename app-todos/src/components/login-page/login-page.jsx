@@ -11,29 +11,29 @@ export default class Login extends Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            token: ''
         }
         this.onUsername = this.onUsername.bind(this)
         this.onPassword = this.onPassword.bind(this)
         this.onHendleSutmit = this.onHendleSutmit.bind(this)
+
+    }
+
+    onUsername = (e) => {
+        const input = e.target;
+        const value = input.value
+        this.setState({ [input.name]: value })
     }
 
     componentDidMount() {
-      
+
     }
 
-    // Confirm() {
-    //     if (this.state.username === 'admin' & this.state.password === '123') {
-    //         this.setState({
-    //             link: '/work'
-    //         });
-    //     }
-    //     else {
-    //         alert('Tên đăng nhập hoặc mật khẩu không đúng!');
-    //     }
-    // }
+
 
     render() {
+
         return (
             <div className='mainlogin'>
                 <div className='mainleft'>
@@ -42,8 +42,8 @@ export default class Login extends Component {
                 </div>
                 <div className='mainright'>
                     <form onSubmit={this.onHendleSutmit}>
-                        <input type='text' placeholder='Username' onChange={this.onUsername} required></input>
-                        <input type='password' placeholder='Password' onChange={this.onPassword} required></input>
+                        <input type='text' name="username" placeholder='Username' onChange={this.onUsername} value={this.state.username} required></input>
+                        <input type='password' name="password" placeholder='Password' onChange={this.onPassword} value={this.state.password} required></input>
                         <br></br>
                         <button type='submit' >LOGIN</button>
                     </form>
@@ -55,19 +55,22 @@ export default class Login extends Component {
         ev.preventDefault()
         const data = {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+
         };
 
         fetch('http://localhost:3001/api/auth/login', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
+
             },
             body: JSON.stringify(data),
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
+                this.setState({ token: data.accessToken })
+                localStorage.setItem('token', this.state.token)
             })
             .catch((error) => {
                 console.error('Error:', error);
